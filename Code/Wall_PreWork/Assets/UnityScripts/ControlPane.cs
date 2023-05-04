@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlPane : MonoBehaviour {
-
     //parent attributes
     private GameObject scene;
     private Scene scene_script;
