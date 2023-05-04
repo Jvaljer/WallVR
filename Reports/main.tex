@@ -7,28 +7,39 @@
 \usepackage{hyperref}
 \usepackage{biblatex}
 \usepackage{url}
+\usepackage{graphicx}
 
-\title{Reports on various readings}
-\author{Abel HENRY-LAPASSAT}
+\title{\textbf{Reports on various readings}}
+\author{\textit{Abel HENRY-LAPASSAT}}
 \setlength{\parskip}{0.5em}
 
 \begin{document}
 \maketitle
-\section{Quick Explanation}
+\section*{\underline{Quick Explanation}}
     \paragraph{ \textnormal{This document is meant to contains all the readings and understandings I'll do during my HCI Internship.
-        So basically, I'll be putting in here some articles and what I understood and thought about their topics and conclusions/results} }
+        So basically, I'll be putting in here some articles and what I understood and thought about their topics and conclusions/results.
+        The second goal of this is to start using Latex to write documents, so don't worry if you find some weird stuff, it either is the
+        result of shameful mistakes of mine or simply dumb experiences I've done and didn't erase. } }
 
-\section{Articles Summary}
+\section*{\underline{Articles Summary}}
     \begin{itemize}
-        %\item \citetitle{james2023evaluating} \href{https://hal.science/hal-04010673/document}{See Full Article}
-        \item Evaluating the Extension of Wall Displays with AR for Collaborative Work, \href{https://hal.science/hal-04010673/document}{See Full Article}
-        %\item \citetitle{liu2014effects} \href{https://hal.science/file/index/docid/957269/filename/chi14-classify-hal-v1.pdf}{See Full Article}
-        \item Effects of Display Size And Navigation Type on a Classification Task, \href{https://hal.science/file/index/docid/957269/filename/chi14-classify-hal-v1.pdf}{See Full Article}
+        \item \href{https://hal.science/hal-04010673/document}{Evaluating the Extension of Wall Displays with AR for Collaborative Work} \dotfill \pageref{sec:james2023}
+        \item \href{https://hal.science/hal-01437091/document}{CoReach: Cooperative Gestures for Data Manipulation on Wall-Sized Displays} \dotfill \pageref{sec:liu2017}
+        \item \href{https://hal.science/file/index/docid/957269/filename/chi14-classify-hal-v1.pdf}{Effects of Display Size And Navigation Type on a Classification Task} \dotfill \pageref{sec:liu2014}
     \end{itemize}
 
-\section{Article Reports}
+\section*{\underline{Article Reports}}
 
+    \label{sec:james2023}
     \input{james2023evaluating.tex}
+    \newpage 
+
+    \label{sec:liu2017}
+    \input{liu2017coreach.tex}
+    \newpage
+
+    \label{sec:liu2014}
     \input{liu2014effects.tex}
+
 
 \end{document}
