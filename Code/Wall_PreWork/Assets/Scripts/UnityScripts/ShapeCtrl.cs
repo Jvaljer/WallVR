@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class ShapeCtrl : MonoBehaviour {
     //unity attrivutes
     private GameObject ctrl_pane;
+    private ControlPane pane_script;
     private GameObject scene;
     public GameObject shapes;
     public GameObject big_version;
@@ -21,11 +22,12 @@ public class ShapeCtrl : MonoBehaviour {
         Debug.Log("ShapeCtrl is starting");
         scene = GameObject.Find("Scene");
         ctrl_pane = scene.transform.GetChild(0).gameObject;
+        pane_script = ctrl_pane.GetComponent<ControlPane>();
     }
 
     // Update is called once per frame
     void Update() {
-        if(!ctrl_pane.mouse_is_inside){
+        if(!pane_script.mouse_is_inside){
             moving = false;
         }
     }
@@ -37,8 +39,9 @@ public class ShapeCtrl : MonoBehaviour {
     }
     public void OnMouseDrag(){
         Debug.Log("Drag running");
-        if(ctrl_pane.mouse_is_inside){
+        if(pane_script.mouse_is_inside){
             small_version.transform.position = Input.mousePosition;
+            Debug.Log("");
         }
     }
     public void OnMouseUp(){

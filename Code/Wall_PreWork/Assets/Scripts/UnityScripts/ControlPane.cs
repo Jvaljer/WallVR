@@ -9,7 +9,7 @@ public class ControlPane : MonoBehaviour {
     private Scene scene_script;
 
     //specific predicates
-    private bool mouse_is_inside;
+    public bool mouse_is_inside;
 
     // Start is called before the first frame update
     void Start(){
@@ -21,9 +21,6 @@ public class ControlPane : MonoBehaviour {
 
     // Update is called once per frame
     void Update(){
-        if(mouse_is_inside){
-            
-        }
     }
 
     //all control pane's methods
