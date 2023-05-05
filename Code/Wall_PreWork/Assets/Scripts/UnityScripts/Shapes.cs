@@ -33,7 +33,7 @@ public class Shapes : MonoBehaviour {
     //other methods
     public void MoveBigCircle(){
         Vector3 small_pos = circle.transform.GetChild(0).transform.position;
-        Vector3 translate_pos; 
+        Vector3 translate_pos = new Vector3(0,0,0); 
         circle.transform.GetChild(1).gameObject.transform.position = translate_pos;
     }
 }

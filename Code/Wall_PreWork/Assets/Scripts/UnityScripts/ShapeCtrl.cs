@@ -40,8 +40,9 @@ public class ShapeCtrl : MonoBehaviour {
     public void OnMouseDrag(){
         Debug.Log("Drag running");
         if(pane_script.mouse_is_inside){
+            //here I must translate the mousePosition to the SCENE coordinates -> not in pixels tho, 
+            //must check what are the relative coords
             small_version.transform.position = Input.mousePosition;
-            Debug.Log("");
         }
     }
     public void OnMouseUp(){
