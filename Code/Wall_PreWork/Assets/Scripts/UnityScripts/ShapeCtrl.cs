@@ -40,9 +40,14 @@ public class ShapeCtrl : MonoBehaviour {
     public void OnMouseDrag(){
         Debug.Log("Drag running");
         if(pane_script.mouse_is_inside){
-            //here I must translate the mousePosition to the SCENE coordinates -> not in pixels tho, 
-            //must check what are the relative coords
-            small_version.transform.position = Input.mousePosition;
+            Vector3 mouse_pos = Input.mousePosition;
+            Camera cam = Camera.main;
+            Vector3 view_port = cam.ScreenToViewportPoint(mouse_pos);
+            Vector3 world_pos = cam.ViewportToWorldPoint(new Vector3(view_port.x, view_port.y, cam.nearClipPlane + (view_port.z * (cam.farClipPlane - cam.nearClipPlane))));
+            
+            //here there might be a problem, because after the first drag n drop, it's not possible to access to this feature anymore...
+            //might have to do with some coordinates modifications that are moving the collider somewhere we don't want it to be
+            small_version.transform.position = world_pos;
         }
     }
     public void OnMouseUp(){
