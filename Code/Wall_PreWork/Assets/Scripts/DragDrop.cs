@@ -5,6 +5,7 @@ using UnityEngine;
 public class DragDrop : MonoBehaviour {
     private bool dragging = false;
     private Vector3 offset;
+
     public GameObject big;
     private Shape big_version;
 
@@ -26,4 +27,5 @@ public class DragDrop : MonoBehaviour {
     public void OnMouseUp(){
         dragging = false;
     }
+
 }

@@ -14,7 +14,6 @@ public class Shape : MonoBehaviour {
         float dist_y = (small_pos.y - pane_center.y)/3;
 
         Vector3 new_vec = new Vector3(dist_x*5, dist_y*5, small_pos.z);
-        Debug.Log("new vec -> "+new_vec);
         transform.position = screen_center+new_vec;
     }
 }
