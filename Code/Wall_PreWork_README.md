@@ -19,5 +19,5 @@ Code architecture :
 	Operator.cs    --> represent the photon entity of the user (masterclient unlike the other ones)
 	Player.cs      --> represent the photon entity of a player (screen) to allow the program to switch this
 
-	ShapeCtrl.cs   --> only contains methods related to switching positions and indicating if it's being moved or not
-	ShapeScreen.cs --> only allows access to screen's shape coordinates ? 
+	Shapes.cs      --> contains 2 lists of GameObjects + all the methods and behaviors for shape control 
+					-> each shape will be defined by 2 GameObjects (screen one and ctrl_pane one) and only one is movable (the one inside ctrl_pane)

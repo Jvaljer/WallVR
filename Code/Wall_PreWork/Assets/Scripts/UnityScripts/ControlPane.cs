@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ControlPane : MonoBehaviour {
+    //parent attributes
+    private GameObject scene;
+    private Scene scene_script;
+
+    // Start is called before the first frame update
+    void Start(){
+        scene = GameObject.Find("Scene");
+        scene_script = scene.GetComponent<Scene>();
+    }
+
+    // Update is called once per frame
+    void Update(){
+        //inside of this pane we just wanna get a drag n drop motion 
+    }
+}
