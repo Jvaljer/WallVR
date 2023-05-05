@@ -65,18 +65,23 @@ public class OwnershipHandler : MonoBehaviourPun {
         float d = shape.transform.localScale.x;
         float mid_x = -4.5f;
 
-        if(x+d <=mid_x){
+        if(x-d <=mid_x && x+d >mid_x && y-d<=0 && y+d>0){
+            Debug.Log("CENTER");
+            return;
+        } else if(x+d <=mid_x){
             if(y-d <=0){
                 if(y+d <=0){
                     //DOWNLEFT
                     shape_in_down_right = false;
                     shape_in_up_left = false;
                     shape_in_up_right = false;
+                    Debug.Log("DOWNLEFT");
                     return;
                 } else {
                     //DOWNLEFT + UPLEFT
                     shape_in_down_right = false;
                     shape_in_up_right = false;
+                    Debug.Log("DOWNLEFT + UPLEFT");
                     return;
                 }
             } else {
@@ -84,6 +89,7 @@ public class OwnershipHandler : MonoBehaviourPun {
                 shape_in_down_right = false;
                 shape_in_down_left = false;
                 shape_in_up_right = false;
+                Debug.Log("UPLEFT");
                 return;
             }
 
@@ -93,31 +99,36 @@ public class OwnershipHandler : MonoBehaviourPun {
                     //DOWNRIGHT + DOWNLEFT
                     shape_in_up_left = false;
                     shape_in_up_right = false;
+                    Debug.Log("DOWNRIGHT + DOWNLEFT");
                     return;
                 } else {
                     //UPLEFT + UPRIGHT
                     shape_in_down_left = false;
                     shape_in_down_right = false;
+                    Debug.Log("UPLEFT + UPRIGHT");
                     return;
                 }
             } else {
-                if(y-d <=0){
-                    //UPRIGHT
+                if(y+d <=0){
+                    //DOWNRIGHT
                     shape_in_down_left = false;
-                    shape_in_down_right = false;
+                    shape_in_up_right = false;
                     shape_in_up_left = false;
+                    Debug.Log("DOWNRIGHT");
                     return;
                 } else {
-                    if(y+d <=0){
-                        //DOWNRIGHT
+                    if(y-d <=0){
+                        //DOWNRIGHT + UPRIGHT
                         shape_in_down_left = false;
                         shape_in_up_left = false;
-                        shape_in_up_right = false;
+                        Debug.Log("DOWNRIGHT + UPRIGHT");
                         return;
                     } else {
-                        //UPRIGHT + DOWNRIGHT
+                        //UPRIGHT
                         shape_in_down_left = false;
                         shape_in_up_left = false;
+                        shape_in_down_right = false;
+                        Debug.Log("UPRIGHT");
                         return;
                     }
                 }
