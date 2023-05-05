@@ -1552,6 +1552,7 @@ GameObject:
   - component: {fileID: 1982162442}
   - component: {fileID: 1982162441}
   - component: {fileID: 1982162445}
+  - component: {fileID: 1982162446}
   m_Layer: 5
   m_Name: LauncherCanvas
   m_TagString: Untagged
@@ -1651,5 +1652,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a107a9486988335e294621d36818a019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1982162446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982162440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81cbf210b4b47c82a8433b31c8f9214d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
