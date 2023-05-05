@@ -9,7 +9,8 @@ public class Shapes : MonoBehaviour {
     private GameObject shapes;
 
     //shapes objects
-    private GameObject circle;
+    public GameObject circle;
+    private ShapeCtrl circle_ctrl;
 
     // Start is called before the first frame update
     void Start(){
@@ -18,11 +19,20 @@ public class Shapes : MonoBehaviour {
         shapes = GameObject.Find("Shapes");
         //getting the existing shapes 
             //each shape shall have 2 children 'small & big versions of themselves
-        circle = GameObject.Find("Shapes/Circle");
+        circle_ctrl = circle.transform.GetChild(1).gameObject.GetComponent<ShapeCtrl>();
     }
 
     // Update is called once per frame
     void Update(){
-        
+        //here we just wanna make the link between the small & big versiosn of the circle 
+        if(circle_ctrl.moving){
+            MoveBigCircle();
+        }
+    }
+
+    //other methods
+    public void MoveBigCircle(){
+        //must implement
+        return;
     }
 }

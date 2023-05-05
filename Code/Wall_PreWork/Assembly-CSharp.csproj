@@ -57,6 +57,8 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
      <Compile Include="Assets\Scripts\UnityScripts\Scene.cs" />
      <Compile Include="Assets\Scripts\PhotonScripts\Spawner.cs" />
+     <Compile Include="Assets\PhotonScreen.cs" />
+     <Compile Include="Assets\User.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
      <Compile Include="Assets\Scripts\PhotonScripts\Launcher.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
