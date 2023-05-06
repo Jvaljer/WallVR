@@ -18,11 +18,6 @@ public class OwnershipHandler : MonoBehaviourPun {
     private bool shape_in_down_left = true;
     private bool shape_in_down_right = true;
 
-    // Start is called before the first frame update
-    void Start(){
-        //nothing to initialize there
-    }
-
     // Update is called once per frame
     void Update(){
         if(!all_got){
@@ -30,7 +25,7 @@ public class OwnershipHandler : MonoBehaviourPun {
             FetchScreenPart();
         } else {
             ShapeLocalisation();
-            Debug.Log("up_left : "+shape_in_up_left+" && up_right : "+shape_in_up_right+" && down_right : "+shape_in_down_right+" && down_left : "+shape_in_down_left);
+            SetOwnership();
         }
     }
 
@@ -64,24 +59,24 @@ public class OwnershipHandler : MonoBehaviourPun {
 
         float d = shape.transform.localScale.x;
         float mid_x = -4.5f;
+        float mid_y = 0.0f;
 
-        if(x-d <=mid_x && x+d >mid_x && y-d<=0 && y+d>0){
-            Debug.Log("CENTER");
+        //BDT to define the region of the screen in which is located the shape
+        if(x-d <=mid_x && x+d >mid_x && y-d<=mid_y && y+d>mid_y){
+            //UPRIGHT + UPLEFT + DOWNRIGHT + DOWNLEFT
             return;
         } else if(x+d <=mid_x){
-            if(y-d <=0){
-                if(y+d <=0){
+            if(y-d <=mid_y){
+                if(y+d <=mid_y){
                     //DOWNLEFT
                     shape_in_down_right = false;
                     shape_in_up_left = false;
                     shape_in_up_right = false;
-                    Debug.Log("DOWNLEFT");
                     return;
                 } else {
                     //DOWNLEFT + UPLEFT
                     shape_in_down_right = false;
                     shape_in_up_right = false;
-                    Debug.Log("DOWNLEFT + UPLEFT");
                     return;
                 }
             } else {
@@ -89,50 +84,61 @@ public class OwnershipHandler : MonoBehaviourPun {
                 shape_in_down_right = false;
                 shape_in_down_left = false;
                 shape_in_up_right = false;
-                Debug.Log("UPLEFT");
                 return;
             }
 
         } else {
             if(x-d <=mid_x){
-                if(y+d <=0){
+                if(y+d <=mid_y){
                     //DOWNRIGHT + DOWNLEFT
                     shape_in_up_left = false;
                     shape_in_up_right = false;
-                    Debug.Log("DOWNRIGHT + DOWNLEFT");
                     return;
                 } else {
                     //UPLEFT + UPRIGHT
                     shape_in_down_left = false;
                     shape_in_down_right = false;
-                    Debug.Log("UPLEFT + UPRIGHT");
                     return;
                 }
             } else {
-                if(y+d <=0){
+                if(y+d <=mid_y){
                     //DOWNRIGHT
                     shape_in_down_left = false;
                     shape_in_up_right = false;
                     shape_in_up_left = false;
-                    Debug.Log("DOWNRIGHT");
                     return;
                 } else {
-                    if(y-d <=0){
+                    if(y-d <=mid_y){
                         //DOWNRIGHT + UPRIGHT
                         shape_in_down_left = false;
                         shape_in_up_left = false;
-                        Debug.Log("DOWNRIGHT + UPRIGHT");
                         return;
                     } else {
                         //UPRIGHT
                         shape_in_down_left = false;
                         shape_in_up_left = false;
                         shape_in_down_right = false;
-                        Debug.Log("UPRIGHT");
                         return;
                     }
                 }
             }
+        }
+    }
+
+    public void SetOwnership(){
+        Shape shp = shape.GetComponent<Shape>();
+        shp.ResetOwners();
+        if(shape_in_up_left){
+            shp.SetOwner("UpLeft");
+        }
+        if(shape_in_up_right){
+            shp.SetOwner("UpRight");
+        }
+        if(shape_in_down_left){
+            shp.SetOwner("DownLeft");
+        }
+        if(shape_in_down_right){
+            shp.SetOwner("DownRight");
         }
     }
 }

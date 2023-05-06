@@ -55,7 +55,10 @@
      <Compile Include="Assets\Scripts\DragDrop.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+     <Compile Include="Assets\Scripts\PhotonScreens\UpRight.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
+     <Compile Include="Assets\Scripts\PhotonScreens\UpLeft.cs" />
+     <Compile Include="Assets\Scripts\PhotonScreens\DownRight.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
@@ -64,6 +67,7 @@
      <Compile Include="Assets\Scripts\Shape.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
+     <Compile Include="Assets\Scripts\PhotonScreens\DownLeft.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />

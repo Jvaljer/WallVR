@@ -21,6 +21,9 @@ public class Launcher : MonoBehaviourPunCallbacks {
     private GameObject down_left;
     private GameObject user;
 
+    //shapes attributes
+    private GameObject circle;
+
     //Awake method from unity (called before anything else)
     public void Awake(){
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -58,6 +61,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
         up_right = PhotonNetwork.Instantiate("UpRight", screen.transform.GetChild(1).position, screen.transform.GetChild(1).rotation);
         down_left = PhotonNetwork.Instantiate("DownLeft", screen.transform.GetChild(3).position, screen.transform.GetChild(3).rotation);
         down_right = PhotonNetwork.Instantiate("DownRight", screen.transform.GetChild(2).position, screen.transform.GetChild(2).rotation);
+ 
+        //circle = PhotonNetwork.InstantiateRoomObject("Photon Circle"); ?
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
