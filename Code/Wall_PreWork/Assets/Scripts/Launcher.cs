@@ -9,6 +9,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
     //unity attributes
     public GameObject ctrl_pane;
     public GameObject screen;
+    public GameObject indicator;
 
     //phton attributes
     private byte max_in_room = 5;
@@ -29,6 +30,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
         PhotonNetwork.AutomaticallySyncScene = true;
         ctrl_pane.SetActive(false);
         screen.SetActive(false);
+        indicator.SetActive(false);
     }
 
     //Connect method called whenever the user starts the app
@@ -54,6 +56,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
         transform.gameObject.SetActive(false);
         ctrl_pane.SetActive(true);
         screen.SetActive(true);
+        indicator.SetActive(true);
 
         //now instantiating all of the photon entities we'll need
         user = PhotonNetwork.Instantiate("User", ctrl_pane.transform.position, transform.rotation);

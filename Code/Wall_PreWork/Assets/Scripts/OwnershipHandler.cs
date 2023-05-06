@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class OwnershipHandler : MonoBehaviourPun {
 
+    public GameObject indicator;
     public GameObject shape;
 
     private GameObject up_left;
@@ -26,7 +27,8 @@ public class OwnershipHandler : MonoBehaviourPun {
         } else {
             ShapeLocalisation();
             SetOwnership();
-            Debug.Log("owners : "+shape.GetComponent<Shape>().OwnersToStr());
+            //now just for the information, we wanna show wo are the owners 
+            indicator.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = shape.GetComponent<Shape>().OwnersToStr();
         }
     }
 
