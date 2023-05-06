@@ -1,12 +1,12 @@
 # Fdb version 3
-["biber main"] 1683240453 "main.bcf" "main.bbl" "main" 1683302288
-  "main.bcf" 1683302288 106886 01b0269ffc6053c95b3b83a89b91727a "pdflatex"
+["biber main"] 1683393089 "main.bcf" "main.bbl" "main" 1683393512
+  "main.bcf" 1683393511 106886 01b0269ffc6053c95b3b83a89b91727a "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1683302287 "/home/abel/JvaljerGit/WallVR/Reports/main.tex" "main.pdf" "main" 1683302288
+["pdflatex"] 1683393510 "/home/abel/JvaljerGit/WallVR/Reports/main.tex" "main.pdf" "main" 1683393512
   "/etc/texmf/web2c/texmf.cnf" 1683015401 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/abel/JvaljerGit/WallVR/Reports/main.tex" 1683296788 1841 ef7c5faa622d336de1823ed48ed77d68 ""
+  "/home/abel/JvaljerGit/WallVR/Reports/main.tex" 1683393119 1862 c4cc5b975dded7a7b0ef6de322e93535 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbi1000.tfm" 1136768653 3072 e6fe53b666f9cbd66cb135c6fdea66d3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1000.tfm" 1136768653 3584 2d666ecf6d466d8b007246bc2f94d9da ""
@@ -96,6 +96,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty" 1284153563 6187 b27afc771af565d3a9ff1ca7d16d0d46 ""
   "/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1575674187 9715 b051d5b493d9fe5f4bc251462d039e5f ""
+  "/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty" 1636758526 32262 2bb622a0aa56c4a7a5cbdfe9d122c15a ""
   "/usr/share/texlive/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1636152094 2971 def0b6c1f0b107b3b936def894055589 ""
@@ -114,13 +115,13 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1683017468 2802096 87186eb05f5aefa2a03b62d4233f951b ""
   "images/RecognizedGestures.png" 1683296788 37611 7ab6687e3788533d1f96000d93c6172b ""
   "james2023evaluating.tex" 1683296788 8702 bb8b37620ab82909e3d9998815dc966a ""
-  "liu2014effects.tex" 1683296788 907 981094ecfc50938d474196754714f242 ""
-  "liu2017coreach.tex" 1683302286 8944 d8715f2812bb54a8cfa31165e8601a07 ""
-  "main.aux" 1683302288 14504 6cb0b2f5d666ff6fa87d563cc87a99e4 "pdflatex"
-  "main.bbl" 1683296788 0 d41d8cd98f00b204e9800998ecf8427e "biber main"
-  "main.out" 1683302288 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.run.xml" 1683302288 2254 7698c725400e4f4ea78d46e8dd198af9 "pdflatex"
-  "main.tex" 1683296788 1841 ef7c5faa622d336de1823ed48ed77d68 ""
+  "liu2014effects.tex" 1683393508 7070 575b4076a1eaad3ffb3fd218d2367667 ""
+  "liu2017coreach.tex" 1683302310 8944 d8715f2812bb54a8cfa31165e8601a07 ""
+  "main.aux" 1683393511 14312 98d345e4fb021ef3bf797146e5873b16 "pdflatex"
+  "main.bbl" 1683393090 0 d41d8cd98f00b204e9800998ecf8427e "biber main"
+  "main.out" 1683393511 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.run.xml" 1683393511 2254 7698c725400e4f4ea78d46e8dd198af9 "pdflatex"
+  "main.tex" 1683393119 1862 c4cc5b975dded7a7b0ef6de322e93535 ""
   (generated)
   "main.aux"
   "main.bcf"
