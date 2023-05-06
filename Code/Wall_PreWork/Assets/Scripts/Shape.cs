@@ -25,4 +25,15 @@ public class Shape : MonoBehaviour {
     public void ResetOwners(){
         owners.Clear();
     }
+    public string OwnersToStr(){
+        string str = "{";
+        for(int i=0; i<owners.Count; i++){
+            str += owners[i];
+            if(i+1<owners.Count){
+                str +=",";
+            }
+        }
+        str += "}";
+        return str;
+    }
 }

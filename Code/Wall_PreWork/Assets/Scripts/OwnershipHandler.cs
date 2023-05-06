@@ -26,6 +26,7 @@ public class OwnershipHandler : MonoBehaviourPun {
         } else {
             ShapeLocalisation();
             SetOwnership();
+            Debug.Log("owners : "+shape.GetComponent<Shape>().OwnersToStr());
         }
     }
 
@@ -57,7 +58,7 @@ public class OwnershipHandler : MonoBehaviourPun {
         float x = coord.x;
         float y = coord.y;
 
-        float d = shape.transform.localScale.x;
+        float d = shape.transform.localScale.x/2;
         float mid_x = -4.5f;
         float mid_y = 0.0f;
 
