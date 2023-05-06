@@ -24,6 +24,9 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
     //shapes attributes
     private GameObject circle;
+    private GameObject screen_circle;
+    private GameObject ctrl_circle;
+
 
     //Awake method from unity (called before anything else)
     public void Awake(){
@@ -59,13 +62,15 @@ public class Launcher : MonoBehaviourPunCallbacks {
         indicator.SetActive(true);
 
         //now instantiating all of the photon entities we'll need
-        user = PhotonNetwork.Instantiate("User", ctrl_pane.transform.position, transform.rotation);
+        user = PhotonNetwork.Instantiate("User", ctrl_pane.transform.position, ctrl_pane.transform.rotation);
         up_left = PhotonNetwork.Instantiate("UpLeft", screen.transform.GetChild(0).position, screen.transform.GetChild(0).rotation);
         up_right = PhotonNetwork.Instantiate("UpRight", screen.transform.GetChild(1).position, screen.transform.GetChild(1).rotation);
         down_left = PhotonNetwork.Instantiate("DownLeft", screen.transform.GetChild(3).position, screen.transform.GetChild(3).rotation);
         down_right = PhotonNetwork.Instantiate("DownRight", screen.transform.GetChild(2).position, screen.transform.GetChild(2).rotation);
  
-        //circle = PhotonNetwork.InstantiateRoomObject("Photon Circle"); ?
+        circle = PhotonNetwork.InstantiateRoomObject("ShapeCircle", new Vector3(0,0,0), new Quaternion(0,0,0,0));
+        screen_circle = circle.transform.GetChild(0).gameObject;
+        ctrl_circle = circle.transform.GetChild(1).gameObject;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
