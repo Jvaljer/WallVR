@@ -6,6 +6,7 @@ using Photon.Pun;
 public class OwnershipHandler : MonoBehaviourPun {
 
     public GameObject indicator;
+    private bool got_shape = false;
     public GameObject shape;
 
     private GameObject up_left;
@@ -21,14 +22,17 @@ public class OwnershipHandler : MonoBehaviourPun {
 
     // Update is called once per frame
     void Update(){
+        if(!got_shape){
+            FetchForShape();
+        }
         if(!all_got){
             Debug.Log("Searching em screen parts");
             FetchScreenPart();
-        } else {
+        } else if(got_shape){
             ShapeLocalisation();
             SetOwnership();
-            //now just for the information, we wanna show wo are the owners 
-            indicator.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = shape.GetComponent<Shape>().OwnersToStr();
+            //now just for the information, we wanna show wo are the owners
+            indicator.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = shape.transform.GetChild(0).gameObject.GetComponent<Shape>().OwnersToStr();
         }
     }
 
@@ -49,6 +53,14 @@ public class OwnershipHandler : MonoBehaviourPun {
         all_got = up_left!=null && up_right!=null && down_right!=null && down_left!=null;
     }
 
+    private void FetchForShape(){
+        if(shape==null){
+            shape = GameObject.Find("ShapeCircle(Clone)");
+        }
+
+        got_shape = shape!=null;
+    }
+
     private void ShapeLocalisation(){
         //all true by default (worst case predicted)
         shape_in_down_left = true;
@@ -56,11 +68,11 @@ public class OwnershipHandler : MonoBehaviourPun {
         shape_in_up_left = true;
         shape_in_up_right = true;
         //first we wanna get the shape's center & diameter
-        Vector2 coord = new Vector2(shape.transform.position.x, shape.transform.position.y);
+        Vector2 coord = new Vector2(shape.transform.GetChild(0).gameObject.transform.position.x, shape.transform.GetChild(0).gameObject.transform.position.y);
         float x = coord.x;
         float y = coord.y;
 
-        float d = shape.transform.localScale.x/2;
+        float d = shape.transform.GetChild(0).gameObject.transform.localScale.x/2;
         float mid_x = -4.5f;
         float mid_y = 0.0f;
 
@@ -129,7 +141,7 @@ public class OwnershipHandler : MonoBehaviourPun {
     }
 
     public void SetOwnership(){
-        Shape shp = shape.GetComponent<Shape>();
+        Shape shp = shape.transform.GetChild(0).gameObject.GetComponent<Shape>();
         shp.ResetOwners();
         if(shape_in_up_left){
             shp.SetOwner("UpLeft");

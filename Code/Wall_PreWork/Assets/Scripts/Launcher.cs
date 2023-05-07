@@ -10,6 +10,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
     public GameObject ctrl_pane;
     public GameObject screen;
     public GameObject indicator;
+    private Vector3 screen_center = new Vector3(-4.5f, 0f, 0f);
+    private Vector3 pane_center = new Vector3(6.5f, 0f, 10f);
 
     //phton attributes
     private byte max_in_room = 5;
@@ -70,7 +72,9 @@ public class Launcher : MonoBehaviourPunCallbacks {
  
         circle = PhotonNetwork.InstantiateRoomObject("ShapeCircle", new Vector3(0,0,0), new Quaternion(0,0,0,0));
         screen_circle = circle.transform.GetChild(0).gameObject;
+        screen_circle.transform.position = screen_center;
         ctrl_circle = circle.transform.GetChild(1).gameObject;
+        ctrl_circle.transform.position = pane_center;
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
