@@ -5,6 +5,8 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class Launcher : MonoBehaviourPunCallbacks {
+    //main camera
+    public Camera camera;
     //menu attributes (Unity IDE)
     public GameObject menu;
     //all different views (instantiated on Unity IDE)
@@ -18,9 +20,6 @@ public class Launcher : MonoBehaviourPunCallbacks {
     private byte max_in_room = 5;
     private RoomOptions room;
 
-    //server's state predicates
-    private bool master_joined;
-
     //Awake method from Unity (called before ANYTHING else)
     public void Awake(){
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -29,6 +28,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
     //Connect method which tells depending on the situations what role the new user shall have
     public void Connect(){
         Debug.Log("Connecting ...");
+        PhotonNetwork.NickName = System.DateTime.Now.Ticks.ToString();
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -42,7 +42,6 @@ public class Launcher : MonoBehaviourPunCallbacks {
         //and so we wanna instantiate the room, as there's no room created yet
         room = new RoomOptions{MaxPlayers=max_in_room, IsVisible=true, IsOpen=true};
         PhotonNetwork.JoinOrCreateRoom("Room", room, TypedLobby.Default);
-        master_joined = true;
     }
 
     public override void OnJoinedRoom(){
@@ -56,6 +55,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
             Debug.Log("User is master");
             ope_view.SetActive(true);
         } else {
+            Screen.SetResolution(560, 560, false);
+            camera.orthographicSize = 280f;
             switch (PhotonNetwork.LocalPlayer.ActorNumber){
                 case 2:
                     Debug.Log("User is up left");
@@ -77,5 +78,10 @@ public class Launcher : MonoBehaviourPunCallbacks {
                     break;
             }
         }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer){
+        Debug.Log("Player entered room (launcher)");
+        base.OnPlayerEnteredRoom(newPlayer);
     }
 }

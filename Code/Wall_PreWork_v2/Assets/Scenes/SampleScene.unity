@@ -312,7 +312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1006711269
 Transform:
   m_ObjectHideFlags: 0
@@ -982,6 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4f943f08817344ba1255c8c625c505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 519420031}
   menu: {fileID: 1090401199}
   ope_view: {fileID: 878477677}
   upleft_view: {fileID: 1006711268}
