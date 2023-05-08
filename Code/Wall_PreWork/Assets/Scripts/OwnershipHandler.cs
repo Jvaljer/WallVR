@@ -7,7 +7,8 @@ public class OwnershipHandler : MonoBehaviourPun {
 
     public GameObject indicator;
     private bool got_shape = false;
-    public GameObject shape;
+    public GameObject circle;
+    public GameObject square;
 
     private GameObject up_left;
     private GameObject up_right;
@@ -15,10 +16,15 @@ public class OwnershipHandler : MonoBehaviourPun {
     private GameObject down_left;
 
     private bool all_got = false;
-    private bool shape_in_up_left = true;
-    private bool shape_in_up_right = true;
-    private bool shape_in_down_left = true;
-    private bool shape_in_down_right = true;
+    private bool circle_in_up_left = true;
+    private bool circle_in_up_right = true;
+    private bool circle_in_down_left = true;
+    private bool circle_in_down_right = true;
+
+    private bool square_in_up_left = true;
+    private bool square_in_up_right = false;
+    private bool square_in_down_left = false;
+    private bool square_in_down_right = false;
 
     // Update is called once per frame
     void Update(){
@@ -29,10 +35,14 @@ public class OwnershipHandler : MonoBehaviourPun {
             Debug.Log("Searching em screen parts");
             FetchScreenPart();
         } else if(got_shape){
-            ShapeLocalisation();
-            SetOwnership();
+            CircleLocalisation();
+            SetCircleOwnership();
+
+            SquareLocalisation();
+            SetSquareOwnership();
             //now just for the information, we wanna show wo are the owners
-            indicator.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = shape.transform.GetChild(0).gameObject.GetComponent<Shape>().OwnersToStr();
+            indicator.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = circle.transform.GetChild(0).gameObject.GetComponent<Shape>().OwnersToStr() + "\n"
+                                                                                        + square.transform.GetChild(0).gameObject.GetComponent<Shape>().OwnersToStr();
         }
     }
 
@@ -54,25 +64,128 @@ public class OwnershipHandler : MonoBehaviourPun {
     }
 
     private void FetchForShape(){
-        if(shape==null){
-            shape = GameObject.Find("ShapeCircle(Clone)");
+        if(circle==null){
+            circle = GameObject.Find("ShapeCircle(Clone)");
         }
-
-        got_shape = shape!=null;
+        if(square==null){
+            square = GameObject.Find("ShapeSquare(Clone)");
+        }
+        got_shape = circle!=null && square!=null;
     }
 
-    private void ShapeLocalisation(){
+    private void CircleLocalisation(){
         //all true by default (worst case predicted)
-        shape_in_down_left = true;
-        shape_in_down_right = true;
-        shape_in_up_left = true;
-        shape_in_up_right = true;
+        circle_in_down_left = true;
+        circle_in_down_right = true;
+        circle_in_up_left = true;
+        circle_in_up_right = true;
         //first we wanna get the shape's center & diameter
-        Vector2 coord = new Vector2(shape.transform.GetChild(0).gameObject.transform.position.x, shape.transform.GetChild(0).gameObject.transform.position.y);
+        Vector2 coord = new Vector2(circle.transform.GetChild(0).gameObject.transform.position.x, circle.transform.GetChild(0).gameObject.transform.position.y);
         float x = coord.x;
         float y = coord.y;
 
-        float d = shape.transform.GetChild(0).gameObject.transform.localScale.x/2;
+        float d = circle.transform.GetChild(0).gameObject.transform.localScale.x/2;
+        float mid_x = -4.5f;
+        float mid_y = 0.0f;
+
+        //float mid_d = Mathf.sqrt(2)/2 * d;
+
+        //BDT to define the region of the screen in which is located the shape
+        if(x-d <=mid_x && x+d >mid_x && y-d<=mid_y && y+d>mid_y){
+            //UPRIGHT + UPLEFT + DOWNRIGHT + DOWNLEFT
+            //must increase accuracy HERE 
+            return;
+        } else if(x+d <=mid_x){
+            if(y-d <=mid_y){
+                if(y+d <=mid_y){
+                    //DOWNLEFT
+                    circle_in_down_right = false;
+                    circle_in_up_left = false;
+                    circle_in_up_right = false;
+                    return;
+                } else {
+                    //DOWNLEFT + UPLEFT
+                    circle_in_down_right = false;
+                    circle_in_up_right = false;
+                    return;
+                }
+            } else {
+                //UPLEFT
+                circle_in_down_right = false;
+                circle_in_down_left = false;
+                circle_in_up_right = false;
+                return;
+            }
+
+        } else {
+            if(x-d <=mid_x){
+                if(y+d <=mid_y){
+                    //DOWNRIGHT + DOWNLEFT
+                    circle_in_up_left = false;
+                    circle_in_up_right = false;
+                    return;
+                } else {
+                    //UPLEFT + UPRIGHT
+                    circle_in_down_left = false;
+                    circle_in_down_right = false;
+                    return;
+                }
+            } else {
+                if(y+d <=mid_y){
+                    //DOWNRIGHT
+                    circle_in_down_left = false;
+                    circle_in_up_right = false;
+                    circle_in_up_left = false;
+                    return;
+                } else {
+                    if(y-d <=mid_y){
+                        //DOWNRIGHT + UPRIGHT
+                        circle_in_down_left = false;
+                        circle_in_up_left = false;
+                        return;
+                    } else {
+                        //UPRIGHT
+                        circle_in_down_left = false;
+                        circle_in_up_left = false;
+                        circle_in_down_right = false;
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    public void SetCircleOwnership(){
+        Shape shp = circle.transform.GetChild(0).gameObject.GetComponent<Shape>();
+        shp.ResetOwners();
+        if(circle_in_up_left){
+            shp.SetOwner("UpLeft");
+        }
+        if(circle_in_up_right){
+            shp.SetOwner("UpRight");
+        }
+        if(circle_in_down_left){
+            shp.SetOwner("DownLeft");
+        }
+        if(circle_in_down_right){
+            shp.SetOwner("DownRight");
+        }
+    }
+
+    public void SquareLocalisation(){
+        //all true by default
+        square_in_up_left = true;
+        square_in_up_right = true;
+        square_in_down_left = true;
+        square_in_down_right = true;
+
+        //center coords : 
+        Vector2 coord = new Vector2(square.transform.GetChild(0).gameObject.transform.position.x, square.transform.GetChild(0).gameObject.transform.position.x);
+
+        float x = coord.x;
+        float y = coord.y;
+
+        float d = square.transform.GetChild(0).gameObject.transform.localScale.x/2;
         float mid_x = -4.5f;
         float mid_y = 0.0f;
 
@@ -84,21 +197,21 @@ public class OwnershipHandler : MonoBehaviourPun {
             if(y-d <=mid_y){
                 if(y+d <=mid_y){
                     //DOWNLEFT
-                    shape_in_down_right = false;
-                    shape_in_up_left = false;
-                    shape_in_up_right = false;
+                    square_in_down_right = false;
+                    square_in_up_left = false;
+                    square_in_up_right = false;
                     return;
                 } else {
                     //DOWNLEFT + UPLEFT
-                    shape_in_down_right = false;
-                    shape_in_up_right = false;
+                    square_in_down_right = false;
+                    square_in_up_right = false;
                     return;
                 }
             } else {
                 //UPLEFT
-                shape_in_down_right = false;
-                shape_in_down_left = false;
-                shape_in_up_right = false;
+                square_in_down_right = false;
+                square_in_down_left = false;
+                square_in_up_right = false;
                 return;
             }
 
@@ -106,33 +219,33 @@ public class OwnershipHandler : MonoBehaviourPun {
             if(x-d <=mid_x){
                 if(y+d <=mid_y){
                     //DOWNRIGHT + DOWNLEFT
-                    shape_in_up_left = false;
-                    shape_in_up_right = false;
+                    square_in_up_left = false;
+                    square_in_up_right = false;
                     return;
                 } else {
                     //UPLEFT + UPRIGHT
-                    shape_in_down_left = false;
-                    shape_in_down_right = false;
+                    square_in_down_left = false;
+                    square_in_down_right = false;
                     return;
                 }
             } else {
                 if(y+d <=mid_y){
                     //DOWNRIGHT
-                    shape_in_down_left = false;
-                    shape_in_up_right = false;
-                    shape_in_up_left = false;
+                    square_in_down_left = false;
+                    square_in_up_right = false;
+                    square_in_up_left = false;
                     return;
                 } else {
                     if(y-d <=mid_y){
                         //DOWNRIGHT + UPRIGHT
-                        shape_in_down_left = false;
-                        shape_in_up_left = false;
+                        square_in_down_left = false;
+                        square_in_up_left = false;
                         return;
                     } else {
                         //UPRIGHT
-                        shape_in_down_left = false;
-                        shape_in_up_left = false;
-                        shape_in_down_right = false;
+                        square_in_down_left = false;
+                        square_in_up_left = false;
+                        square_in_down_right = false;
                         return;
                     }
                 }
@@ -140,19 +253,19 @@ public class OwnershipHandler : MonoBehaviourPun {
         }
     }
 
-    public void SetOwnership(){
-        Shape shp = shape.transform.GetChild(0).gameObject.GetComponent<Shape>();
+    public void SetSquareOwnership(){
+        Shape shp = square.transform.GetChild(0).gameObject.GetComponent<Shape>();
         shp.ResetOwners();
-        if(shape_in_up_left){
+        if(square_in_up_left){
             shp.SetOwner("UpLeft");
         }
-        if(shape_in_up_right){
+        if(square_in_up_right){
             shp.SetOwner("UpRight");
         }
-        if(shape_in_down_left){
+        if(square_in_down_left){
             shp.SetOwner("DownLeft");
         }
-        if(shape_in_down_right){
+        if(square_in_down_right){
             shp.SetOwner("DownRight");
         }
     }

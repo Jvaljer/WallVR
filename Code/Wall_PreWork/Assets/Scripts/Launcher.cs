@@ -7,6 +7,7 @@ using Photon.Realtime;
 
 public class Launcher : MonoBehaviourPunCallbacks {
     //unity attributes
+    public GameObject menu;
     public GameObject ctrl_pane;
     public GameObject screen;
     public GameObject indicator;
@@ -26,8 +27,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
     //shapes attributes
     private GameObject circle;
-    private GameObject screen_circle;
-    private GameObject ctrl_circle;
+    private GameObject square;
 
 
     //Awake method from unity (called before anything else)
@@ -36,6 +36,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
         ctrl_pane.SetActive(false);
         screen.SetActive(false);
         indicator.SetActive(false);
+        menu.SetActive(false);
     }
 
     //Connect method called whenever the user starts the app
@@ -70,11 +71,15 @@ public class Launcher : MonoBehaviourPunCallbacks {
         down_left = PhotonNetwork.Instantiate("DownLeft", screen.transform.GetChild(3).position, screen.transform.GetChild(3).rotation);
         down_right = PhotonNetwork.Instantiate("DownRight", screen.transform.GetChild(2).position, screen.transform.GetChild(2).rotation);
  
+        //instantiating a circle
         circle = PhotonNetwork.InstantiateRoomObject("ShapeCircle", new Vector3(0,0,0), new Quaternion(0,0,0,0));
-        screen_circle = circle.transform.GetChild(0).gameObject;
-        screen_circle.transform.position = screen_center;
-        ctrl_circle = circle.transform.GetChild(1).gameObject;
-        ctrl_circle.transform.position = pane_center;
+        circle.transform.GetChild(0).gameObject.transform.position = screen_center;
+        circle.transform.GetChild(1).gameObject.transform.position = pane_center;
+
+        //instantiating a square 
+        square = PhotonNetwork.InstantiateRoomObject("ShapeSquare", new Vector3(0,0,0), new Quaternion(0,0,0,0));
+        square.transform.GetChild(0).gameObject.transform.position = new Vector3(screen_center.x-2.5f, screen_center.y+2.5f,0f);
+        square.transform.GetChild(1).gameObject.transform.position = new Vector3(pane_center.x-1.5f, pane_center.y+1.5f, 10f);
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
