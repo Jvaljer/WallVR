@@ -114,8 +114,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
     public void EnablePartCam(string part){
         switch (part){
             case "UpLeft":
-                UL_cam.gameObject.SetActive(true);
-                camera.gameObject.SetActive(false);
+                //UL_cam.gameObject.SetActive(true);
+                //camera.gameObject.SetActive(false);
                 break;
             case "UpRight":
                 UR_cam.gameObject.SetActive(true);
