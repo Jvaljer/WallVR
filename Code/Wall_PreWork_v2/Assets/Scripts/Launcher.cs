@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -9,6 +10,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
     public Camera camera;
     //menu attributes (Unity IDE)
     public GameObject menu;
+    public GameObject connect_btn;
 
     //all different views (instantiated on Unity IDE)
     public GameObject ope_view;
@@ -37,6 +39,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
     //Connect method which tells depending on the situations what role the new user shall have
     public void Connect(){
         Debug.Log("Connecting ...");
+        //menu.GetComponent<Animation>().Start();
+        connect_btn.GetComponent<Button>().interactable = false;
         PhotonNetwork.NickName = System.DateTime.Now.Ticks.ToString();
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -57,6 +61,7 @@ public class Launcher : MonoBehaviourPunCallbacks {
         //this is called whenever an user enters the room
         Debug.Log("Joining the Room ... (launcher)");
         base.OnJoinedRoom();
+        //menu.GetComponent<Animation>().Stop();
 
         //when an user joins the room, we wanna instantiate the corresponding view & the photon entity that comes along
         menu.SetActive(false);
