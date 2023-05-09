@@ -31,12 +31,6 @@ public class Operator : MonoBehaviourPun {
     }
     // Update is called once per frame
     public void Update(){
-        FetchForShapes();
-        DetermineOwners();
-        /*foreach(GameObject owner in owners){
-            owner.GetComponent<PhotonView>().RPC("ShowCircle", RpcTarget.AllBuffered, circle);
-        }*/
-        SetOwnerInfo();
         //we wanna fetch all the screen parts before we allow the program to start
         if(!ready){
             if(!part_ready){
@@ -49,8 +43,12 @@ public class Operator : MonoBehaviourPun {
         } else {
             Debug.Log("determining owners");
             DetermineOwners();
+            Debug.Log("finished determining owners");
             foreach(GameObject owner in owners){
+                Debug.Log("entering this shit");
+                Debug.Log("owner is empty -> "+(owner==null));
                 owner.GetComponent<PhotonView>().RPC("ShowCircle", RpcTarget.AllBuffered, circle);
+                Debug.Log("exiting this shit");
             }
             SetOwnerInfo();
         }

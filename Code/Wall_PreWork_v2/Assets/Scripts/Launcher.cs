@@ -14,17 +14,11 @@ public class Launcher : MonoBehaviourPunCallbacks {
 
     //all different views (instantiated on Unity IDE)
     public GameObject ope_view;
-    public GameObject upleft_view;
-    public GameObject upright_view;
-    public GameObject downleft_view;
-    public GameObject downright_view;
+    public GameObject part_view;
 
     //all different prefabs (participant & shapes)
     public GameObject ope_prefab;
-    public GameObject upleft_prefab;
-    public GameObject upright_prefab;
-    public GameObject downleft_prefab;
-    public GameObject downright_prefab;
+    public GameObject part_prefab;
     public GameObject circle_prefab;
 
     //photon room attributes
@@ -71,44 +65,41 @@ public class Launcher : MonoBehaviourPunCallbacks {
             ope_prefab = PhotonNetwork.Instantiate("Operator", ope_view.transform.position, ope_view.transform.rotation);
             ope_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, "Operator");
             //in this case we also wanna instantiate the shape
-            circle_prefab = PhotonNetwork.InstantiateRoomObject("Circle", ope_view.transform.position, ope_view.transform.rotation);
+            circle_prefab = PhotonNetwork.InstantiateRoomObject("Circle", new Vector3(camera.transform.position.x, camera.transform.position.y, 0f), camera.transform.rotation);
             circle_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, "Circle");
         } else {
             Screen.SetResolution(560, 560, false);
             camera.orthographicSize = 280f;
+            part_view.SetActive(true);
+            string part_id = "";
             switch (PhotonNetwork.LocalPlayer.ActorNumber){
                 case 2:
                     Debug.Log("User is up left");
-                    upleft_view.SetActive(true);
-                    upleft_prefab = PhotonNetwork.Instantiate("UpLeft", upleft_view.transform.position, upleft_view.transform.rotation);
-                    upleft_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, "UpLeft");
+                    part_id = "UpLeft";
                     break;
                 case 3:
                     Debug.Log("User is up right");
-                    upright_view.SetActive(true);
-                    upright_prefab = PhotonNetwork.Instantiate("UpRight", upright_view.transform.position, upright_view.transform.rotation);
-                    upright_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, "UpRight");
+                    part_id = "UpRight";
                     break;
                 case 4:
                     Debug.Log("User is down left");
-                    downleft_view.SetActive(true);
-                    downleft_prefab = PhotonNetwork.Instantiate("DownLeft", downleft_view.transform.position, downleft_view.transform.rotation);
-                    downleft_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, "DownLeft");
+                    part_id = "DownLeft";
                     break;
                 case 5:
                     Debug.Log("User is down right");
-                    downright_view.SetActive(true);
-                    downright_prefab = PhotonNetwork.Instantiate("DownLeft", downright_view.transform.position, downright_view.transform.rotation);
-                    downright_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, "DownRight");   
+                    part_id = "DownRight";
                     break;
                 default:
                     break;
             }
+            part_prefab = PhotonNetwork.Instantiate("ScreenPart", new Vector3(0,0,0), new Quaternion(0,0,0,0));
+            part_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, part_id);
+            part_prefab.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.AllBuffered, part_id);
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
-        Debug.Log("Player entered room (launcher)");
+        Debug.Log("Player entered room (launcher)"+PhotonNetwork.LocalPlayer.ActorNumber);
         base.OnPlayerEnteredRoom(newPlayer);
     }
 }
