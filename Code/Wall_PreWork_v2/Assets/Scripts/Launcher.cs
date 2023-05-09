@@ -8,6 +8,12 @@ using Photon.Realtime;
 public class Launcher : MonoBehaviourPunCallbacks {
     //main camera
     public Camera camera;
+    //other cameras
+    public Camera UL_cam;
+    public Camera UR_cam;
+    public Camera DL_cam;
+    public Camera DR_cam;
+
     //menu attributes (Unity IDE)
     public GameObject menu;
     public GameObject connect_btn;
@@ -68,8 +74,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
             circle_prefab = PhotonNetwork.InstantiateRoomObject("Circle", new Vector3(camera.transform.position.x, camera.transform.position.y, 0f), camera.transform.rotation);
             circle_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, "Circle");
         } else {
-            Screen.SetResolution(560, 560, false);
-            camera.orthographicSize = 280f;
+            //Screen.SetResolution(560, 560, false);
+            //camera.orthographicSize = 280f;
             part_view.SetActive(true);
             string part_id = "";
             switch (PhotonNetwork.LocalPlayer.ActorNumber){
@@ -94,12 +100,37 @@ public class Launcher : MonoBehaviourPunCallbacks {
             }
             part_prefab = PhotonNetwork.Instantiate("ScreenPart", new Vector3(0,0,0), new Quaternion(0,0,0,0));
             part_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, part_id);
-            part_prefab.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.AllBuffered, part_id);
+            EnablePartCam(part_id);
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
         Debug.Log("Player entered room (launcher)"+PhotonNetwork.LocalPlayer.ActorNumber);
         base.OnPlayerEnteredRoom(newPlayer);
+    }
+
+    //other methods
+
+    public void EnablePartCam(string part){
+        switch (part){
+            case "UpLeft":
+                UL_cam.gameObject.SetActive(true);
+                camera.gameObject.SetActive(false);
+                break;
+            case "UpRight":
+                UR_cam.gameObject.SetActive(true);
+                camera.gameObject.SetActive(false);
+                break;
+            case "DownLeft":
+                DL_cam.gameObject.SetActive(true);
+                camera.gameObject.SetActive(false);
+                break;
+            case "DownRight":
+                DR_cam.gameObject.SetActive(true);
+                camera.gameObject.SetActive(false);
+                break;
+            default:
+                break;
+        }
     }
 }

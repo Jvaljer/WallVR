@@ -10,7 +10,7 @@ public class Operator : MonoBehaviourPun {
 
     //shapes attributes
     private GameObject circle;
-
+    private Vector3 circle_pos;
     //photon participants entity
     private GameObject upleft;
     private GameObject upright;
@@ -21,14 +21,13 @@ public class Operator : MonoBehaviourPun {
     private bool ready = false;
     private bool part_ready = false;
     private bool shape_ready = false;
+    private bool menu_ready = false;
 
     //owners list
     private List<GameObject> owners = new List<GameObject>();
     private List<string> owners_id = new List<string>();
 
-    public void Start(){
-        menu = GameObject.Find("OperatorView/MenuCanva");
-    }
+
     // Update is called once per frame
     public void Update(){
         //we wanna fetch all the screen parts before we allow the program to start
@@ -39,16 +38,14 @@ public class Operator : MonoBehaviourPun {
             if(!shape_ready){
                 FetchForShapes();
             }
-            ready = part_ready && shape_ready;
+            if(!menu_ready){
+                FetchForMenu();
+            }
+            ready = part_ready && shape_ready && menu_ready;
         } else {
-            Debug.Log("determining owners");
             DetermineOwners();
-            Debug.Log("finished determining owners");
             foreach(GameObject owner in owners){
-                Debug.Log("entering this shit");
-                Debug.Log("owner is empty -> "+(owner==null));
-                owner.GetComponent<PhotonView>().RPC("ShowCircle", RpcTarget.AllBuffered, circle);
-                Debug.Log("exiting this shit");
+                owner.GetComponent<PhotonView>().RPC("MoveCircle", RpcTarget.AllBuffered, circle_pos);
             }
             SetOwnerInfo();
         }
@@ -76,6 +73,12 @@ public class Operator : MonoBehaviourPun {
         shape_ready = circle!=null;
     }
 
+    public void FetchForMenu(){
+        if(menu==null){
+            menu = GameObject.Find("OperatorView/MenuCanva");
+        }
+        menu_ready = menu!=null;
+    }
     public void DetermineOwners(){
         //first of all we clean the owners list
         if(owners!=null){

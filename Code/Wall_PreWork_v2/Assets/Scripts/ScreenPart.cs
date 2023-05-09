@@ -5,6 +5,10 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class ScreenPart : MonoBehaviourPun {
+    //unity attributes
+    private GameObject ope;
+    private GameObject circle;
+
     //we want each screen to have its id which will allow the program to decide where to locate the shape
     private string loc_id;
 
@@ -13,7 +17,9 @@ public class ScreenPart : MonoBehaviourPun {
 
     // Update is called once per frame
     void Update(){
-        //nothing to update there
+        if(circle==null){
+            circle = GameObject.Find("Circle");
+        }
     }
     
     [PunRPC]
@@ -22,13 +28,7 @@ public class ScreenPart : MonoBehaviourPun {
     }
 
     [PunRPC]
-    public void Initialize(string id){
-        loc_id = id;
-    }
-    [PunRPC]
-    public void ShowCircle(GameObject shape){
-        Debug.Log("showing the shape on "+loc_id);
-        //must implement
-        return;
+    public void MoveCircle(Vector3 new_pos){
+        circle.transform.position = new_pos;
     }
 }
