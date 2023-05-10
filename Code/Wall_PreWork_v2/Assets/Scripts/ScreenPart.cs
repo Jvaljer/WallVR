@@ -13,12 +13,17 @@ public class ScreenPart : MonoBehaviourPun {
     private string loc_id;
 
     //owning the shape predicates
-    private bool is_owner;
+    private bool circle_init = true;
 
     // Update is called once per frame
     void Update(){
         if(circle==null){
             circle = GameObject.Find("Circle");
+        } else {
+            if(circle_init){
+                circle.GetComponent<DragDrop>().Initialize();
+                circle.GetComponent<DragDrop>().Disable();
+            }
         }
     }
     

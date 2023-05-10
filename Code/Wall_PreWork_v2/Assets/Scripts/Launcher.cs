@@ -66,6 +66,8 @@ public class Launcher : MonoBehaviourPunCallbacks {
         //when an user joins the room, we wanna instantiate the corresponding view & the photon entity that comes along
         menu.SetActive(false);
         if(PhotonNetwork.LocalPlayer.IsMasterClient){
+            //Screen.SetResolution(560, 560, false);
+            //camera.orthographicSize = 280f;
             Debug.Log("User is master");
             ope_view.SetActive(true);
             ope_prefab = PhotonNetwork.Instantiate("Operator", ope_view.transform.position, ope_view.transform.rotation);
@@ -100,37 +102,12 @@ public class Launcher : MonoBehaviourPunCallbacks {
             }
             part_prefab = PhotonNetwork.Instantiate("ScreenPart", new Vector3(0,0,0), new Quaternion(0,0,0,0));
             part_prefab.GetComponent<PhotonView>().RPC("SetName", RpcTarget.AllBuffered, part_id);
-            EnablePartCam(part_id);
+            part_prefab.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.AllBuffered, part_id);
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
         Debug.Log("Player entered room (launcher)"+PhotonNetwork.LocalPlayer.ActorNumber);
         base.OnPlayerEnteredRoom(newPlayer);
-    }
-
-    //other methods
-
-    public void EnablePartCam(string part){
-        switch (part){
-            case "UpLeft":
-                //UL_cam.gameObject.SetActive(true);
-                //camera.gameObject.SetActive(false);
-                break;
-            case "UpRight":
-                UR_cam.gameObject.SetActive(true);
-                camera.gameObject.SetActive(false);
-                break;
-            case "DownLeft":
-                DL_cam.gameObject.SetActive(true);
-                camera.gameObject.SetActive(false);
-                break;
-            case "DownRight":
-                DR_cam.gameObject.SetActive(true);
-                camera.gameObject.SetActive(false);
-                break;
-            default:
-                break;
-        }
     }
 }

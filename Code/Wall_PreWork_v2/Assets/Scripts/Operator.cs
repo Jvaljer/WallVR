@@ -42,6 +42,10 @@ public class Operator : MonoBehaviourPun {
                 FetchForMenu();
             }
             ready = part_ready && shape_ready && menu_ready;
+            if(shape_ready){
+                circle.GetComponent<DragDrop>().Initialize();
+                circle.GetComponent<DragDrop>().Enable();
+            }
         } else {
             DetermineOwners();
             foreach(GameObject owner in owners){
@@ -172,9 +176,25 @@ public class Operator : MonoBehaviourPun {
         menu.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = str;
     }
 
+    public bool IsReady(){
+        return ready;
+    }
+
     //RPC methods
     [PunRPC]
     public void SetName(string str){
         gameObject.name = str;
+    }
+    [PunRPC]
+    public void MoveCircle(Vector3 new_pos){
+        Debug.Log("Moving the circle on : "+new_pos);
+        Vector3 upleft_translate = new Vector3(0,0,0);
+        upleft.GetComponent<PhotonView>().RPC("MoveCircle", RpcTarget.AllBuffered, upleft_translate);
+        Vector3 upright_translate = new Vector3(0,0,0);
+        upright.GetComponent<PhotonView>().RPC("MoveCircle", RpcTarget.AllBuffered, upright);
+        Vector3 downleft_translate = new Vector3(0,0,0);
+        upleft.GetComponent<PhotonView>().RPC("MoveCircle", RpcTarget.AllBuffered, downleft_translate);
+        Vector3 downright_translate = new Vector3(0,0,0);
+        upleft.GetComponent<PhotonView>().RPC("MoveCircle", RpcTarget.AllBuffered, downright_translate);
     }
 }

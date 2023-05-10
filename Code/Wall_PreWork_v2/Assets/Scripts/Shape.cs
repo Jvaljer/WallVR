@@ -8,15 +8,24 @@ using Photon.Realtime;
 public class Shape : MonoBehaviourPun {
     //unity gameobjects
     private GameObject ope;
+    private bool dragdrop_enabled = false;
 
     // Start is called before the first frame update
     void Start(){
-        //nothing to initialize yet
+        ope = GameObject.Find("Operator");
     }
 
     // Update is called once per frame
     void Update(){
-        //nothing to update yet
+        if(ope==null){
+            ope = GameObject.Find("Operator");
+        } else {
+            if(ope.GetComponent<Operator>().IsReady() && GameObject.Find("OperatorView")!=null){
+                dragdrop_enabled = true;
+            } else {
+                dragdrop_enabled = false;
+            }
+        }
     }
 
     [PunRPC]
