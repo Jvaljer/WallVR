@@ -367,7 +367,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 761167761}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1860917326}
+        m_TargetAssemblyTypeName: Launcher, Assembly-CSharp
+        m_MethodName: Connect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &761167761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,7 +452,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 186}
+  m_AnchoredPosition: {x: 0, y: 80}
   m_SizeDelta: {x: 419.66, y: 78.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1061939939
@@ -630,6 +642,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 139c2ba4b3dbba92ea8bf5cdf13da236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 519420031}
+  launch_interface: {fileID: 1860917324}
+  join_btn: {fileID: 761167758}
+  ope_prefab: {fileID: 2809110503935960894, guid: ab5a0d02f56c35ae48a48497881d9270, type: 3}
+  part_prefab: {fileID: 4326132623674443793, guid: 0c8d199cbb88af42fb45c6991359044c, type: 3}
+  shape_prefab: {fileID: 6926626377949234028, guid: 4945ef787e6563fd4ad1447839ab0e23, type: 3}
 --- !u!1 &1950692901
 GameObject:
   m_ObjectHideFlags: 0
