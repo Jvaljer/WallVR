@@ -11,7 +11,7 @@ public class Operator : MonoBehaviourPun {
     private NetworkHandler network;
 
     //some predicates
-    private bool run;
+    private bool prog_run;
 
     void Start(){
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
@@ -29,10 +29,11 @@ public class Operator : MonoBehaviourPun {
     public void Update(){
         if(photonView.IsMine){ //if everything's okay only the 'PhotonNetwork.IsMaterClient==true' computer will launch this
             if(setup!=null){
-                run = (setup.part_cnt==network.current_in_room);
-                if(run){
+                prog_run = (setup.part_cnt==network.current_in_room);
+                if(prog_run){
                     Debug.Log("Program can run !!!");
                     photonView.RPC("RunRPC", RpcTarget.AllBuffered);
+                    //maybe add a bit of test here (on prog state ?)
                 }
             }
         }
@@ -54,6 +55,6 @@ public class Operator : MonoBehaviourPun {
     [PunRPC]
     public void RunRPC(){
         Debug.Log("Operator said run it");
-        run = true;
+        prog_run = true;
     }
 }

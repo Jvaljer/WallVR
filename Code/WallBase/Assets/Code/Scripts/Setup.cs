@@ -100,6 +100,9 @@ public class Setup : MonoBehaviourPun {
             case "WILDEST":
                 //wall = new Wildest();
                 break;
+            case "DESKTOP":
+                wall = new Desktop(2,1);
+                break;
             default:
                 //using wilder
                 wall = new Wilder();
@@ -119,7 +122,7 @@ public class Setup : MonoBehaviourPun {
                 wall_pos_x = wall_width/2 + wall.SingleScreenWidth();
             }
 
-            wall_pos_y = float.Parse(row)*960;
+            wall_pos_y = float.Parse(row)*wall.SingleScreenHeight();
         }
 
         //now that all this has been initialized we wanna connect to the server !
