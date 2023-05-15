@@ -25,8 +25,11 @@ public class Setup : MonoBehaviourPun {
     private Wall wall;
 
     //screen attributes (operator screen)
-    public float screen_width { get; private set; }
-    public float screen_height { get; private set; }
+    public int screen_width { get; set; }
+    public int screen_height { get; set; }
+
+    //Screen attributes (participant screen ?)
+    public bool full_screen { get; private set; }
 
     //positionning attributes (client screens)
     private string column;
@@ -37,36 +40,38 @@ public class Setup : MonoBehaviourPun {
     public void Awake(){
         //parsing all the given args
         Debug.Log("Setup -> starting to parse arguments");
+        
+        //all defautl values
         is_master = false;
+        full_screen = false; //-popupwindow used by default ?
+        part_cnt = 10;
+
         string[] args = System.Environment.GetCommandLineArgs ();
         for(int i=0; i<args.Length; i++){
             //switch faster than if()if()... -> jump table by compiler
             switch (args[i]){
-                //all render datas 
-                case "-ww":
-                    wall_width = float.Parse(args[i+1]);
-                    break;
-                case "-wh":
-                    wall_height = float.Parse(args[i+1]);
-                    break;
+                //all render datas
                 case "-wall":
                     wall_str = args[i+1];
                     break;
                 case "-sw":
-                    screen_width = float.Parse(args[i+1]);
+                    screen_width = int.Parse(args[i+1]);
                     break;
                 case "-sh":
-                    screen_height = float.Parse(args[i+1]);
+                    screen_height = int.Parse(args[i+1]);
                     break;
-                    
+                case "-fs":
+                    int fs = int.Parse(args[i+1]);
+                    full_screen = fs != 0; //if fs=0 -> false, else true 
+                    break;
                 //all 'hierarchy' datas 
                 case "-r": 
                     //looking at user's role
-                    if(args[i]=="m"){
+                    if(args[i+1]=="m"){
                         //is master 
                         Debug.Log("user is master");
                         is_master = true; //quite useless -> PhotonNetwork.IsMasterClient defining this
-                    } else if(args[i]=="p"){
+                    } else if(args[i+1]=="p"){
                         //is  client
                         Debug.Log("user is participant");
                         is_master = false;
@@ -87,6 +92,7 @@ public class Setup : MonoBehaviourPun {
             }
         }
 
+        //setting wall attributes
         switch (wall_str){
             case "WILDER":
                 wall = new Wilder();
@@ -104,10 +110,9 @@ public class Setup : MonoBehaviourPun {
 
         //creating setup thx to parsing
         if(is_master){
-            //init cam as whole scene 
-
+            
         } else {
-            //positionning & adjusting cam as specific zoom
+            //specific position values 
             if(column=="a"){
                 wall_pos_x = 0;
             } else {

@@ -28,8 +28,14 @@ public class Participant : MonoBehaviourPun {
         Vector3 world_pos = Camera.main.ScreenToWorldPoint(new Vector3(center_x, center_y, screen_pos.z));
         Camera.main.transform.position = world_pos;
         
-        Screen.fullScreen = false;
-        Screen.SetResolution((int)setup.screen_width, (int)setup.screen_height, false);
+        //fixing screen resolution
+        Screen.fullScreen = setup.full_screen;
+        if(Screen.fullScreen){
+            setup.screen_width = Screen.width;
+            setup.screen_height = Screen.height;
+        } else {
+            Screen.SetResolution( (int)setup.screen_width, (int)setup.screen_height, false );
+        }
 
         //now setting the possible name
         gameObject.name = "Participant"; //adding a specific id ???
