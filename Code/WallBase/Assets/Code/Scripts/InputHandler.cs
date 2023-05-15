@@ -36,12 +36,11 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     public void Start(){
-        Debug.Log("InputHandler Starts "+PhotonNetwork.LocalPlayer.ActorNumber);
+        Debug.Log("InputHandler Starts as ope "+photonView.IsMine);
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
 
-
         //supposing we don't have any right/left camera, only the main one (WILDER wall)
-        if(PhotonNetwork.LocalPlayer.IsMasterClient){
+        if(photonView.IsMine){
             Cursor.visible = true; 
             RegisterDevice("Mouse", this);
             CreateMCursor(this, 0, 0.5f, 0.5f, Color.red);
@@ -52,16 +51,20 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     public void Update(){
-        if(PhotonNetwork.IsMasterClient){
+        if(photonView.IsMine){
+            Debug.Log("we do be running");
             float mouse_x = Input.mousePosition.x/Screen.width;
             float mouse_y = (Screen.height - Input.mousePosition.y)/Screen.height;
 
             //handling drag & drop
             if(Input.GetMouseButtonDown(0)){
+                Debug.Log("Master -> StartMove");
                 StartMoveMCursor(this, 0, mouse_x, mouse_y, false);
             } else if(Input.GetMouseButtonUp(0)){
+                Debug.Log("Master -> StopMove");
                 StopMoveMCursor(this, 0, mouse_x, mouse_y);
             } else {
+                Debug.Log("Master -> Move");
                 MoveMCursor(this, 0, mouse_x, mouse_y);
             }
 
@@ -72,7 +75,7 @@ public class InputHandler : MonoBehaviourPun {
                     //if not related PCursor then create it
                     if(mc.p_cursor==null){
                         mc.AddPCursor(new PCursor(mc.x, mc.y, mc.c));
-                        //p_cursors.Add(uid_creator, mc.p_cursor);
+                        Debug.Log("Master -> CreatePCursorRPC");
                         photonView.RPC("CreatePCursorRPC", RpcTarget.AllBuffered, uid_creator, mc.x, mc.y, mc.c.ToString());
                         mc.uid = uid_creator;
                         uid_creator++;
@@ -84,9 +87,11 @@ public class InputHandler : MonoBehaviourPun {
                         mc.RemovePCursor();
                         p_cursors.Remove(mc.uid);
                         if(!mc.hidden){
+                            Debug.Log("Master -> RemovePCursorRPC");
                             photonView.RPC("RemovePCursorRPC", RpcTarget.AllBuffered, mc.uid);
                         }
                     } else if(mc.x != mc.p_cursor.x || mc.y != mc.p_cursor.y){
+                        Debug.Log("Master -> MoveOrCreatePCursorRPC");
                         photonView.RPC("MoveOrCreatePCursorRPC", RpcTarget.AllBuffered, mc.uid, mc.x, mc.y, mc.c.ToString());
                         mc.p_cursor.Move(mc.x, mc.y);
                     }
@@ -259,19 +264,19 @@ public class InputHandler : MonoBehaviourPun {
         }
     };
 
-    //rendering of the cursors (guessing we don't have any bezels (yet...))
+    //rendering cursors
     public void OnGUI(){
-        Debug.Log("OnGUI "+p_cursors.Count);
+        Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
         foreach(PCursor pc in p_cursors.Values){
-            float x, y, x1;
+            float x, y;
             if(PhotonNetwork.IsMasterClient){
                 x = pc.x*Screen.width;
                 y = pc.y*Screen.height;
-                x1 = x;
+                Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
             } else {
-                x = - setup.wall_pos_x + (pc.x * setup.wall_width);
-                y = - setup.wall_pos_y + (pc.y * setup.wall_height);
-                x1 = - setup.wall_pos_x + (pc.x * setup.wall_width) - Screen.width/2;
+                x = -setup.wall_pos_x + pc.x * setup.wall_width;
+                y = -setup.wall_pos_y + pc.y * setup.wall_height;
+                Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
             }
 
             GUI.DrawTexture(new Rect(x - cursor_HW, y - cursor_HW, 2*cursor_HW, 2*cursor_HW), pc.tex);
@@ -311,6 +316,7 @@ public class InputHandler : MonoBehaviourPun {
             ColorUtility.TryParseHtmlString(str, out color);
             p_cursors.Add(uid, new PCursor(x_, y_, color));
         } else {
+            Debug.Log("Moving a Participant cursor -> ("+x_+","+y_+")");
             p_cursors[uid].Move(x_, y_);
         }
     }
@@ -346,6 +352,7 @@ public class InputHandler : MonoBehaviourPun {
 
         //cursor removing method
         public void RemoveCursor(int id_){
+            Debug.Log("Removing a MCursor "+id_);
             cursors.Remove(id_);
         }
     };

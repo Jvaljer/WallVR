@@ -21,12 +21,9 @@ input="start"
 
 #executing for the participants
 if [ $input == "start" ]; then 
-    for col in {a,b}
-    do
-        echo "executing for wild@$col$row"
-        ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 512 -screen-height 256 -0 -wall $WALL -r $PART_ID -x $col -y 1 -logfile log_p.txt &
-        
-    done
+    ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 512 -screen-height 256 -0 -wall $WALL -r $PART_ID -x a -y 0 -logfile log_p1.txt &
+    ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 512 -screen-height 256 -0 -wall $WALL -r $PART_ID -x b -y 0 -logfile log_p2.txt &
+  
 elif [ $input == "cancel" ]; then 
     exit
 fi

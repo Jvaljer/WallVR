@@ -9,18 +9,17 @@ public class Operator : MonoBehaviourPun {
     //referenced setup & net manag
     private Setup setup;
     private NetworkHandler network;
+    private InputHandler input_handler;
 
     //some predicates
-    private bool prog_run;
+    public bool prog_run { get; set; } = false;
 
     void Start(){
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         network = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
-        Debug.Log("initalizing operator");
+        //input_handler = GameObject.Find("Operator").GetComponent<InputHandler>();
         if(photonView.IsMine){
-            Debug.Log("And it's me");
             if(setup!=null){
-                Debug.Log("initializing my attributes");
                 Init();
             }   
         }
@@ -29,11 +28,12 @@ public class Operator : MonoBehaviourPun {
     public void Update(){
         if(photonView.IsMine){ //if everything's okay only the 'PhotonNetwork.IsMaterClient==true' computer will launch this
             if(setup!=null){
+                Debug.Log("all joined : "+(setup.part_cnt==network.current_in_room));
                 prog_run = (setup.part_cnt==network.current_in_room);
                 if(prog_run){
-                    Debug.Log("Program can run !!!");
-                    photonView.RPC("RunRPC", RpcTarget.AllBuffered);
-                    //maybe add a bit of test here (on prog state ?)
+                    //nothing to do ???
+                    //wait for test n stuff -> ope will do so ?
+                    //input_handler.Start();
                 }
             }
         }
@@ -50,11 +50,5 @@ public class Operator : MonoBehaviourPun {
         } else {
             Screen.SetResolution( (int)setup.screen_width, (int)setup.screen_height, false );
         }
-    }
-
-    [PunRPC]
-    public void RunRPC(){
-        Debug.Log("Operator said run it");
-        prog_run = true;
     }
 }
