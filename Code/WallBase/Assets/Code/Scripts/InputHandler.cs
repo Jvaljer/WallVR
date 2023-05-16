@@ -10,6 +10,9 @@ public class InputHandler : MonoBehaviourPun {
     //Referenced setup & wall
     private Setup setup;
 
+    //Referenced renderinf
+    private Rendering render;
+
     //Some cursors attributes
     private static int cursor_HW = 16;
     private static int cursor_T = 1;
@@ -28,10 +31,6 @@ public class InputHandler : MonoBehaviourPun {
     //must delete list
     private List<int> to_delete_ids;
 
-    //all shapes
-    private Dictionary<string, GameObject> shapes;
-    private Dictionary<string, Vector3> shapes_pos;
-
     public void Awake(){
         Debug.Log("InputHandler Awakes");
         m_devices = new Dictionary<object, MDevice>();
@@ -44,7 +43,8 @@ public class InputHandler : MonoBehaviourPun {
     public void Start(){
         Debug.Log("InputHandler Starts as ope "+photonView.IsMine);
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
-
+        render = GameObject.Find("ScriptManager").GetComponent<Rendering>();
+        
         //supposing we don't have any right/left camera, only the main one (WILDER wall)
         if(photonView.IsMine){
             Cursor.visible = true; 
@@ -58,20 +58,26 @@ public class InputHandler : MonoBehaviourPun {
 
     public void Update(){
         if(photonView.IsMine){
+            if(shape==null){
+                shape = GameObject.Find("Circle 0");
+            }
             //Debug.Log("we do be running");
             float mouse_x = Input.mousePosition.x/Screen.width;
             float mouse_y = (Screen.height - Input.mousePosition.y)/Screen.height;
 
             //handling drag & drop
             if(Input.GetMouseButtonDown(0)){
-                //Debug.Log("Master -> StartMove");
+                //Debug.Log("Cursor Start Move");
                 StartMoveMCursor(this, 0, mouse_x, mouse_y, false);
+                photonView.RPC("InfoInputRPC", RpcTarget.AllBuffered, "Down", mouse_x, mouse_y, 0);
             } else if(Input.GetMouseButtonUp(0)){
-                //Debug.Log("Master -> StopMove");
+                //Debug.Log("Cursor Stop Move");
                 StopMoveMCursor(this, 0, mouse_x, mouse_y);
+
             } else {
-                //Debug.Log("Master -> Move");
+                //Debug.Log("Cursor Move");
                 MoveMCursor(this, 0, mouse_x, mouse_y);
+
             }
 
             //handling cursors
@@ -380,6 +386,6 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     /******************************************************************************/
-    /*                      ALL SHAPES HANDLING METHODS                           */
+    /*                      ALL OTHER STUFF HANDLING METHODS                      */
     /******************************************************************************/
 }

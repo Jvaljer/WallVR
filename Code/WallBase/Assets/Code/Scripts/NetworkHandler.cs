@@ -34,6 +34,10 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             if(all_there){
                 photonView.RPC("ReadyToStart", RpcTarget.MasterClient);
             }
+        } else {
+            if(!ope_joined){
+                ope_joined = true;
+            }
         }
     }
 
@@ -65,10 +69,6 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     public override void OnPlayerLeftRoom(Player otherPlayer){
         base.OnPlayerLeftRoom(otherPlayer);
         part_prefab.GetComponent<PhotonView>().RPC("SomeoneLeft", RpcTarget.AllBuffered, otherPlayer.ActorNumber);
-        if(otherPlayer.ActorNumber==PhotonNetwork.MasterClient.ActorNumber){
-            Debug.Log("The operator left -> Quit this bro");
-            part_prefab.GetComponent<PhotonView>().RPC("Operatorleft", RpcTarget.AllBuffered);
-        }
     }
 
     [PunRPC]

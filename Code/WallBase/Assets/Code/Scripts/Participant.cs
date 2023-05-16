@@ -7,7 +7,6 @@ using Photon.Realtime;
 public class Participant : MonoBehaviourPun {
     //referenced setup
     private Setup setup;
-
     public bool initialized { get; set; } = false;
 
     public void Start(){
@@ -60,6 +59,8 @@ public class Participant : MonoBehaviourPun {
     [PunRPC]
     public void SomeoneLeft(int pv){
         Debug.Log("I see that someone left the program : "+pv);
-        //Application.Quit();
+        if(pv==1){ //in this program logic, 1 is the master client (operator)
+            Application.Quit();
+        }
     }
 }
