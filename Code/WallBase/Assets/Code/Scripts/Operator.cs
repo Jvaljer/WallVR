@@ -33,7 +33,6 @@ public class Operator : MonoBehaviourPun {
                 if(prog_run){
                     //nothing to do ???
                     //wait for test n stuff -> ope will do so ?
-                    //input_handler.Start();
                 }
             }
         }

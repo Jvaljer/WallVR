@@ -49,7 +49,7 @@ public class Desktop : Wall {
 		return new Vector3(p.x, p.y, sign);
 	}
 
-    //Only two screens
+    //Only one screens by default
     public Desktop(int r_ = 1, int c_ = 1){
 		rows = r_;
 		columns = c_;
@@ -80,15 +80,15 @@ public class Desktop : Wall {
 	}
 
 	public int ColumnsAmount(){
-		return 2;
+		return columns;
 	}
 
 	public int RowsAmount(){
-		return 1;
+		return rows;
 	}
 
 	public float PixelSizeMM() { 
-        return 0.1822917f; 
+        return 0.264275256f; //abel's laptop
     }
 	public float BottomHeight(){ 
         return 1f; 

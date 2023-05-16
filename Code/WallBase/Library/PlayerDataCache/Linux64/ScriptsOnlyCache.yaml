@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - NetworkHandler
     - Operator
     - Participant
+    - Rendering
     - Setup
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
@@ -28,7 +29,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -132,6 +132,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 5468}
     - Class: 114
       Script: {instanceID: 5492}
+    - Class: 114
+      Script: {instanceID: 17164}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1529,6 +1531,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit.Forms
     className: UserIdUiForm
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Rendering
   platform: 24
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

@@ -8,7 +8,7 @@ PART_AMOUNT=2
 
 #executing for operator
 echo "executing for ope"
-./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 1024 -screen-height 256 -wall $WALL -sw 1024 -sh 256 -r $MASTER_ID -pa $PART_AMOUNT  -logfile log_m.txt &
+./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 1024 -screen-height 256 -wall $WALL -sw 1024 -sh 256 -r $MASTER_ID -pa $PART_AMOUNT &
 
 sleep 2
 input="start"
@@ -21,8 +21,8 @@ input="start"
 
 #executing for the participants
 if [ $input == "start" ]; then 
-    ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 512 -screen-height 256 -0 -wall $WALL -r $PART_ID -x a -y 0 -logfile log_p1.txt &
-    ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 512 -screen-height 256 -0 -wall $WALL -r $PART_ID -x b -y 0 -logfile log_p2.txt &
+    ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 512 -screen-height 256 -0 -wall $WALL -sw 512 -sh 256 -r $PART_ID -x 0 -y 0 &
+    ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 512 -screen-height 256 -0 -wall $WALL -sw 512 -sh 256 -r $PART_ID -x 512 -y 0 &
   
 elif [ $input == "cancel" ]; then 
     exit

@@ -274,8 +274,8 @@ public class InputHandler : MonoBehaviourPun {
                 y = pc.y*Screen.height;
                 Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
             } else {
-                x = -setup.wall_pos_x + pc.x * setup.wall_width;
-                y = -setup.wall_pos_y + pc.y * setup.wall_height;
+                x = -setup.x_pos + pc.x * setup.wall_width;
+                y = -setup.y_pos + pc.y * setup.wall_height;
                 Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
             }
 

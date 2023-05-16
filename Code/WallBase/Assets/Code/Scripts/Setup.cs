@@ -22,7 +22,7 @@ public class Setup : MonoBehaviourPun {
     public float wall_width { get; private set; } 
     public float wall_height { get; private set; }
     private string wall_str;
-    private Wall wall;
+    public Wall wall { get; private set; }
 
     //screen attributes (operator screen)
     public int screen_width { get; set; }
@@ -36,6 +36,8 @@ public class Setup : MonoBehaviourPun {
     private string row;
     public float wall_pos_x { get; private set; }
     public float wall_pos_y { get; private set; }
+    public float x_pos { get; private set; }
+    public float y_pos { get; private set; }
 
     public void Awake(){
         //parsing all the given args
@@ -78,10 +80,10 @@ public class Setup : MonoBehaviourPun {
                     }
                     break;
                 case "-x":
-                    column = args[i+1];
+                    x_pos = float.Parse(args[i+1]);
                     break;
                 case "-y":
-                    row = args[i+1];
+                    y_pos = float.Parse(args[i+1]);
                     break;
                 
                 //program predicate datas
@@ -101,7 +103,7 @@ public class Setup : MonoBehaviourPun {
                 //wall = new Wildest();
                 break;
             case "DESKTOP":
-                wall = new Desktop(2,1);
+                wall = new Desktop(1,2);
                 break;
             default:
                 //using wilder
@@ -110,20 +112,6 @@ public class Setup : MonoBehaviourPun {
         }
         wall_height = wall.Height();
         wall_width = wall.Width();
-
-        //creating setup thx to parsing
-        if(is_master){
-            
-        } else {
-            //specific position values 
-            if(column=="a"){
-                wall_pos_x = 0;
-            } else {
-                wall_pos_x = wall_width/2 + wall.SingleScreenWidth();
-            }
-
-            wall_pos_y = float.Parse(row)*wall.SingleScreenHeight();
-        }
 
         //now that all this has been initialized we wanna connect to the server !
         ConnectToServer();
