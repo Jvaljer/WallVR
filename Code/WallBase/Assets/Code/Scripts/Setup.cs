@@ -91,6 +91,16 @@ public class Setup : MonoBehaviourPun {
                     //getting the participants amount (not including operator)
                     part_cnt = int.Parse(args[i+1]);
                     break;
+                case "-mo":
+                    //master only
+                    int val = int.Parse(args[i+1]);
+                    if(val==1){
+                        //yes
+                        part_cnt = 0;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 

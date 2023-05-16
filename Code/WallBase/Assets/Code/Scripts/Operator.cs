@@ -17,23 +17,11 @@ public class Operator : MonoBehaviourPun {
     void Start(){
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         network = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
-        //input_handler = GameObject.Find("Operator").GetComponent<InputHandler>();
+        input_handler = gameObject.GetComponent<InputHandler>();
+
         if(photonView.IsMine){
             if(setup!=null){
                 Init();
-            }   
-        }
-    }
-
-    public void Update(){
-        if(photonView.IsMine){ //if everything's okay only the 'PhotonNetwork.IsMaterClient==true' computer will launch this
-            if(setup!=null){
-                Debug.Log("all joined : "+(setup.part_cnt==network.current_in_room));
-                prog_run = (setup.part_cnt==network.current_in_room);
-                if(prog_run){
-                    //nothing to do ???
-                    //wait for test n stuff -> ope will do so ?
-                }
             }
         }
     }
@@ -49,5 +37,10 @@ public class Operator : MonoBehaviourPun {
         } else {
             Screen.SetResolution( (int)setup.screen_width, (int)setup.screen_height, false );
         }
+    }
+
+    [PunRPC]
+    public void ReadyToStart(){
+        Debug.Log("operator is ready");
     }
 }

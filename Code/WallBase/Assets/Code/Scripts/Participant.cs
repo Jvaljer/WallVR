@@ -18,9 +18,6 @@ public class Participant : MonoBehaviourPun {
             if(setup!=null){
                 Debug.Log("initializing my attributes");
                 InitAttributes();
-            } else {
-                //program can run if all is good
-                //might have nothing to do there
             }
         }
     }
@@ -52,5 +49,17 @@ public class Participant : MonoBehaviourPun {
         gameObject.name = "Participant";
         Debug.Log(gameObject.name+"has well been initialized");
         initialized = true;
+    }
+
+    [PunRPC]
+    public void Operatorleft(){
+        Debug.Log("I see operator has left -> I QUIT");
+        Application.Quit();
+    }
+
+    [PunRPC]
+    public void SomeoneLeft(int pv){
+        Debug.Log("I see that someone left the program : "+pv);
+        //Application.Quit();
     }
 }

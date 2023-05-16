@@ -10,6 +10,7 @@ using Photon.Realtime;
 public class Rendering : MonoBehaviourPun {
     //unity attributes
     private Setup setup;
+    private NetworkHandler network_handler;
 
     //geometry attibutes
     private float screen_ratio = 1f;
@@ -26,23 +27,27 @@ public class Rendering : MonoBehaviourPun {
     }
 
     public void Start(){
-        Debug.Log("Rendering Starts "+photonView.IsMine+" || "+PhotonNetwork.IsMasterClient);
+        Debug.Log("Rendering Starts "+PhotonNetwork.IsMasterClient);
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
+        network_handler = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
 
-        if(photonView.IsMine){
-            sw = Screen.width;
-            sh = Screen.height;
-            screen_ratio = sh/sw;
-            pix_to_unit = Camera.main.orthographicSize /(sh/2.0f);
-            abs = 0.1f;
-            ih_scale = ih_scale*abs;
-        } else {
-            sw = setup.wall_width;
-            sh = setup.wall_height;
-            screen_ratio = sh/sw;
-            ortho_size = (float)Camera.main.orthographicSize / (float)setup.wall.RowsAmount();
-            pix_to_unit = (float)setup.wall.RowsAmount() * (float)Camera.main.orthographicSize / (sh/2.0f);
-            abs = 1.0f;
+        //initializing render scales
+        if(network_handler.ope_joined){
+            if(PhotonNetwork.IsMasterClient){
+                sw = Screen.width;
+                sh = Screen.height;
+                screen_ratio = sh/sw;
+                pix_to_unit = Camera.main.orthographicSize /(sh/2.0f);
+                abs = 0.1f;
+                ih_scale = ih_scale*abs;
+            } else {
+                sw = setup.wall_width;
+                sh = setup.wall_height;
+                screen_ratio = sh/sw;
+                ortho_size = (float)Camera.main.orthographicSize / (float)setup.wall.RowsAmount();
+                pix_to_unit = (float)setup.wall.RowsAmount() * (float)Camera.main.orthographicSize / (sh/2.0f);
+                abs = 1.0f;
+            }
         }
     }
 }

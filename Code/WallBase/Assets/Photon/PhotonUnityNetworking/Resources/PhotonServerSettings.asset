@@ -43,6 +43,11 @@ MonoBehaviour:
   - CreatePCursorRPC
   - MoveOrCreatePCursorRPC
   - RemovePCursorRPC
+  - ReadyToStart
+  - Operatorleft
+  - SomeoneLeft
+  - AddShapeRPC
+  - NormName
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

@@ -28,11 +28,17 @@ public class InputHandler : MonoBehaviourPun {
     //must delete list
     private List<int> to_delete_ids;
 
+    //all shapes
+    private Dictionary<string, GameObject> shapes;
+    private Dictionary<string, Vector3> shapes_pos;
+
     public void Awake(){
         Debug.Log("InputHandler Awakes");
         m_devices = new Dictionary<object, MDevice>();
         p_cursors = new Dictionary<int, PCursor>();
         to_delete_ids = new List<int>();
+        shapes = new Dictionary<string, GameObject>();
+        shapes_pos = new Dictionary<string, Vector3>();
     }
 
     public void Start(){
@@ -52,19 +58,19 @@ public class InputHandler : MonoBehaviourPun {
 
     public void Update(){
         if(photonView.IsMine){
-            Debug.Log("we do be running");
+            //Debug.Log("we do be running");
             float mouse_x = Input.mousePosition.x/Screen.width;
             float mouse_y = (Screen.height - Input.mousePosition.y)/Screen.height;
 
             //handling drag & drop
             if(Input.GetMouseButtonDown(0)){
-                Debug.Log("Master -> StartMove");
+                //Debug.Log("Master -> StartMove");
                 StartMoveMCursor(this, 0, mouse_x, mouse_y, false);
             } else if(Input.GetMouseButtonUp(0)){
-                Debug.Log("Master -> StopMove");
+                //Debug.Log("Master -> StopMove");
                 StopMoveMCursor(this, 0, mouse_x, mouse_y);
             } else {
-                Debug.Log("Master -> Move");
+                //Debug.Log("Master -> Move");
                 MoveMCursor(this, 0, mouse_x, mouse_y);
             }
 
@@ -75,7 +81,7 @@ public class InputHandler : MonoBehaviourPun {
                     //if not related PCursor then create it
                     if(mc.p_cursor==null){
                         mc.AddPCursor(new PCursor(mc.x, mc.y, mc.c));
-                        Debug.Log("Master -> CreatePCursorRPC");
+                        //Debug.Log("Master -> CreatePCursorRPC");
                         photonView.RPC("CreatePCursorRPC", RpcTarget.AllBuffered, uid_creator, mc.x, mc.y, mc.c.ToString());
                         mc.uid = uid_creator;
                         uid_creator++;
@@ -87,11 +93,11 @@ public class InputHandler : MonoBehaviourPun {
                         mc.RemovePCursor();
                         p_cursors.Remove(mc.uid);
                         if(!mc.hidden){
-                            Debug.Log("Master -> RemovePCursorRPC");
+                            //Debug.Log("Master -> RemovePCursorRPC");
                             photonView.RPC("RemovePCursorRPC", RpcTarget.AllBuffered, mc.uid);
                         }
                     } else if(mc.x != mc.p_cursor.x || mc.y != mc.p_cursor.y){
-                        Debug.Log("Master -> MoveOrCreatePCursorRPC");
+                        //Debug.Log("Master -> MoveOrCreatePCursorRPC");
                         photonView.RPC("MoveOrCreatePCursorRPC", RpcTarget.AllBuffered, mc.uid, mc.x, mc.y, mc.c.ToString());
                         mc.p_cursor.Move(mc.x, mc.y);
                     }
@@ -266,17 +272,17 @@ public class InputHandler : MonoBehaviourPun {
 
     //rendering cursors
     public void OnGUI(){
-        Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
+        //Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
         foreach(PCursor pc in p_cursors.Values){
             float x, y;
             if(PhotonNetwork.IsMasterClient){
                 x = pc.x*Screen.width;
                 y = pc.y*Screen.height;
-                Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
+                //Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
             } else {
                 x = -setup.x_pos + pc.x * setup.wall_width;
                 y = -setup.y_pos + pc.y * setup.wall_height;
-                Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
+                //Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
             }
 
             GUI.DrawTexture(new Rect(x - cursor_HW, y - cursor_HW, 2*cursor_HW, 2*cursor_HW), pc.tex);
@@ -316,7 +322,7 @@ public class InputHandler : MonoBehaviourPun {
             ColorUtility.TryParseHtmlString(str, out color);
             p_cursors.Add(uid, new PCursor(x_, y_, color));
         } else {
-            Debug.Log("Moving a Participant cursor -> ("+x_+","+y_+")");
+            //Debug.Log("Moving a Participant cursor -> ("+x_+","+y_+")");
             p_cursors[uid].Move(x_, y_);
         }
     }
@@ -372,4 +378,8 @@ public class InputHandler : MonoBehaviourPun {
         }
         m_devices.Add(obj, new MDevice(str));
     }
+
+    /******************************************************************************/
+    /*                      ALL SHAPES HANDLING METHODS                           */
+    /******************************************************************************/
 }

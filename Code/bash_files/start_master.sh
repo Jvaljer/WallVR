@@ -8,7 +8,7 @@ PART_AMOUNT=2
 
 #executing for operator
 echo "executing for ope"
-./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 1024 -screen-height 256 -wall $WALL -sw 1024 -sh 256 -r $MASTER_ID -pa $PART_AMOUNT &
+./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 1024 -screen-height 256 -wall $WALL -sw 1024 -sh 256 -r $MASTER_ID -pa $PART_AMOUNT -logfile log_m.txt &
 
 sleep 2
 input="start"
