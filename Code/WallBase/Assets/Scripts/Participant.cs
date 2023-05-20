@@ -9,7 +9,7 @@ public class Participant : MonoBehaviourPun {
     private Setup setup;
 
     public void NetworkStart(Setup stp){
-        Debug.Log("Network Start for Participant");
+        Debug.LogError("Network Start for Participant");
         setup = stp;
         if(photonView.IsMine){
             Debug.Log("I am P"+PhotonNetwork.LocalPlayer.ActorNumber);
@@ -39,11 +39,20 @@ public class Participant : MonoBehaviourPun {
         Debug.Log("setup.x_pos-> "+setup.x_pos+"  setup.screen_width/2-> "+(setup.screen_width/2)+"  setup.wall.Width()/2-> "+(setup.wall.Width()/2)+"  := center_x-> "+center_x+"    screen_pos.x-> "+screen_pos.x+"   world_pos.x-> "+world_pos);
 
         Debug.Log("P"+PhotonNetwork.LocalPlayer.ActorNumber+" has cam center "+Camera.main.transform.position+"::"+world_pos+" instead of "+old_pos+"  and scale was "+scale);
-
-        //now setting the possible name
-        gameObject.name = "Participant";
     }
-    
+
+    [PunRPC]
+    public void OperatorStartedRPC(){
+        string log = "Operator called Start RPC ";
+        if(photonView.IsMine || PhotonNetwork.IsMasterClient){
+            log += "for myself";
+            GameObject.Find("Operator(Clone)").GetComponent<InputHandler>().ParticipantReady();
+        } else {
+            log += "for another one";
+        }
+        Debug.LogError(log);
+    }
+
     [PunRPC]
     public void Operatorleft(){
         Debug.Log("I see operator has left -> I QUIT");

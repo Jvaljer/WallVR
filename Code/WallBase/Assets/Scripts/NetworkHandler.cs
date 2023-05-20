@@ -31,18 +31,20 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
         //creating the room
         room_opt = new RoomOptions{MaxPlayers=max_in_room, IsVisible=true, IsOpen=true};
         PhotonNetwork.JoinOrCreateRoom("Room", room_opt, TypedLobby.Default);
-        Debug.LogError("err");
     }
 
     public override void OnJoinedRoom(){
         //triggered for the just joining entity only
         Debug.Log("OnJoinedRoom");
+        base.OnJoinedRoom();
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         if(PhotonNetwork.IsMasterClient){
+            Debug.Log("OnJoinedRoom -> IsMasterClient");
             //if master then instantiate operator
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
         } else {
+            Debug.Log("OnJoinedRoom -> !IsMasterClient");
             //else instantiate participant
             part_prefab = PhotonNetwork.Instantiate("Participant", transform.position, transform.rotation);
             part_prefab.GetComponent<Participant>().NetworkStart(setup);
@@ -54,7 +56,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
         base.OnPlayerEnteredRoom(newPlayer);
         if(PhotonNetwork.IsMasterClient){
             //if i'm master then test some stuff
-            if(PhotonNetwork.CurrentRoom.PlayerCount==setup.part_cnt){
+            if(PhotonNetwork.CurrentRoom.PlayerCount==(setup.part_cnt +1)){ //all parts + master
                 ope_prefab.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.AllBuffered);
             }
         }
@@ -66,8 +68,15 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     }
 
     public void Connect(){
-        Debug.Log("user attempts a connexion to server");
+        Debug.Log("NetworkHandler -> Connect");
         PhotonNetwork.NickName = System.DateTime.Now.Ticks.ToString();
         PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public void OperatorInitialized(){
+        Debug.LogError("Operator has initialized so now our turn : "+PhotonNetwork.LocalPlayer.ActorNumber);
+        if(!PhotonNetwork.IsMasterClient){
+            part_prefab.GetComponent<PhotonView>().RPC("OperatorStartedRPC", RpcTarget.AllBuffered);
+        }
     }
 }

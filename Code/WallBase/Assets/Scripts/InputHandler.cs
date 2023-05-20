@@ -7,6 +7,8 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class InputHandler : MonoBehaviourPun {
+    private bool up_run = true;
+    private bool up_init = true;
     //Referenced setup & wall
     private Setup setup;
     public bool initialized { get; set; } = false;
@@ -56,7 +58,15 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     public void Update(){
+        if(up_run){
+            Debug.LogError("ih update running");
+            up_run = false;
+        }
         if(photonView.IsMine && initialized){
+            if(up_init){
+                Debug.LogError("Ih -> Update is good");
+                up_init = false;
+            }
             //Debug.Log("we do be running");
             float mouse_x = Input.mousePosition.x/Screen.width;
             float mouse_y = (Screen.height - Input.mousePosition.y)/Screen.height;
@@ -274,20 +284,22 @@ public class InputHandler : MonoBehaviourPun {
 
     //rendering cursors
     public void OnGUI(){
-        //Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
-        foreach(PCursor pc in p_cursors.Values){
-            float x, y;
-            if(PhotonNetwork.IsMasterClient){
-                x = pc.x*Screen.width;
-                y = pc.y*Screen.height;
-                //Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
-            } else {
-                x = -setup.x_pos + pc.x * setup.wall_width;
-                y = -setup.y_pos + pc.y * setup.wall_height;
-                //Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
+        if(initialized){
+            //Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
+            foreach(PCursor pc in p_cursors.Values){
+                float x, y;
+                if(PhotonNetwork.IsMasterClient){
+                    x = pc.x*Screen.width;
+                    y = pc.y*Screen.height;
+                    //Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
+                } else {
+                    x = -setup.x_pos + pc.x * setup.wall_width;
+                    y = -setup.y_pos + pc.y * setup.wall_height;
+                    //Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
+                }
+    
+                GUI.DrawTexture(new Rect(x - cursor_HW, y - cursor_HW, 2*cursor_HW, 2*cursor_HW), pc.tex);
             }
-
-            GUI.DrawTexture(new Rect(x - cursor_HW, y - cursor_HW, 2*cursor_HW, 2*cursor_HW), pc.tex);
         }
     }
 
@@ -384,6 +396,10 @@ public class InputHandler : MonoBehaviourPun {
     /******************************************************************************/
     /*                      ALL OTHER STUFF HANDLING METHODS                      */
     /******************************************************************************/
+
+    public void ParticipantReady(){
+        initialized = true;
+    }
 
     [PunRPC]
     public void InputRPC(string str, float x_, float y_, int id_){

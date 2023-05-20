@@ -20,8 +20,9 @@ public class Operator : MonoBehaviourPun {
 
     [PunRPC]
     public void Initialize(){
-        Debug.Log("Operator is Initializing");
+        Debug.LogError("Operator is Initializing");
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
+        network = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
         if(photonView.IsMine){
             //setting the screen resolution only for myself
             Screen.fullScreen = setup.full_screen;
@@ -37,9 +38,8 @@ public class Operator : MonoBehaviourPun {
         }
         input_handler = gameObject.GetComponent<InputHandler>();
         Debug.Log("Input Handler initializing from Ope RPC");
-        Debug.LogError("got IH -> "+(input_handler!=null));
         input_handler.InitalizeIH();
-        Debug.Log("Initializing the actual participant");
-        ready_to_init_part = true;
+        Debug.LogError("Calling the OpeInit Statement : "+PhotonNetwork.LocalPlayer.ActorNumber);
+        network.OperatorInitialized();
     }
 }
