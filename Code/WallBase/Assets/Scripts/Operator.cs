@@ -32,9 +32,6 @@ public class Operator : MonoBehaviourPun {
             } else {
                 Screen.SetResolution( (int)setup.screen_width, (int)setup.screen_height, false );
             }
-
-            //initializing a new shape
-            circle_prefab = PhotonNetwork.InstantiateRoomObject("Circle", Vector3.zero, Quaternion.identity);
         }
         input_handler = gameObject.GetComponent<InputHandler>();
         Debug.Log("Input Handler initializing from Ope RPC");

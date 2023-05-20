@@ -399,6 +399,8 @@ public class InputHandler : MonoBehaviourPun {
 
     public void ParticipantReady(){
         initialized = true;
+        Debug.LogError("has init IH -> init render");
+        render.Initialize();
     }
 
     [PunRPC]

@@ -47,6 +47,7 @@ public class Participant : MonoBehaviourPun {
         if(photonView.IsMine || PhotonNetwork.IsMasterClient){
             log += "for myself";
             GameObject.Find("Operator(Clone)").GetComponent<InputHandler>().ParticipantReady();
+            Debug.LogError("shape is null : "+(GameObject.Find("Circle(Clone)")==null));
         } else {
             log += "for another one";
         }

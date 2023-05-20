@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b69086e8b66f462178febc523b79c8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setup: {fileID: 0}
-  ope_prefab: {fileID: 0}
-  part_prefab: {fileID: 0}
-  shape1_prefab: {fileID: 0}
+  setup: {fileID: 494432295}
+  ope_prefab: {fileID: 6783270532631244201, guid: 404107d6bb675422b80c4202d8ca070f, type: 3}
+  part_prefab: {fileID: 7035605697703089616, guid: baae038d33a5c61338198bfed446f7f2, type: 3}
+  shape1_prefab: {fileID: 6595165765516139464, guid: e3869d12a7890abcb81dfc58424469a9, type: 3}
 --- !u!4 &494432297
 Transform:
   m_ObjectHideFlags: 0

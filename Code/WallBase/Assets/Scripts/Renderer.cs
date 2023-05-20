@@ -69,7 +69,11 @@ public class Renderer : MonoBehaviourPun {
     }
 
     public void Input(string name, Vector3 coord, int id){
-        //Debug.Log("Received input : "+name+" with shape : "+(shape!=null));
+        if(init){
+            Debug.Log("Received input : "+name+" with shape : "+(shape!=null));
+        } else {
+            Debug.Log("Something arrived but I'm not started yet...");
+        }
     }
 
     public void Initialize(){

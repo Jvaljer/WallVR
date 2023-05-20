@@ -43,6 +43,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             //if master then instantiate operator
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+            shape1_prefab = PhotonNetwork.InstantiateRoomObject("Circle", Vector3.zero, Quaternion.identity);
         } else {
             Debug.Log("OnJoinedRoom -> !IsMasterClient");
             //else instantiate participant
