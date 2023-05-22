@@ -401,13 +401,14 @@ public class InputHandler : MonoBehaviourPun {
         Vector3 input; 
         if(PhotonNetwork.IsMasterClient){
             input = Camera.main.ScreenToWorldPoint(new Vector3(x_*Screen.width, y_*Screen.height, 0f));
-        } else {
+            input.y *= -1;
+            input.z = 0f;
+            render.Input(str, input, id_);
+        } else if(photonView.IsMine){
             input = Camera.main.ScreenToWorldPoint(new Vector3(-setup.x_pos + x_ * setup.wall_width, -setup.y_pos + y_ * setup.wall_height, 0f));
+            input.y *= -1;
+            input.z = 0f;
+            render.Input(str, input, id_);
         }
-        input.y *= -1;
-        input.z = 0f;
-        //Debug.Log("Input Sent to render via RPC");
-        //Debug.Log("input is on : "+input);
-        render.Input(str, input, id_); //turn this into RPC ??
     }
 }

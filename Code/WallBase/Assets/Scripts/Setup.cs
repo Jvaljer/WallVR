@@ -110,7 +110,7 @@ public class Setup : MonoBehaviourPun {
                 //wall = new Wildest();
                 break;
             case "DESKTOP":
-                wall = new Desktop(1,2);
+                wall = new Desktop(2,2);
                 break;
             default:
                 //using wilder

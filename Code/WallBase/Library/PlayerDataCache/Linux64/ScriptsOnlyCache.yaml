@@ -1552,4 +1552,4 @@ ScriptsOnlyBuild:
   platform: 24
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: /home/abel/JvaljerGit/WallVR/Code/executable/WallBase_exe.x86_64
+  playerPath: /home/abel/JvaljerGit/WallVR/Code/WallBase_exe.x86_64
