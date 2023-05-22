@@ -20,7 +20,7 @@ public class Operator : MonoBehaviourPun {
 
     [PunRPC]
     public void Initialize(){
-        Debug.LogError("Operator is Initializing");
+        //Debug.LogError("Operator is Initializing");
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         network = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
         if(photonView.IsMine){
@@ -34,9 +34,9 @@ public class Operator : MonoBehaviourPun {
             }
         }
         input_handler = gameObject.GetComponent<InputHandler>();
-        Debug.Log("Input Handler initializing from Ope RPC");
+        //Debug.Log("Input Handler initializing from Ope RPC");
         input_handler.InitalizeIH();
-        Debug.LogError("Calling the OpeInit Statement : "+PhotonNetwork.LocalPlayer.ActorNumber);
+        //Debug.LogError("Calling the OpeInit Statement : "+PhotonNetwork.LocalPlayer.ActorNumber);
         network.OperatorInitialized();
     }
 }

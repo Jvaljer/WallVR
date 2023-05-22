@@ -41,7 +41,7 @@ public class Setup : MonoBehaviourPun {
 
     public void Awake(){
         //parsing all the given args
-        Debug.Log("Setup -> Parsing args");
+        //Debug.Log("Setup -> Parsing args");
         
         //all defautl values
         is_master = false;
@@ -71,11 +71,11 @@ public class Setup : MonoBehaviourPun {
                     //looking at user's role
                     if(args[i+1]=="m"){
                         //is master 
-                        Debug.Log("Setup -> user is master");
+                        //Debug.Log("Setup -> user is master");
                         is_master = true; //quite useless -> PhotonNetwork.IsMasterClient defining this
                     } else if(args[i+1]=="p"){
                         //is  client
-                        Debug.Log("Setup -> user is participant");
+                        //Debug.Log("Setup -> user is participant");
                         is_master = false;
                     }
                     break;

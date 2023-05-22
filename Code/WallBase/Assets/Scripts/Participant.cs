@@ -9,10 +9,10 @@ public class Participant : MonoBehaviourPun {
     private Setup setup;
 
     public void NetworkStart(Setup stp){
-        Debug.LogError("Network Start for Participant");
+        //Debug.LogError("Network Start for Participant");
         setup = stp;
         if(photonView.IsMine){
-            Debug.Log("I am P"+PhotonNetwork.LocalPlayer.ActorNumber);
+            //Debug.Log("I am P"+PhotonNetwork.LocalPlayer.ActorNumber);
             InitMyAttributes();
         }
     }
@@ -36,9 +36,9 @@ public class Participant : MonoBehaviourPun {
         Vector3 screen_pos = Camera.main.WorldToScreenPoint(Camera.main.transform.position);
         Vector3 world_pos = Camera.main.ScreenToWorldPoint(new Vector3(center_x, center_y, screen_pos.z));
         Camera.main.transform.position = world_pos;
-        Debug.Log("setup.x_pos-> "+setup.x_pos+"  setup.screen_width/2-> "+(setup.screen_width/2)+"  setup.wall.Width()/2-> "+(setup.wall.Width()/2)+"  := center_x-> "+center_x+"    screen_pos.x-> "+screen_pos.x+"   world_pos.x-> "+world_pos);
+        //Debug.Log("setup.x_pos-> "+setup.x_pos+"  setup.screen_width/2-> "+(setup.screen_width/2)+"  setup.wall.Width()/2-> "+(setup.wall.Width()/2)+"  := center_x-> "+center_x+"    screen_pos.x-> "+screen_pos.x+"   world_pos.x-> "+world_pos);
 
-        Debug.Log("P"+PhotonNetwork.LocalPlayer.ActorNumber+" has cam center "+Camera.main.transform.position+"::"+world_pos+" instead of "+old_pos+"  and scale was "+scale);
+        //Debug.Log("P"+PhotonNetwork.LocalPlayer.ActorNumber+" has cam center "+Camera.main.transform.position+"::"+world_pos+" instead of "+old_pos+"  and scale was "+scale);
     }
 
     [PunRPC]
@@ -47,22 +47,22 @@ public class Participant : MonoBehaviourPun {
         if(photonView.IsMine || PhotonNetwork.IsMasterClient){
             log += "for myself";
             GameObject.Find("Operator(Clone)").GetComponent<InputHandler>().ParticipantReady();
-            Debug.LogError("shape is null : "+(GameObject.Find("Circle(Clone)")==null));
+            //Debug.LogError("shape is null : "+(GameObject.Find("Circle(Clone)")==null));
         } else {
             log += "for another one";
         }
-        Debug.LogError(log);
+        //Debug.LogError(log);
     }
 
     [PunRPC]
     public void Operatorleft(){
-        Debug.Log("I see operator has left -> I QUIT");
+        //Debug.Log("I see operator has left -> I QUIT");
         Application.Quit();
     }
 
     [PunRPC]
     public void SomeoneLeft(int pv){
-        Debug.Log("I see that someone left the program : "+pv);
+        //Debug.Log("I see that someone left the program : "+pv);
         if(pv==1){ //in this program logic, 1 is the master client (operator)
             Application.Quit();
         }

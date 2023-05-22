@@ -35,17 +35,18 @@ public class InputHandler : MonoBehaviourPun {
     private List<int> to_delete_ids;
 
     public void Awake(){
-        Debug.Log("InputHandler Awakes");
+        //Debug.Log("InputHandler Awakes");
         m_devices = new Dictionary<object, MDevice>();
         p_cursors = new Dictionary<int, PCursor>();
         to_delete_ids = new List<int>();
     }
 
     public void InitalizeIH(){
-        Debug.Log("InputHandler Initialize "+photonView.IsMine);
+        //Debug.Log("InputHandler Initialize "+photonView.IsMine);
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         render = GameObject.Find("ScriptManager").GetComponent<Renderer>();
         
+        GameObject.Find("Circle(Clone)").GetComponent<Circle>().AddOwner(0);
         //supposing we don't have any right/left camera, only the main one (WILDER wall)
         if(photonView.IsMine){
             Cursor.visible = true; 
@@ -58,15 +59,15 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     public void Update(){
-        if(up_run){
+        /* if(up_run){
             Debug.LogError("ih update running");
             up_run = false;
-        }
+        } */
         if(photonView.IsMine && initialized){
-            if(up_init){
+            /*if(up_init){
                 Debug.LogError("Ih -> Update is good");
                 up_init = false;
-            }
+            } */
             //Debug.Log("we do be running");
             float mouse_x = Input.mousePosition.x/Screen.width;
             float mouse_y = (Screen.height - Input.mousePosition.y)/Screen.height;
@@ -74,7 +75,7 @@ public class InputHandler : MonoBehaviourPun {
             //handling drag & drop
             if(Input.GetMouseButtonDown(0)){
                 //Debug.Log("Cursor Start Move");
-                StartMoveMCursor(this, 0, mouse_x, mouse_y, false);
+                StartMoveMCursor(this, 0, mouse_x, mouse_y, true);
                 photonView.RPC("InputRPC", RpcTarget.AllBuffered, "Down", mouse_x, mouse_y, 0);
             } else if(Input.GetMouseButtonUp(0)){
                 //Debug.Log("Cursor Stop Move");
@@ -83,7 +84,9 @@ public class InputHandler : MonoBehaviourPun {
             } else {
                 //Debug.Log("Cursor Move");
                 MoveMCursor(this, 0, mouse_x, mouse_y);
-                photonView.RPC("InputRPC", RpcTarget.AllBuffered, "Move", mouse_x, mouse_y, 0);
+                if(GetMCursor(this,0).drag){
+                    photonView.RPC("InputRPC", RpcTarget.AllBuffered, "Move", mouse_x, mouse_y, 0);
+                }
             }
 
             //handling cursors
@@ -115,12 +118,6 @@ public class InputHandler : MonoBehaviourPun {
                     }
 
                     //drag predicates handling
-                    if(mc.start_drag){
-                        mc.start_drag = false;
-                    }
-                    if(mc.end_drag){
-                        mc.end_drag = false;
-                    }
                     if(mc.clicked){
                         mc.clicked = false;
                     }
@@ -147,13 +144,8 @@ public class InputHandler : MonoBehaviourPun {
         public float y { get; private set; }
         public int button { get; set; }
         public bool hidden { get; set; }
-
         public bool drag { get; set; }
-        public bool start_drag { get; set; }
-        public bool end_drag { get; set; }
-
         public bool clicked { get; set; }
-
         public bool to_delete { get; set; }
 
         //Constructor
@@ -180,7 +172,7 @@ public class InputHandler : MonoBehaviourPun {
             p_cursor = null;
         }
 
-        public void Drag(){
+        public void Pick(){
             drag = true;
         }
         public void Drop(){
@@ -197,7 +189,7 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     public void CreateMCursor(object obj, int id_, float x_, float y_, Color c_, bool hid_=false){
-        Debug.Log("first Create Cursor");
+        //Debug.Log("first Create Cursor");
         MDevice device = GetDevice(obj);
         if(device==null){
             return;
@@ -229,10 +221,7 @@ public class InputHandler : MonoBehaviourPun {
         if(cursor==null){
             return;
         }
-        cursor.Move(x_, y_);
-        if(d_){
-            cursor.start_drag = true;
-        }
+        cursor.Pick();
     }
     public void MoveMCursor(object obj, int id_, float x_, float y_){
         MCursor cursor = GetMCursor(obj, id_);
@@ -245,9 +234,6 @@ public class InputHandler : MonoBehaviourPun {
         MCursor cursor = GetMCursor(obj, id_);
         if(cursor==null){
             return;
-        }
-        if(cursor.drag){
-            cursor.end_drag = true;
         }
         cursor.Drop();
     }
@@ -314,7 +300,7 @@ public class InputHandler : MonoBehaviourPun {
     //RPC to create a PCursor
     [PunRPC]
     public void CreatePCursorRPC(int uid, float x_, float y_, string str){
-        Debug.Log("Creating a participant cursor -> ("+uid+":"+"("+x_+","+y_+")");
+        //Debug.Log("Creating a participant cursor -> ("+uid+":"+"("+x_+","+y_+")");
         Color color;
         ColorUtility.TryParseHtmlString(str, out color);
         p_cursors.Add(uid, new PCursor(x_, y_, color));
@@ -323,7 +309,7 @@ public class InputHandler : MonoBehaviourPun {
     //RPC to remove a PCursor
     [PunRPC]
     public void RemovePCursorRPC(int uid){
-        Debug.Log("Removing the participant cursor : "+uid);
+        //Debug.Log("Removing the participant cursor : "+uid);
         p_cursors.Remove(uid);
     }
 
@@ -331,7 +317,7 @@ public class InputHandler : MonoBehaviourPun {
     [PunRPC]
     public void MoveOrCreatePCursorRPC(int uid, float x_, float y_, string str){
         if(!p_cursors.ContainsKey(uid)){
-            Debug.Log("(from Move/Create):: Creating a participant cursor -> ("+uid+":"+"("+x_+","+y_+")");
+            //Debug.Log("(from Move/Create):: Creating a participant cursor -> ("+uid+":"+"("+x_+","+y_+")");
             Color color;
             ColorUtility.TryParseHtmlString(str, out color);
             p_cursors.Add(uid, new PCursor(x_, y_, color));
@@ -364,7 +350,7 @@ public class InputHandler : MonoBehaviourPun {
 
         //cursor creating method (adds & returns a new cursor);
         public MCursor CreateCursor(int id_, float x_, float y_, Color c_){
-            Debug.Log("Create new MCursor "+id_);
+            //Debug.Log("Create new MCursor "+id_);
             MCursor cursor = new MCursor(id_, x_, y_, c_);
             cursors.Add(id_, cursor);
             return cursor;
@@ -372,7 +358,7 @@ public class InputHandler : MonoBehaviourPun {
 
         //cursor removing method
         public void RemoveCursor(int id_){
-            Debug.Log("Removing a MCursor "+id_);
+            //Debug.Log("Removing a MCursor "+id_);
             cursors.Remove(id_);
         }
     };
@@ -385,7 +371,7 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     public void RegisterDevice(string str, object obj){
-        Debug.Log("Registering new device "+str);
+        //Debug.Log("Registering new device "+str);
         //if the object is already referrring a device -> nothing to register
         if(GetDevice(obj)!=null){
             return;
@@ -399,17 +385,23 @@ public class InputHandler : MonoBehaviourPun {
 
     public void ParticipantReady(){
         initialized = true;
-        Debug.LogError("has init IH -> init render");
+        //Debug.LogError("has init IH -> init render");
         render.Initialize();
     }
 
     [PunRPC]
     public void InputRPC(string str, float x_, float y_, int id_){
         //Debug.Log("InputRPC -> "+str);
-        Vector3 input = Camera.main.ScreenToWorldPoint(new Vector3(x_*Screen.width, y_*Screen.height, 0f));
+        Vector3 input; 
+        if(PhotonNetwork.IsMasterClient){
+            input = Camera.main.ScreenToWorldPoint(new Vector3(x_*Screen.width, y_*Screen.height, 0f));
+        } else {
+            input = Camera.main.ScreenToWorldPoint(new Vector3(-setup.x_pos + x_ * setup.wall_width, -setup.y_pos + y_ * setup.wall_height, 0f));
+        }
+        input.y *= -1;
         input.z = 0f;
-
         //Debug.Log("Input Sent to render via RPC");
+        Debug.Log("input is on : "+input);
         render.Input(str, input, id_); //turn this into RPC ??
     }
 }

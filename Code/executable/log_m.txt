@@ -1,1533 +1,725 @@
 
-Setup -> user is master
-
-NetworkHandler -> Connect
-
-True
-
-PUN is in development mode (development build). As the 'dev region' is not empty (eu) it overrides the found best region. See PhotonServerSettings.
-
-Connected to Master
-
-OnJoinedRoom
-
-OnJoinedRoom -> IsMasterClient
-
-InputHandler Awakes
-
-ih update running
-
-OnPlayerEnteredRoom
-
-OnPlayerEnteredRoom
-
-Operator is Initializing
-
-Input Handler initializing from Ope RPC
-
-InputHandler Initialize True
-
-Registering new device Mouse
-
-first Create Cursor
-
-Create new MCursor 0
-
-Calling the OpeInit Statement : 1
-
-Operator has initialized so now our turn : 1
-
 requesting resize 1024 x 256
 resizing window to 1024 x 256
 Desktop is 1360 x 768 @ 60 Hz
-has init IH -> init render
+input is on : (0.1, -0.1, 0.0)
 
-initializing renderer
+input is on : (0.1, -0.1, 0.0)
 
-ScriptManager
+shape moving on : (0.1, -0.1, 0.0)
 
-Camera
+input is on : (0.1, -0.1, 0.0)
 
-Operator(Clone)
+shape moving on : (0.1, -0.1, 0.0)
 
-Circle(Clone)
+input is on : (0.1, -0.1, 0.0)
 
-Sprite
+shape moving on : (0.1, -0.1, 0.0)
 
-Participant(Clone)
+input is on : (0.1, -0.1, 0.0)
 
-Entering Rendering ope_joined section as OPERATOR True
+shape moving on : (0.1, -0.1, 0.0)
 
-shape is null : False
+input is on : (0.1, -0.1, 0.0)
 
-Operator called Start RPC for myself
+shape moving on : (0.1, -0.1, 0.0)
 
-has init IH -> init render
+input is on : (0.1, -0.1, 0.0)
 
-initializing renderer
+shape moving on : (0.1, -0.1, 0.0)
 
-ScriptManager
+input is on : (0.1, -0.1, 0.0)
 
-Camera
+shape moving on : (0.1, -0.1, 0.0)
 
-Operator(Clone)
+input is on : (0.1, -0.1, 0.0)
 
-Circle(Clone)
+shape moving on : (0.1, -0.1, 0.0)
 
-Sprite
+input is on : (0.1, -0.1, 0.0)
 
-Participant(Clone)
+shape moving on : (0.1, -0.1, 0.0)
 
-Participant(Clone)
+input is on : (0.1, -0.1, 0.0)
 
-Entering Rendering ope_joined section as OPERATOR True
+shape moving on : (0.1, -0.1, 0.0)
 
-shape is null : False
+input is on : (0.1, -0.1, 0.0)
 
-Operator called Start RPC for myself
+shape moving on : (0.1, -0.1, 0.0)
 
-Ih -> Update is good
+input is on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.1, -0.1, 0.0)
 
-Creating a participant cursor -> (0:(0.3251953,0.00390625)
+input is on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (0.0, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.0, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-0.2, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-0.2, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-0.7, -0.5, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-0.7, -0.5, 0.0)
 
-Received input : Move with shape : True
+input is on : (-1.7, -1.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-1.7, -1.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-1.8, -1.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-1.8, -1.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.0, -1.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.0, -1.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.0, -1.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.0, -1.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.2, -1.6, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.2, -1.6, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.3, -1.6, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.3, -1.6, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.4, -1.7, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.4, -1.7, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.7, -1.8, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.7, -1.8, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.7, -1.9, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.7, -1.9, 0.0)
 
-Received input : Move with shape : True
+input is on : (-2.9, -2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-2.9, -2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.1, -2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.1, -2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.3, -2.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.3, -2.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.4, -2.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.4, -2.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.5, -2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.5, -2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, -2.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, -2.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.9, -2.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.9, -2.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.9, -2.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.9, -2.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.0, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.0, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.1, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.1, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.1, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.1, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.2, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.2, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -2.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.4, -2.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.4, -2.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.4, -2.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.4, -2.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -1.9, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -1.9, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.3, -1.6, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.3, -1.6, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.2, -1.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.2, -1.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.1, -0.8, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.1, -0.8, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.1, -0.5, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.1, -0.5, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.1, -0.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.1, -0.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.1, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.1, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.0, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.0, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-4.0, 0.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-4.0, 0.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.9, 0.5, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.9, 0.5, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.9, 0.7, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.9, 0.7, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.9, 0.9, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.9, 0.9, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.9, 1.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.9, 1.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 1.3, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 1.3, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 1.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 1.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 1.6, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 1.6, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 1.8, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 1.8, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 1.9, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 1.9, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.8, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.7, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.7, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.6, 2.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.6, 2.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.4, 2.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.4, 2.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (-3.1, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-3.1, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (-1.9, 1.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-1.9, 1.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (-0.9, 1.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-0.9, 1.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (-0.1, 0.7, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (-0.1, 0.7, 0.0)
 
-Received input : Move with shape : True
+input is on : (0.3, 0.5, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.3, 0.5, 0.0)
 
-Received input : Move with shape : True
+input is on : (0.8, 0.4, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (0.8, 0.4, 0.0)
 
-Received input : Move with shape : True
+input is on : (1.2, 0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (1.2, 0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (1.4, 0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (1.4, 0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (1.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (1.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (1.8, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (1.8, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.0, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.0, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.1, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.1, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.1, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.2, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.2, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.3, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.4, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.4, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (2.7, -0.2, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (2.7, -0.2, 0.0)
 
-Received input : Move with shape : True
+input is on : (3.4, -0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (3.4, -0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (4.2, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (4.2, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (4.7, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (4.7, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (5.2, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (5.2, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (5.7, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (5.7, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (6.1, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (6.1, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (6.3, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (6.3, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (6.6, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (6.6, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (6.9, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (6.9, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.1, 0.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.1, 0.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.3, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.3, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.4, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.4, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.5, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.5, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.5, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.5, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (7.6, 0.1, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
+shape moving on : (14.7, 2.0, 0.0)
 
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
-
-Received input : Move with shape : True
+input is on : (14.7, 2.0, 0.0)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 7f5375075640 -> priority: 1 
-  Thread -> id: 7f5374874640 -> priority: 1 
-##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1684626488106,"processId":8719,"allocatedMemory":155659,"memoryLabels":[{"Permanent":40},{"NewDelete":150177},{"Thread":128},{"Manager":1200},{"Serialization":456},{"String":174},{"DynamicArray":4},{"HashMap":1536},{"Sprites":16},{"GI":296},{"VR":1536},{"Subsystems":96}]}
+  Thread -> id: 7fd872ffa640 -> priority: 1 
+  Thread -> id: 7fd8727f9640 -> priority: 1 
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1684744772348,"processId":24798,"allocatedMemory":155563,"memoryLabels":[{"Permanent":40},{"NewDelete":150081},{"Thread":128},{"Manager":1200},{"Serialization":456},{"String":174},{"DynamicArray":4},{"HashMap":1536},{"Sprites":16},{"GI":296},{"VR":1536},{"Subsystems":96}]}
 

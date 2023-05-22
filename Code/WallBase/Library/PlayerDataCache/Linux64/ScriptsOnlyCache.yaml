@@ -30,7 +30,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -93,51 +92,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1450}
     - Class: 114
-      Script: {instanceID: 1492}
+      Script: {instanceID: 1490}
     - Class: 114
-      Script: {instanceID: 1574}
+      Script: {instanceID: 1572}
     - Class: 114
-      Script: {instanceID: 1712}
+      Script: {instanceID: 1710}
     - Class: 114
-      Script: {instanceID: 1742}
+      Script: {instanceID: 1740}
     - Class: 114
-      Script: {instanceID: 1746}
+      Script: {instanceID: 1744}
     - Class: 114
-      Script: {instanceID: 2294}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2356}
+      Script: {instanceID: 2354}
     - Class: 114
-      Script: {instanceID: 2650}
+      Script: {instanceID: 2648}
     - Class: 114
-      Script: {instanceID: 2916}
+      Script: {instanceID: 2914}
     - Class: 114
-      Script: {instanceID: 3170}
+      Script: {instanceID: 3168}
     - Class: 114
-      Script: {instanceID: 3180}
+      Script: {instanceID: 3178}
     - Class: 114
-      Script: {instanceID: 3320}
+      Script: {instanceID: 3318}
     - Class: 114
-      Script: {instanceID: 3612}
+      Script: {instanceID: 3610}
     - Class: 114
-      Script: {instanceID: 3834}
+      Script: {instanceID: 3832}
     - Class: 114
-      Script: {instanceID: 4204}
+      Script: {instanceID: 4202}
     - Class: 114
-      Script: {instanceID: 4210}
+      Script: {instanceID: 4208}
     - Class: 114
-      Script: {instanceID: 4404}
+      Script: {instanceID: 4402}
     - Class: 114
-      Script: {instanceID: 4468}
+      Script: {instanceID: 4466}
     - Class: 114
-      Script: {instanceID: 4558}
+      Script: {instanceID: 4556}
     - Class: 114
-      Script: {instanceID: 4568}
+      Script: {instanceID: 4566}
     - Class: 114
-      Script: {instanceID: 4942}
+      Script: {instanceID: 4940}
     - Class: 114
-      Script: {instanceID: 5104}
+      Script: {instanceID: 5102}
     - Class: 114
-      Script: {instanceID: 5500}
+      Script: {instanceID: 5498}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128

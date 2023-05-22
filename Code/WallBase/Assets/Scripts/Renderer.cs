@@ -27,7 +27,6 @@ public class Renderer : MonoBehaviourPun {
     //shapes attributes
     //all shapes
     private Dictionary<string, GameObject> shapes;
-    private Dictionary<string, Vector3> shapes_pos;
     private GameObject shape; //yet testing with only one shape (the circle)
 
     //self attributes
@@ -36,54 +35,57 @@ public class Renderer : MonoBehaviourPun {
     public void Start(){
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         network_handler = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
-        Debug.Log("Renderer Starts "+PhotonNetwork.IsMasterClient+"  ope_joined-> "+network_handler.ope_joined+" |=| "+GameObject.Find("Operator")!=null);
-
-        /*
-        //initializing render scales
-        if(GameObject.Find("Operator")!=null){
-            ope = GameObject.Find("Operator"); 
-            shape = GameObject.Find("Circle 0");
-            if(PhotonNetwork.IsMasterClient){
-                Debug.Log("Entering Rendering ope_joined section as OPERATOR "+(shape!=null));
-                sw = Screen.width;
-                sh = Screen.height;
-                screen_ratio = sh/sw;
-                pix_to_unit = Camera.main.orthographicSize /(sh/2.0f);
-                abs = 0.1f;
-                ih_scale = ih_scale*abs;
-            } else if(photonView.IsMine){
-                Debug.Log("Entering Rendering ope_joined section as PARTICIPANT "+(shape!=null));
-                sw = setup.wall_width;
-                sh = setup.wall_height;
-                screen_ratio = sh/sw;
-                ortho_size = (float)Camera.main.orthographicSize / (float)setup.wall.RowsAmount();
-                pix_to_unit = (float)setup.wall.RowsAmount() * (float)Camera.main.orthographicSize / (sh/2.0f);
-                abs = 1.0f;
-                shape.transform.localScale *= 2f;
-            } else {
-                Debug.Log("not my photonView nor master client");
-            }
-        } else {
-            Debug.Log("Renderer start -> ope is null");
-        } */
+        shapes = new Dictionary<string, GameObject>();
+        //Debug.Log("Renderer Starts "+PhotonNetwork.IsMasterClient+"  ope_joined-> "+network_handler.ope_joined+" |=| "+GameObject.Find("Operator")!=null);
     }
 
     public void Input(string name, Vector3 coord, int id){
-        if(init){
+        /* if(init){
             Debug.Log("Received input : "+name+" with shape : "+(shape!=null));
         } else {
             Debug.Log("Something arrived but I'm not started yet...");
+        } */
+
+        //Debug.Log("Receiving an input : "+name+" from "+id);
+        //first we wanna check which one of the shape we are tryna move 
+        foreach(GameObject obj in shapes.Values){
+            //Debug.Log("rooting the shapes : "+obj.name);
+            Circle obj_ctrl = obj.GetComponent<Circle>();
+            //Debug.Log("is owned by "+id+ " -> "+obj_ctrl.IsOwnedBy(id));
+            if(obj_ctrl.IsOwnedBy(id)){ //later on we'll like to add more scripts + abstract class
+                //Debug.LogError("our shape is well related to "+id);
+                switch (name){
+                    case "Down":
+                        obj_ctrl.Pick();
+                        break;
+                    case "Move":
+                        //already tested if dragging ? test it again ?
+                        if(obj_ctrl.IsDragged()){
+                            //then move shape depending on role
+                            Debug.Log("shape moving on : "+coord);
+                            shape.transform.position = coord;
+                        }
+                        break;
+                    case "Up":
+                        obj_ctrl.Drop();
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 
     public void Initialize(){
-        Debug.Log("initializing renderer");
-        DisplayScene();
+        //Debug.Log("initializing renderer");
         ope = GameObject.Find("Operator(Clone)"); 
         shape = GameObject.Find("Circle(Clone)");
+        if(!shapes.ContainsKey(shape.name)){
+            shapes.Add(shape.name,shape);
+        }
 
         if(PhotonNetwork.IsMasterClient){
-            Debug.Log("Entering Rendering ope_joined section as OPERATOR "+(shape!=null));
+            //Debug.Log("Entering Rendering ope_joined section as OPERATOR "+(shape!=null));
             sw = Screen.width;
             sh = Screen.height;
             screen_ratio = sh/sw;
@@ -91,7 +93,7 @@ public class Renderer : MonoBehaviourPun {
             abs = 0.1f;
             ih_scale = ih_scale*abs;
         } else {
-            Debug.Log("Entering Rendering ope_joined section as PARTICIPANT "+(shape!=null));
+            //Debug.Log("Entering Rendering ope_joined section as PARTICIPANT "+(shape!=null));
             sw = setup.wall_width;
             sh = setup.wall_height;
             screen_ratio = sh/sw;
@@ -102,33 +104,5 @@ public class Renderer : MonoBehaviourPun {
         }
 
         init = true;
-    }
-
-    public void DisplayScene(){
-        //getting the active scene 
-        Scene scene = SceneManager.GetActiveScene();
-
-        List<GameObject> go_list = new List<GameObject>();
-
-        foreach(GameObject root in scene.GetRootGameObjects()){
-            go_list.Add(root);
-            GetChildren(root, go_list, 1);
-        }
-
-        foreach(GameObject go in go_list){
-            string indent = new string('-', go.transform.GetSiblingIndex());
-            Debug.Log(indent+go.name);
-        }
-    }
-
-    public void GetChildren(GameObject root_, List<GameObject> list_, int i_){
-        for (int i = 0; i < root_.transform.childCount; i++){
-
-            GameObject child = root_.transform.GetChild(i).gameObject; 
-            // Add the child object to the list
-            list_.Add(child);   
-            // Recursively get the child GameObjects
-            GetChildren(child, list_, i_+1);
-        }
     }
 }
