@@ -22,15 +22,11 @@ public class Renderer : MonoBehaviourPun {
     private float abs = 1.0f;
     private float ih_scale = 1.5f;
     private float ortho_size = 5f;
-    private float pixel_in_mm = 0.264275256f; //abel's laptop
+    //private float pixel_in_mm = 0.264275256f; //abel's laptop
 
     //shapes attributes
     //all shapes
     private Dictionary<string, GameObject> shapes;
-    private GameObject shape; //yet testing with only one shape (the circle)
-
-    //self attributes
-    private bool init = false;
 
     public void Start(){
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
@@ -40,34 +36,33 @@ public class Renderer : MonoBehaviourPun {
     }
 
     public void Input(string name, Vector3 coord, int id){
-        /* if(init){
-            Debug.Log("Received input : "+name+" with shape : "+(shape!=null));
-        } else {
-            Debug.Log("Something arrived but I'm not started yet...");
-        } */
-
         //Debug.Log("Receiving an input : "+name+" from "+id);
-        //first we wanna check which one of the shape we are tryna move 
+        //first we wanna check which one of the shape we are tryna move
         foreach(GameObject obj in shapes.Values){
             //Debug.Log("rooting the shapes : "+obj.name);
-            Circle obj_ctrl = obj.GetComponent<Circle>();
+            Shape obj_ctrl = obj.GetComponent<Shape>();
             //Debug.Log("is owned by "+id+ " -> "+obj_ctrl.IsOwnedBy(id));
             if(obj_ctrl.IsOwnedBy(id)){ //later on we'll like to add more scripts + abstract class
                 //Debug.LogError("our shape is well related to "+id);
                 switch (name){
                     case "Down":
-                        obj_ctrl.Pick();
+                        Debug.Log("testing down for "+obj.name);
+                        if(obj_ctrl.CoordsInside(coord)){
+                            obj.GetComponent<PhotonView>().RPC("PickRPC", RpcTarget.AllBuffered);
+                        }
                         break;
                     case "Move":
                         //already tested if dragging ? test it again ?
                         if(obj_ctrl.IsDragged()){
                             //then move shape depending on role
-                            Debug.Log("shape moving on : "+coord);
-                            shape.transform.position = coord;
+                            //Debug.Log("shape moving on : "+coord);
+                            //obj.transform.position = coord;
+                            //obj_ctrl.PositionOn(coord);
+                            obj.GetComponent<PhotonView>().RPC("MoveRPC", RpcTarget.AllBuffered, coord);
                         }
                         break;
                     case "Up":
-                        obj_ctrl.Drop();
+                        obj.GetComponent<PhotonView>().RPC("DropRPC", RpcTarget.AllBuffered);
                         break;
                     default:
                         break;
@@ -78,10 +73,9 @@ public class Renderer : MonoBehaviourPun {
 
     public void Initialize(){
         //Debug.Log("initializing renderer");
-        ope = GameObject.Find("Operator(Clone)"); 
-        shape = GameObject.Find("Circle(Clone)");
-        if(!shapes.ContainsKey(shape.name)){
-            shapes.Add(shape.name,shape);
+        ope = GameObject.Find("Operator(Clone)");
+        if(!shapes.ContainsKey("Circle(Clone)")){
+            shapes.Add(GameObject.Find("Circle(Clone)").name,GameObject.Find("Circle(Clone)"));
         }
 
         if(PhotonNetwork.IsMasterClient){
@@ -100,9 +94,9 @@ public class Renderer : MonoBehaviourPun {
             ortho_size = (float)Camera.main.orthographicSize / (float)setup.wall.RowsAmount();
             pix_to_unit = (float)setup.wall.RowsAmount() * (float)Camera.main.orthographicSize / (sh/2.0f);
             abs = 1.0f;
-            shape.transform.localScale *= 2f;
+            foreach(GameObject shape in shapes.Values){
+                shape.transform.localScale *= 2f;
+            }
         }
-
-        init = true;
     }
 }

@@ -46,7 +46,6 @@ public class InputHandler : MonoBehaviourPun {
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         render = GameObject.Find("ScriptManager").GetComponent<Renderer>();
         
-        GameObject.Find("Circle(Clone)").GetComponent<Circle>().AddOwner(0);
         //supposing we don't have any right/left camera, only the main one (WILDER wall)
         if(photonView.IsMine){
             Cursor.visible = true; 
@@ -56,6 +55,8 @@ public class InputHandler : MonoBehaviourPun {
             Cursor.visible = false;
             cursor_HW = 16*4;
         }
+        GameObject.Find("Circle(Clone)").GetComponent<Shape>().AddOwner(0);
+        //GameObject.Find("Square(Clone)").GetComponent<Shape>().AddOwner(0);
     }
 
     public void Update(){
@@ -87,6 +88,11 @@ public class InputHandler : MonoBehaviourPun {
                 if(GetMCursor(this,0).drag){
                     photonView.RPC("InputRPC", RpcTarget.AllBuffered, "Move", mouse_x, mouse_y, 0);
                 }
+            }
+
+            //handling shape creation ? 
+            if(Input.GetMouseButtonDown(1)){
+                Debug.LogError("right click buddy");
             }
 
             //handling cursors
@@ -258,7 +264,7 @@ public class InputHandler : MonoBehaviourPun {
         public PCursor(float x_, float y_, Color c_){
             x = x_;
             y = y_;
-            c_ = c_;
+            c = c_;
             tex = CursorsTex.SimpleCursor(c, Color.black, cursor_HW, cursor_T, cursor_L);
         }
 
@@ -401,7 +407,7 @@ public class InputHandler : MonoBehaviourPun {
         input.y *= -1;
         input.z = 0f;
         //Debug.Log("Input Sent to render via RPC");
-        Debug.Log("input is on : "+input);
+        //Debug.Log("input is on : "+input);
         render.Input(str, input, id_); //turn this into RPC ??
     }
 }

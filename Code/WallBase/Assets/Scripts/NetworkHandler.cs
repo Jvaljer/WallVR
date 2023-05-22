@@ -10,8 +10,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
 
     //photon room
     private RoomOptions room_opt;
-    private byte max_in_room = 11; //max with Pun FREE (but we need only 11)
-    private bool all_there;
+    private byte max_in_room = 11; //max with Pun FREE (but we need only 11 without VR)
     public int current_in_room { get; private set; }
     public bool ope_joined { get; private set; } = false;
 
@@ -19,6 +18,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     public GameObject ope_prefab;
     public GameObject part_prefab;
     public GameObject shape1_prefab;
+    public GameObject shape2_prefab;
 
     public void Awake(){
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -44,6 +44,9 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
             shape1_prefab = PhotonNetwork.InstantiateRoomObject("Circle", Vector3.zero, Quaternion.identity);
+            shape1_prefab.GetComponent<Shape>().Categorize("circle");
+            shape1_prefab.GetComponent<Shape>().SetSize(shape1_prefab.transform.localScale.x);
+            shape1_prefab.GetComponent<Shape>().PositionOn(Vector3.zero);
         } else {
             //Debug.Log("OnJoinedRoom -> !IsMasterClient");
             //else instantiate participant

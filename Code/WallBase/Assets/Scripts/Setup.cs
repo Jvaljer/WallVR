@@ -32,8 +32,6 @@ public class Setup : MonoBehaviourPun {
     public bool full_screen { get; private set; }
 
     //positionning attributes (client screens)
-    private string column;
-    private string row;
     public float wall_pos_x { get; private set; }
     public float wall_pos_y { get; private set; }
     public float x_pos { get; private set; }

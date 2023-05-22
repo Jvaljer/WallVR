@@ -12,7 +12,7 @@ public class Operator : MonoBehaviourPun {
     private InputHandler input_handler;
 
     //possible shapes prefab
-    private GameObject circle_prefab;
+    private GameObject square_prefab;
 
     //some predicates
     public bool prog_run { get; set; } = false;
@@ -38,5 +38,19 @@ public class Operator : MonoBehaviourPun {
         input_handler.InitalizeIH();
         //Debug.LogError("Calling the OpeInit Statement : "+PhotonNetwork.LocalPlayer.ActorNumber);
         network.OperatorInitialized();
+    }
+
+    [PunRPC]
+    public void InstantiateShape(string category, Vector3 pos){
+        switch (category){
+            case "circle":
+                break;
+            case "square":
+                square_prefab = PhotonNetwork.InstantiateRoomObject("Square", pos, Quaternion.identity);
+                square_prefab.GetComponent<PhotonView>().RPC("MoveRPC", RpcTarget.AllBuffered, pos);
+                break;
+            default:
+                break;
+        }
     }
 }
