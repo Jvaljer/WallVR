@@ -31,7 +31,7 @@ public class Setup : MonoBehaviourPun {
 
     //Screen attributes (participant screen ?)
     public bool full_screen { get; private set; }
-    public float part_zoom { get; private set; }
+    public float zoom_ratio { get; private set; }
 
     //positionning attributes (client screens)
     public float wall_pos_x { get; private set; }
@@ -116,7 +116,7 @@ public class Setup : MonoBehaviourPun {
                 //wall = new Wildest();
                 break;
             case "DESKTOP":
-                wall = new Desktop(2,2);
+                wall = new Desktop(1,2);
                 break;
             default:
                 //using wilder
@@ -126,7 +126,7 @@ public class Setup : MonoBehaviourPun {
         wall_height = wall.Height();
         wall_width = wall.Width();
 
-        part_zoom = (float) part_cnt/2;
+        zoom_ratio = 1f; //must calculate this
         //now that all this has been initialized we wanna connect to the server !
         ConnectToServer();
     }

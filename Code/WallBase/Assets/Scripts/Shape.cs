@@ -65,7 +65,7 @@ public class Shape : MonoBehaviourPun {
                 float down = position.y - half;
                 float left = position.x - half;
                 float right = position.x + half;
-                cond = (position.x<=right) && (position.x>=left) && (position.y<=up) && (position.y>=down);
+                cond = (coord.x<=right) && (coord.x>=left) && (coord.y<=up) && (coord.y>=down);
                 break;
             default:
                 break;

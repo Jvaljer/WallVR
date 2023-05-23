@@ -79,8 +79,7 @@ public class InputHandler : MonoBehaviourPun {
             //handling shape creation ? 
             if(Input.GetMouseButtonDown(1)){
                 Vector3 src_pos = new Vector3(mouse_x, mouse_y, 0f);
-                GameObject obj = PhotonNetwork.InstantiateRoomObject("Square", src_pos , Quaternion.identity);
-                photonView.RPC("NewShapeRPC", RpcTarget.AllBuffered, src_pos, 0, obj.name);
+                photonView.RPC("NewShapeRPC", RpcTarget.AllBuffered, src_pos, 0);
             }
 
             //handling cursors
@@ -379,7 +378,6 @@ public class InputHandler : MonoBehaviourPun {
         } else if(photonView.IsMine){
             Vector3 screen_input = Camera.main.WorldToScreenPoint(new Vector3(-setup.x_pos + x_ * setup.wall_width, -setup.y_pos + y_ * setup.wall_height, 0f));
             input = Camera.main.ScreenToWorldPoint(screen_input);
-            Debug.Log("setup : "+setup.x_pos+","+setup.y_pos+","+setup.wall_width+","+setup.wall_height);
             input.y *= -1f;
             input.z = 0f;
             render.Input(str, input, id_);
@@ -387,21 +385,25 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     [PunRPC]
-    public void NewShapeRPC(Vector3 pos, int id, string name){
+    public void NewShapeRPC(Vector3 pos, int id){
         Vector3 src;
         if(PhotonNetwork.IsMasterClient){
             Debug.LogError("Creating the new shape (master)");
+            pos.x *= Screen.width;
+            pos.y *= Screen.height;
             src = Camera.main.ScreenToWorldPoint(pos);
             src.y *= -1f;
             src.z = 0f;
-            render.NewShape(name, src, id, "square"); //turns it into an input ?? //only creating squares yet
+            GameObject obj = PhotonNetwork.InstantiateRoomObject("Square", src, Quaternion.identity);
+            render.NewShape(obj.name, src, id, "square"); //turns it into an input ?? //only creating squares yet
         } else if(photonView.IsMine){
             Debug.LogError("Creating the new shape (part)");
             Vector3 screen_src = Camera.main.WorldToScreenPoint(new Vector3(-setup.x_pos + pos.x * setup.wall_width, -setup.y_pos + pos.y * setup.wall_height, pos.z));
             src = Camera.main.ScreenToWorldPoint(screen_src);
             src.y *= -1f;
             src.z = 0f;
-            render.NewShape(name, src, id, "square"); //only creating squares yet
+            GameObject obj = PhotonNetwork.InstantiateRoomObject("Square", src, Quaternion.identity);
+            render.NewShape(obj.name, src, id, "square"); //only creating squares yet
         }
     }
 }

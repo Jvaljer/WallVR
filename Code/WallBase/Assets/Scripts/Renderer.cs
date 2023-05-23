@@ -52,7 +52,7 @@ public class Renderer : MonoBehaviourPun {
                         //already tested if dragging ? test it again ?
                         if(obj_ctrl.IsDragged()){
                             //then move shape depending on role
-                            obj.GetComponent<PhotonView>().RPC("MoveRPC", RpcTarget.AllBuffered, coord, setup.part_zoom);
+                            obj.GetComponent<PhotonView>().RPC("MoveRPC", RpcTarget.AllBuffered, coord, setup.zoom_ratio);
                         }
                         break;
                     case "Up":
@@ -77,7 +77,8 @@ public class Renderer : MonoBehaviourPun {
             shape_ctrl.AddOwner(id);
             shapes.Add(name, new_shape);
             if(!PhotonNetwork.IsMasterClient){
-                new_shape.transform.localScale *= setup.part_zoom;
+                Debug.LogError("not MC, sizing shape up");
+                new_shape.transform.localScale *= setup.zoom_ratio;
             }
         } else {
             Debug.LogError("can't get the shape bro");
@@ -85,14 +86,12 @@ public class Renderer : MonoBehaviourPun {
     }
 
     public void Initialize(){
-        //Debug.Log("initializing renderer");
         ope = GameObject.Find("Operator(Clone)");
         if(!shapes.ContainsKey("Circle(Clone)")){
             shapes.Add(GameObject.Find("Circle(Clone)").name,GameObject.Find("Circle(Clone)"));
         }
 
         if(PhotonNetwork.IsMasterClient){
-            //Debug.Log("Entering Rendering ope_joined section as OPERATOR "+(shape!=null));
             sw = Screen.width;
             sh = Screen.height;
             screen_ratio = sh/sw;
@@ -100,7 +99,6 @@ public class Renderer : MonoBehaviourPun {
             abs = 0.1f;
             ih_scale = ih_scale*abs;
         } else {
-            //Debug.Log("Entering Rendering ope_joined section as PARTICIPANT "+(shape!=null));
             sw = setup.wall_width;
             sh = setup.wall_height;
             screen_ratio = sh/sw;
@@ -110,7 +108,7 @@ public class Renderer : MonoBehaviourPun {
             foreach(GameObject shape in shapes.Values){
                 //zoom value = amount of division ?
                 //shape.transform.localScale *= 2f;
-                shape.transform.localScale *= setup.part_zoom;
+                shape.transform.localScale *= setup.zoom_ratio;
             }
         }
     }
