@@ -30,6 +30,7 @@ public class Setup : MonoBehaviourPun {
 
     //Screen attributes (participant screen ?)
     public bool full_screen { get; private set; }
+    public float part_zoom { get; private set; }
 
     //positionning attributes (client screens)
     public float wall_pos_x { get; private set; }
@@ -120,6 +121,7 @@ public class Setup : MonoBehaviourPun {
         wall_height = wall.Height();
         wall_width = wall.Width();
 
+        part_zoom = (float) part_cnt/2;
         //now that all this has been initialized we wanna connect to the server !
         ConnectToServer();
     }

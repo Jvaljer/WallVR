@@ -55,10 +55,7 @@ public class Renderer : MonoBehaviourPun {
                         //already tested if dragging ? test it again ?
                         if(obj_ctrl.IsDragged()){
                             //then move shape depending on role
-                            //Debug.Log("shape moving on : "+coord);
-                            //obj.transform.position = coord;
-                            //obj_ctrl.PositionOn(coord);
-                            obj.GetComponent<PhotonView>().RPC("MoveRPC", RpcTarget.AllBuffered, coord);
+                            obj.GetComponent<PhotonView>().RPC("MoveRPC", RpcTarget.AllBuffered, coord, setup.part_zoom);
                         }
                         break;
                     case "Up":
@@ -95,7 +92,9 @@ public class Renderer : MonoBehaviourPun {
             pix_to_unit = (float)setup.wall.RowsAmount() * (float)Camera.main.orthographicSize / (sh/2.0f);
             abs = 1.0f;
             foreach(GameObject shape in shapes.Values){
-                shape.transform.localScale *= 2f;
+                //zoom value = amount of division ?
+                //shape.transform.localScale *= 2f;
+                shape.transform.localScale *= setup.part_zoom;
             }
         }
     }

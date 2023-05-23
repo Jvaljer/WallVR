@@ -44,9 +44,10 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
             shape1_prefab = PhotonNetwork.InstantiateRoomObject("Circle", Vector3.zero, Quaternion.identity);
-            shape1_prefab.GetComponent<Shape>().Categorize("circle");
-            shape1_prefab.GetComponent<Shape>().SetSize(shape1_prefab.transform.localScale.x);
-            shape1_prefab.GetComponent<Shape>().PositionOn(Vector3.zero);
+            Shape sh1_ctrl = shape1_prefab.GetComponent<Shape>();
+            sh1_ctrl.Categorize("circle");
+            sh1_ctrl.SetSize(shape1_prefab.transform.localScale.x);
+            sh1_ctrl.PositionOn(Vector3.zero);
         } else {
             //Debug.Log("OnJoinedRoom -> !IsMasterClient");
             //else instantiate participant

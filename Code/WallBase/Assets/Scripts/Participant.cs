@@ -24,7 +24,6 @@ public class Participant : MonoBehaviourPun {
             setup.screen_width = Screen.width;
             setup.screen_height = Screen.height;
         } else {
-            Debug.LogError("sizing screen");
             Screen.SetResolution( (int)setup.screen_width, (int)setup.screen_height, false );
         }
 

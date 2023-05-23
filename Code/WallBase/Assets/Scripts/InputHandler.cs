@@ -137,6 +137,26 @@ public class InputHandler : MonoBehaviourPun {
         }
     }
 
+    //rendering cursors
+    public void OnGUI(){
+        if(initialized){
+            //Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
+            foreach(PCursor pc in p_cursors.Values){
+                float x, y;
+                if(PhotonNetwork.IsMasterClient){
+                    x = pc.x*Screen.width;
+                    y = pc.y*Screen.height;
+                    //Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
+                } else {
+                    x = -setup.x_pos + pc.x * setup.wall_width;
+                    y = -setup.y_pos + pc.y * setup.wall_height;
+                    //Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
+                }
+                GUI.DrawTexture(new Rect(x - cursor_HW, y - cursor_HW, 2*cursor_HW, 2*cursor_HW), pc.tex);
+            }
+        }
+    }
+
     /******************************************************************************/
     /*                 MASTER CURSORS CLASS AND METHODS                           */
     /******************************************************************************/
@@ -274,27 +294,6 @@ public class InputHandler : MonoBehaviourPun {
         }
     };
 
-    //rendering cursors
-    public void OnGUI(){
-        if(initialized){
-            //Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
-            foreach(PCursor pc in p_cursors.Values){
-                float x, y;
-                if(PhotonNetwork.IsMasterClient){
-                    x = pc.x*Screen.width;
-                    y = pc.y*Screen.height;
-                    //Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
-                } else {
-                    x = -setup.x_pos + pc.x * setup.wall_width;
-                    y = -setup.y_pos + pc.y * setup.wall_height;
-                    //Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
-                }
-    
-                GUI.DrawTexture(new Rect(x - cursor_HW, y - cursor_HW, 2*cursor_HW, 2*cursor_HW), pc.tex);
-            }
-        }
-    }
-
     //related methods
     public PCursor GetPCursor(object obj, int id_){
         if(GetMCursor(obj, id_)!=null){
@@ -405,7 +404,9 @@ public class InputHandler : MonoBehaviourPun {
             input.z = 0f;
             render.Input(str, input, id_);
         } else if(photonView.IsMine){
-            input = Camera.main.ScreenToWorldPoint(new Vector3(-setup.x_pos + x_ * setup.wall_width, -setup.y_pos + y_ * setup.wall_height, 0f));
+            Vector3 screen_input = Camera.main.WorldToScreenPoint(new Vector3(-setup.x_pos + x_ * setup.wall_width, -setup.y_pos + y_ * setup.wall_height, 0f));
+            input = Camera.main.ScreenToWorldPoint(screen_input);
+            Debug.Log("setup : "+setup.x_pos+","+setup.y_pos+","+setup.wall_width+","+setup.wall_height);
             input.y *= -1;
             input.z = 0f;
             render.Input(str, input, id_);

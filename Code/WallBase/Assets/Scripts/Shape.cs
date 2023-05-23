@@ -86,7 +86,10 @@ public class Shape : MonoBehaviourPun {
     }
 
     [PunRPC]
-    public void MoveRPC(Vector3 pos){
+    public void MoveRPC(Vector3 pos, float zoom = 1f){
+        if(!PhotonNetwork.IsMasterClient){
+            pos *= zoom;
+        }
         gameObject.transform.GetChild(0).position = pos;
         position = pos;
     }

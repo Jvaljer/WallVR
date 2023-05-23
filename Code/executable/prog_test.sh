@@ -12,7 +12,7 @@ MASTER_ONLY=0
 echo "executing for ope"
 ./$EXEC -popupwindow -screen-fullscreen 0 -screen-width 1024 -screen-height 512 -wall $WALL -sw 1024 -sh 512 -r $MASTER_ID -pa $PART_AMOUNT -logfile log_m.txt -mo $MASTER_ONLY &
 
-sleep 10
+sleep 5
 input="start"
 
 #waiting for the user to start all other programs
