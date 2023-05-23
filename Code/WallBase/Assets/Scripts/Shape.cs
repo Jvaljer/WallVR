@@ -57,7 +57,6 @@ public class Shape : MonoBehaviourPun {
                 float dist = (float)Math.Sqrt(Math.Pow(coord.x - position.x, 2) + Math.Pow(coord.y - position.y, 2));
                 float rad = size/2;
                 cond = (dist <= rad);
-                Debug.Log("circle with cond : "+cond);
                 break;
             case "square":
                 float half = size/2;
@@ -67,7 +66,6 @@ public class Shape : MonoBehaviourPun {
                 float left = position.x - half;
                 float right = position.x + half;
                 cond = (position.x<=right) && (position.x>=left) && (position.y<=up) && (position.y>=down);
-                Debug.Log("center is "+position+" with -> up : "+up+" -- down : "+down+" -- right : "+right+" -- left : "+left);
                 break;
             default:
                 break;

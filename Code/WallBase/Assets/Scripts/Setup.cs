@@ -17,6 +17,7 @@ public class Setup : MonoBehaviourPun {
     */
     public bool is_master { get; private set; } //client if no specifications
     public int part_cnt { get; private set; } //amount of participant we want in the program
+    public bool is_vr { get; private set; } //predicate on joiner is VR or not
 
     //wall attributes (usign Wilder's as basic)
     public float wall_width { get; private set; } 
@@ -39,14 +40,12 @@ public class Setup : MonoBehaviourPun {
     public float y_pos { get; private set; }
 
     public void Awake(){
-        //parsing all the given args
-        //Debug.Log("Setup -> Parsing args");
-        
         //all defautl values
         is_master = false;
         full_screen = false; //-popupwindow used by default ?
         part_cnt = 10;
 
+        //parsing all the given args
         string[] args = System.Environment.GetCommandLineArgs ();
         for(int i=0; i<args.Length; i++){
             //switch faster than if()if()... -> jump table by compiler
@@ -63,7 +62,7 @@ public class Setup : MonoBehaviourPun {
                     break;
                 case "-fs":
                     int fs = int.Parse(args[i+1]);
-                    full_screen = fs != 0; //if fs=0 -> false, else true 
+                    full_screen = (fs!=0); //if fs=0 -> false, else true 
                     break;
                 //all 'hierarchy' datas 
                 case "-r": 
@@ -97,6 +96,12 @@ public class Setup : MonoBehaviourPun {
                         //yes
                         part_cnt = 1;
                     }
+                    break;
+                
+                //VR predicates
+                case "-vr":
+                    int vr = int.Parse(args[i+1]);
+                    is_vr =  (vr!=0);
                     break;
                 default:
                     break;

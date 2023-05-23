@@ -35,14 +35,12 @@ public class InputHandler : MonoBehaviourPun {
     private List<int> to_delete_ids;
 
     public void Awake(){
-        //Debug.Log("InputHandler Awakes");
         m_devices = new Dictionary<object, MDevice>();
         p_cursors = new Dictionary<int, PCursor>();
         to_delete_ids = new List<int>();
     }
 
     public void InitalizeIH(){
-        //Debug.Log("InputHandler Initialize "+photonView.IsMine);
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         render = GameObject.Find("ScriptManager").GetComponent<Renderer>();
         
@@ -56,34 +54,22 @@ public class InputHandler : MonoBehaviourPun {
             cursor_HW = 16*4;
         }
         GameObject.Find("Circle(Clone)").GetComponent<Shape>().AddOwner(0);
-        //GameObject.Find("Square(Clone)").GetComponent<Shape>().AddOwner(0);
     }
 
     public void Update(){
-        /* if(up_run){
-            Debug.LogError("ih update running");
-            up_run = false;
-        } */
         if(photonView.IsMine && initialized){
-            /*if(up_init){
-                Debug.LogError("Ih -> Update is good");
-                up_init = false;
-            } */
             //Debug.Log("we do be running");
             float mouse_x = Input.mousePosition.x/Screen.width;
             float mouse_y = (Screen.height - Input.mousePosition.y)/Screen.height;
 
             //handling drag & drop
             if(Input.GetMouseButtonDown(0)){
-                //Debug.Log("Cursor Start Move");
                 StartMoveMCursor(this, 0, mouse_x, mouse_y, true);
                 photonView.RPC("InputRPC", RpcTarget.AllBuffered, "Down", mouse_x, mouse_y, 0);
             } else if(Input.GetMouseButtonUp(0)){
-                //Debug.Log("Cursor Stop Move");
                 StopMoveMCursor(this, 0, mouse_x, mouse_y);
                 photonView.RPC("InputRPC", RpcTarget.AllBuffered, "Up", mouse_x, mouse_y, 0);
             } else {
-                //Debug.Log("Cursor Move");
                 MoveMCursor(this, 0, mouse_x, mouse_y);
                 if(GetMCursor(this,0).drag){
                     photonView.RPC("InputRPC", RpcTarget.AllBuffered, "Move", mouse_x, mouse_y, 0);
@@ -92,7 +78,9 @@ public class InputHandler : MonoBehaviourPun {
 
             //handling shape creation ? 
             if(Input.GetMouseButtonDown(1)){
-                Debug.LogError("right click buddy");
+                Vector3 src_pos = new Vector3(mouse_x, mouse_y, 0f);
+                GameObject obj = PhotonNetwork.InstantiateRoomObject("Square", src_pos , Quaternion.identity);
+                photonView.RPC("NewShapeRPC", RpcTarget.AllBuffered, src_pos, 0, obj.name);
             }
 
             //handling cursors
@@ -102,7 +90,6 @@ public class InputHandler : MonoBehaviourPun {
                     //if not related PCursor then create it
                     if(mc.p_cursor==null){
                         mc.AddPCursor(new PCursor(mc.x, mc.y, mc.c));
-                        //Debug.Log("Master -> CreatePCursorRPC");
                         photonView.RPC("CreatePCursorRPC", RpcTarget.AllBuffered, uid_creator, mc.x, mc.y, mc.c.ToString());
                         mc.uid = uid_creator;
                         uid_creator++;
@@ -114,11 +101,9 @@ public class InputHandler : MonoBehaviourPun {
                         mc.RemovePCursor();
                         p_cursors.Remove(mc.uid);
                         if(!mc.hidden){
-                            //Debug.Log("Master -> RemovePCursorRPC");
                             photonView.RPC("RemovePCursorRPC", RpcTarget.AllBuffered, mc.uid);
                         }
                     } else if(mc.x != mc.p_cursor.x || mc.y != mc.p_cursor.y){
-                        //Debug.Log("Master -> MoveOrCreatePCursorRPC");
                         photonView.RPC("MoveOrCreatePCursorRPC", RpcTarget.AllBuffered, mc.uid, mc.x, mc.y, mc.c.ToString());
                         mc.p_cursor.Move(mc.x, mc.y);
                     }
@@ -140,17 +125,14 @@ public class InputHandler : MonoBehaviourPun {
     //rendering cursors
     public void OnGUI(){
         if(initialized){
-            //Debug.Log("OnGUI "+p_cursors.Count+" master : "+PhotonNetwork.IsMasterClient);
             foreach(PCursor pc in p_cursors.Values){
                 float x, y;
                 if(PhotonNetwork.IsMasterClient){
                     x = pc.x*Screen.width;
                     y = pc.y*Screen.height;
-                    //Debug.Log("master shows cursor on : "+(new Vector2(x,y)));
                 } else {
                     x = -setup.x_pos + pc.x * setup.wall_width;
                     y = -setup.y_pos + pc.y * setup.wall_height;
-                    //Debug.Log("participant shows cursor on : "+(new Vector2(x,y)));
                 }
                 GUI.DrawTexture(new Rect(x - cursor_HW, y - cursor_HW, 2*cursor_HW, 2*cursor_HW), pc.tex);
             }
@@ -305,7 +287,6 @@ public class InputHandler : MonoBehaviourPun {
     //RPC to create a PCursor
     [PunRPC]
     public void CreatePCursorRPC(int uid, float x_, float y_, string str){
-        //Debug.Log("Creating a participant cursor -> ("+uid+":"+"("+x_+","+y_+")");
         Color color;
         ColorUtility.TryParseHtmlString(str, out color);
         p_cursors.Add(uid, new PCursor(x_, y_, color));
@@ -314,7 +295,6 @@ public class InputHandler : MonoBehaviourPun {
     //RPC to remove a PCursor
     [PunRPC]
     public void RemovePCursorRPC(int uid){
-        //Debug.Log("Removing the participant cursor : "+uid);
         p_cursors.Remove(uid);
     }
 
@@ -322,12 +302,10 @@ public class InputHandler : MonoBehaviourPun {
     [PunRPC]
     public void MoveOrCreatePCursorRPC(int uid, float x_, float y_, string str){
         if(!p_cursors.ContainsKey(uid)){
-            //Debug.Log("(from Move/Create):: Creating a participant cursor -> ("+uid+":"+"("+x_+","+y_+")");
             Color color;
             ColorUtility.TryParseHtmlString(str, out color);
             p_cursors.Add(uid, new PCursor(x_, y_, color));
         } else {
-            //Debug.Log("Moving a Participant cursor -> ("+x_+","+y_+")");
             p_cursors[uid].Move(x_, y_);
         }
     }
@@ -355,7 +333,6 @@ public class InputHandler : MonoBehaviourPun {
 
         //cursor creating method (adds & returns a new cursor);
         public MCursor CreateCursor(int id_, float x_, float y_, Color c_){
-            //Debug.Log("Create new MCursor "+id_);
             MCursor cursor = new MCursor(id_, x_, y_, c_);
             cursors.Add(id_, cursor);
             return cursor;
@@ -363,7 +340,6 @@ public class InputHandler : MonoBehaviourPun {
 
         //cursor removing method
         public void RemoveCursor(int id_){
-            //Debug.Log("Removing a MCursor "+id_);
             cursors.Remove(id_);
         }
     };
@@ -376,7 +352,6 @@ public class InputHandler : MonoBehaviourPun {
     }
 
     public void RegisterDevice(string str, object obj){
-        //Debug.Log("Registering new device "+str);
         //if the object is already referrring a device -> nothing to register
         if(GetDevice(obj)!=null){
             return;
@@ -390,26 +365,43 @@ public class InputHandler : MonoBehaviourPun {
 
     public void ParticipantReady(){
         initialized = true;
-        //Debug.LogError("has init IH -> init render");
         render.Initialize();
     }
 
     [PunRPC]
     public void InputRPC(string str, float x_, float y_, int id_){
-        //Debug.Log("InputRPC -> "+str);
         Vector3 input; 
         if(PhotonNetwork.IsMasterClient){
             input = Camera.main.ScreenToWorldPoint(new Vector3(x_*Screen.width, y_*Screen.height, 0f));
-            input.y *= -1;
+            input.y *= -1f;
             input.z = 0f;
             render.Input(str, input, id_);
         } else if(photonView.IsMine){
             Vector3 screen_input = Camera.main.WorldToScreenPoint(new Vector3(-setup.x_pos + x_ * setup.wall_width, -setup.y_pos + y_ * setup.wall_height, 0f));
             input = Camera.main.ScreenToWorldPoint(screen_input);
             Debug.Log("setup : "+setup.x_pos+","+setup.y_pos+","+setup.wall_width+","+setup.wall_height);
-            input.y *= -1;
+            input.y *= -1f;
             input.z = 0f;
             render.Input(str, input, id_);
+        }
+    }
+
+    [PunRPC]
+    public void NewShapeRPC(Vector3 pos, int id, string name){
+        Vector3 src;
+        if(PhotonNetwork.IsMasterClient){
+            Debug.LogError("Creating the new shape (master)");
+            src = Camera.main.ScreenToWorldPoint(pos);
+            src.y *= -1f;
+            src.z = 0f;
+            render.NewShape(name, src, id, "square"); //turns it into an input ?? //only creating squares yet
+        } else if(photonView.IsMine){
+            Debug.LogError("Creating the new shape (part)");
+            Vector3 screen_src = Camera.main.WorldToScreenPoint(new Vector3(-setup.x_pos + pos.x * setup.wall_width, -setup.y_pos + pos.y * setup.wall_height, pos.z));
+            src = Camera.main.ScreenToWorldPoint(screen_src);
+            src.y *= -1f;
+            src.z = 0f;
+            render.NewShape(name, src, id, "square"); //only creating squares yet
         }
     }
 }

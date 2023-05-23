@@ -17,6 +17,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     //prefabs
     public GameObject ope_prefab;
     public GameObject part_prefab;
+    public GameObject vr_prefab;
     public GameObject shape1_prefab;
     public GameObject shape2_prefab;
 
@@ -25,7 +26,6 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster(){
-        //Debug.Log("Connected to Master");
         base.OnConnectedToMaster();
         current_in_room = 0;
         //creating the room
@@ -35,11 +35,9 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
 
     public override void OnJoinedRoom(){
         //triggered for the just joining entity only
-        //Debug.Log("OnJoinedRoom");
         base.OnJoinedRoom();
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         if(PhotonNetwork.IsMasterClient){
-            //Debug.Log("OnJoinedRoom -> IsMasterClient");
             //if master then instantiate operator
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
@@ -49,15 +47,18 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             sh1_ctrl.SetSize(shape1_prefab.transform.localScale.x);
             sh1_ctrl.PositionOn(Vector3.zero);
         } else {
-            //Debug.Log("OnJoinedRoom -> !IsMasterClient");
             //else instantiate participant
-            part_prefab = PhotonNetwork.Instantiate("Participant", transform.position, transform.rotation);
-            part_prefab.GetComponent<Participant>().NetworkStart(setup);
+            if(setup.is_vr){
+                vr_prefab = PhotonNetwork.Instantiate("VR Part", transform.position, transform.rotation);
+                vr_prefab.GetComponent<PartVR>().NetworkStart();
+            } else {
+                part_prefab = PhotonNetwork.Instantiate("Participant", transform.position, transform.rotation);
+                part_prefab.GetComponent<Participant>().NetworkStart(setup);
+            }
         }
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer){
-        //Debug.Log("OnPlayerEnteredRoom");
         base.OnPlayerEnteredRoom(newPlayer);
         if(PhotonNetwork.IsMasterClient){
             //if i'm master then test some stuff
@@ -73,13 +74,11 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     }
 
     public void Connect(){
-        //Debug.Log("NetworkHandler -> Connect");
         PhotonNetwork.NickName = System.DateTime.Now.Ticks.ToString();
         PhotonNetwork.ConnectUsingSettings();
     }
 
     public void OperatorInitialized(){
-        //Debug.LogError("Operator has initialized so now our turn : "+PhotonNetwork.LocalPlayer.ActorNumber);
         if(!PhotonNetwork.IsMasterClient){
             part_prefab.GetComponent<PhotonView>().RPC("OperatorStartedRPC", RpcTarget.AllBuffered);
         }

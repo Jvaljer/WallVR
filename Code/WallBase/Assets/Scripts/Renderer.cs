@@ -22,6 +22,7 @@ public class Renderer : MonoBehaviourPun {
     private float abs = 1.0f;
     private float ih_scale = 1.5f;
     private float ortho_size = 5f;
+
     //private float pixel_in_mm = 0.264275256f; //abel's laptop
 
     //shapes attributes
@@ -32,21 +33,17 @@ public class Renderer : MonoBehaviourPun {
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         network_handler = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
         shapes = new Dictionary<string, GameObject>();
-        //Debug.Log("Renderer Starts "+PhotonNetwork.IsMasterClient+"  ope_joined-> "+network_handler.ope_joined+" |=| "+GameObject.Find("Operator")!=null);
     }
 
     public void Input(string name, Vector3 coord, int id){
-        //Debug.Log("Receiving an input : "+name+" from "+id);
         //first we wanna check which one of the shape we are tryna move
         foreach(GameObject obj in shapes.Values){
-            //Debug.Log("rooting the shapes : "+obj.name);
+            Debug.Log("for shape : "+obj.name);
             Shape obj_ctrl = obj.GetComponent<Shape>();
-            //Debug.Log("is owned by "+id+ " -> "+obj_ctrl.IsOwnedBy(id));
             if(obj_ctrl.IsOwnedBy(id)){ //later on we'll like to add more scripts + abstract class
-                //Debug.LogError("our shape is well related to "+id);
+            Debug.Log("we have the owner : "+id);
                 switch (name){
                     case "Down":
-                        Debug.Log("testing down for "+obj.name);
                         if(obj_ctrl.CoordsInside(coord)){
                             obj.GetComponent<PhotonView>().RPC("PickRPC", RpcTarget.AllBuffered);
                         }
@@ -65,6 +62,25 @@ public class Renderer : MonoBehaviourPun {
                         break;
                 }
             }
+        }
+    }
+
+    public void NewShape(string name, Vector3 pos, int id, string cat){
+        Debug.LogError("Renderer -> NewShape");
+        //shape already created so just need to get it
+        GameObject new_shape = GameObject.Find(name);
+        if(new_shape!=null){
+            Shape shape_ctrl = new_shape.GetComponent<Shape>();
+            shape_ctrl.Categorize(cat);
+            shape_ctrl.SetSize(new_shape.transform.localScale.x);
+            shape_ctrl.PositionOn(pos);
+            shape_ctrl.AddOwner(id);
+            shapes.Add(name, new_shape);
+            if(!PhotonNetwork.IsMasterClient){
+                new_shape.transform.localScale *= setup.part_zoom;
+            }
+        } else {
+            Debug.LogError("can't get the shape bro");
         }
     }
 
