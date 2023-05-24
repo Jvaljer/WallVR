@@ -169,7 +169,9 @@ MonoBehaviour:
   setup: {fileID: 494432295}
   ope_prefab: {fileID: 6783270532631244201, guid: 404107d6bb675422b80c4202d8ca070f, type: 3}
   part_prefab: {fileID: 7035605697703089616, guid: baae038d33a5c61338198bfed446f7f2, type: 3}
+  vr_prefab: {fileID: 6535225589998294977, guid: af9beda73b51a9535ab3952eaee1d209, type: 3}
   shape1_prefab: {fileID: 6595165765516139464, guid: e3869d12a7890abcb81dfc58424469a9, type: 3}
+  shape2_prefab: {fileID: 3002764861256947448, guid: a3c7d8629fa08f461af652f3b89d0f13, type: 3}
 --- !u!4 &494432297
 Transform:
   m_ObjectHideFlags: 0

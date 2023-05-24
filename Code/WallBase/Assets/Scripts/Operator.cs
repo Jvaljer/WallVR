@@ -19,7 +19,7 @@ public class Operator : MonoBehaviourPun {
     public bool ready_to_init_part { get; set; } = false;
 
     [PunRPC]
-    public void Initialize(){
+    public void InitializeRPC(){
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         network = GameObject.Find("ScriptManager").GetComponent<NetworkHandler>();
         if(photonView.IsMine){

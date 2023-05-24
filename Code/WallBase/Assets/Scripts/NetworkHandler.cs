@@ -41,6 +41,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             //if master then instantiate operator
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
+            //put all this stuff in ope::InitializeRPC ??
             shape1_prefab = PhotonNetwork.InstantiateRoomObject("Circle", Vector3.zero, Quaternion.identity);
             Shape sh1_ctrl = shape1_prefab.GetComponent<Shape>();
             sh1_ctrl.Categorize("circle");
@@ -63,7 +64,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
         if(PhotonNetwork.IsMasterClient){
             //if i'm master then test some stuff
             if(PhotonNetwork.CurrentRoom.PlayerCount==(setup.part_cnt +1)){ //all parts + master
-                ope_prefab.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.AllBuffered);
+                ope_prefab.GetComponent<PhotonView>().RPC("InitializeRPC", RpcTarget.AllBuffered);
             }
         }
         //else I don't give a fuck
