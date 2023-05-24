@@ -39,6 +39,16 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - CreatePCursorRPC
+  - DropRPC
+  - InputRPC
+  - MoveOrCreatePCursorRPC
+  - MoveRPC
+  - NewShapeRPC
+  - OperatorStartedRPC
+  - PickRPC
+  - RemovePCursorRPC
+  - SomeoneLeft
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

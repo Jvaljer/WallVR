@@ -60,7 +60,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             //else instantiate participant
             if(setup.is_vr){
                 part_vr_prefab = PhotonNetwork.Instantiate("Participant 2D", transform.position, transform.rotation);
-                setup.own_cam= part_vr_prefab.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Camera>();
+                setup.own_cam = part_vr_prefab.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Camera>();
                 GameObject.Find("2D Camera").SetActive(false);
                 part_2d_prefab.GetComponent<Participant>().NetworkStart(setup);
                 cur_part = part_vr_prefab;

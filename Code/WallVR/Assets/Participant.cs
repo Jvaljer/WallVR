@@ -31,14 +31,14 @@ public class Participant : MonoBehaviourPun {
             //must implement
         } else {
             //setting the camera
-        Vector3 old_pos = Camera.main.transform.position;
-        Vector3 scale = Camera.main.transform.localScale;
+            Vector3 old_pos = Camera.main.transform.position;
+            Vector3 scale = Camera.main.transform.localScale;
 
-        float center_x = setup.x_pos + (setup.screen_width/2) - (setup.wall.Width()/2) + (setup.screen_width/2);
-        float center_y = (setup.wall.Height()/2) - setup.y_pos + (setup.screen_height/2) - (setup.screen_height/2);
-        Vector3 screen_pos = Camera.main.WorldToScreenPoint(Camera.main.transform.position);
-        Vector3 world_pos = Camera.main.ScreenToWorldPoint(new Vector3(center_x, center_y, screen_pos.z));
-        Camera.main.transform.position = world_pos;
+            float center_x = setup.x_pos + (setup.screen_width/2) - (setup.wall.Width()/2) + (setup.screen_width/2);
+            float center_y = (setup.wall.Height()/2) - setup.y_pos + (setup.screen_height/2) - (setup.screen_height/2);
+            Vector3 screen_pos = Camera.main.WorldToScreenPoint(Camera.main.transform.position);
+            Vector3 world_pos = Camera.main.ScreenToWorldPoint(new Vector3(center_x, center_y, screen_pos.z));
+            Camera.main.transform.position = world_pos;
         }
     }
 
