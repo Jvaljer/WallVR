@@ -1,0 +1,72 @@
+Mono path[0] = 'C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/WallOnly/WallBase_Data/Managed'
+Mono config path = 'C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/WallOnly/MonoBleedingEdge/etc'
+PlayerConnection initialized from C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/WallOnly/WallBase_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55290
+Multi-casting "[IP] 129.175.4.204 [Port] 55290 [Flags] 2 [Guid] 1321273159 [EditorId] 835018414 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-4KIRSQA) [Debug] 0 [PackageName] WindowsPlayer [ProjectName] WallBase" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55290]
+PlayerConnection already initialized - listening to [0.0.0.0:55290]
+Initialize engine version: 2020.3.6f1 (338bb68529b2)
+[Subsystems] Discovering subsystems at path C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/WallOnly/WallBase_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA Quadro P2000 (ID=0x1c30)
+    Vendor:   (null)
+    VRAM:     3072 MB
+    Driver:   31.0.15.1737
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.109 seconds
+D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.838700 ms
+STANDALONE (LIN?)
+0x79c096e8 (UnityPlayer) 
+0x79c0d812 (UnityPlayer) 
+0x79bf4f47 (UnityPlayer) 
+0x7ac34474 (UnityPlayer) UnityMain
+0x7a471d34 (UnityPlayer) UnityMain
+0x1b67ef90 (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x1b67ed88 (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x1b67eba2 (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x1b67e9a8 (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x1b67e32c (Mono JIT Code) [Setup.cs:59] Setup:Awake () 
+0x1b67dceb (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x6c3d2b3e (mono-2.0-bdwgc) mono_get_runtime_build_info
+0x6c3694a7 (mono-2.0-bdwgc) mono_perfcounters_init
+0x6c370136 (mono-2.0-bdwgc) mono_runtime_invoke
+0x7a3dd36f (UnityPlayer) UnityMain
+0x7a3da43a (UnityPlayer) UnityMain
+0x7a3da608 (UnityPlayer) UnityMain
+0x7a401b2e (UnityPlayer) UnityMain
+0x7a3c2499 (UnityPlayer) UnityMain
+0x7a3c19bb (UnityPlayer) UnityMain
+0x79e6f734 (UnityPlayer) UnityMain
+0x7a3c1cd0 (UnityPlayer) UnityMain
+0x7a420c51 (UnityPlayer) UnityMain
+0x7a420f39 (UnityPlayer) UnityMain
+0x7a0d75f4 (UnityPlayer) UnityMain
+0x7a0d7df9 (UnityPlayer) UnityMain
+0x7a0da322 (UnityPlayer) UnityMain
+0x79c2f560 (UnityPlayer) 
+0x79c2dd45 (UnityPlayer) 
+0x79c324d6 (UnityPlayer) 
+0x79c330e5 (UnityPlayer) UnityMain
+0x00641015 (WallBase) 
+0x006411d9 (WallBase) 
+0x75ce00c9 (KERNEL32) BaseThreadInitThunk
+0x77967b4e (ntdll) RtlGetAppContainerNamedObjectPath
+0x77967b1e (ntdll) RtlGetAppContainerNamedObjectPath
+
+PUN is in development mode (development build). As the 'dev region' is not empty (eu) it overrides the found best region. See PhotonServerSettings.
+
+Setting up 6 worker threads for Enlighten.
+  Thread -> id: 26a4 -> priority: 1 
+  Thread -> id: 31a4 -> priority: 1 
+  Thread -> id: 3acc -> priority: 1 
+  Thread -> id: 68a4 -> priority: 1 
+  Thread -> id: 1d74 -> priority: 1 
+  Thread -> id: 4d58 -> priority: 1 
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1685023343326,"processId":25316,"allocatedMemory":200953,"memoryLabels":[{"Permanent":24},{"NewDelete":216},{"Thread":64},{"Manager":1608},{"GfxDevice":196720},{"Serialization":316},{"WebCam":12},{"String":213},{"HashMap":768},{"PoolAlloc":32},{"Sprites":16},{"GI":184},{"VR":780}]}
+

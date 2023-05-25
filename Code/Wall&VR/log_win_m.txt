@@ -1,0 +1,21 @@
+Mono path[0] = 'C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/Wall&VR/WallBase_Data/Managed'
+Mono config path = 'C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/Wall&VR/MonoBleedingEdge/etc'
+PlayerConnection initialized from C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/Wall&VR/WallBase_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55063
+Multi-casting "[IP] 129.175.4.204 [Port] 55063 [Flags] 2 [Guid] 249277043 [EditorId] 251444211 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-4KIRSQA) [Debug] 0 [PackageName] WindowsPlayer [ProjectName] WallBase" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55063]
+PlayerConnection already initialized - listening to [0.0.0.0:55063]
+Initialize engine version: 2020.3.6f1 (338bb68529b2)
+[Subsystems] Discovering subsystems at path C:/cygwin64/home/ilda-vive/henrylapassat/WallVR/Code/Wall&VR/WallBase_Data/UnitySubsystems
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/XRSDKOpenVR/UnitySubsystemsManifest.json.
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA Quadro P2000 (ID=0x1c30)
+    Vendor:   
+    VRAM:     5032 MB
+    Driver:   31.0.15.1737
+Begin MonoManager ReloadAssembly
