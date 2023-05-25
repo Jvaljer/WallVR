@@ -12,6 +12,7 @@ public class Operator : MonoBehaviourPun {
     private InputHandler input_handler;
 
     //possible shapes prefab
+    private GameObject circle_prefab;
     private GameObject square_prefab;
 
     //some predicates

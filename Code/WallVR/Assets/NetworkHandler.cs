@@ -30,6 +30,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     }
 
     public override void OnConnectedToMaster(){
+        Log("OnConnectedToMaster");
         base.OnConnectedToMaster();
         //creating the room
         room_opt = new RoomOptions{MaxPlayers=max_in_room, IsVisible=true, IsOpen=true};
@@ -37,6 +38,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     }
 
     public override void OnCreatedRoom(){
+        Log("OnCreatedRoom from "+PhotonNetwork.LocalPlayer.ActorNumber);
         base.OnCreatedRoom();
         //user creates -> MC & init cpt
         current_in_room = 0;
@@ -48,6 +50,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
         base.OnJoinedRoom();
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         if(setup.is_master){
+            Log("OnJoinedRoom as master");
             //if master then instantiate operator
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
 
@@ -59,33 +62,53 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
         } else {
             //else instantiate participant
             if(setup.is_vr){
-                part_vr_prefab = PhotonNetwork.Instantiate("Participant 2D", transform.position, transform.rotation);
+                Log("OnJoinedRoom as VR part");
+                part_vr_prefab = PhotonNetwork.Instantiate("2D Participant", transform.position, transform.rotation);
                 setup.own_cam = part_vr_prefab.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<Camera>();
                 GameObject.Find("2D Camera").SetActive(false);
                 part_2d_prefab.GetComponent<Participant>().NetworkStart(setup);
                 cur_part = part_vr_prefab;
             } else {
-                part_2d_prefab = PhotonNetwork.Instantiate("Participant VR", transform.position, transform.rotation);
+                Log("OnJoinedRoom as 2D part");
+                part_2d_prefab = PhotonNetwork.Instantiate("VR Participant", transform.position, transform.rotation);
                 setup.own_cam = GameObject.Find("2D Camera").GetComponent<Camera>();
                 part_2d_prefab.GetComponent<Participant>().NetworkStart(setup);
                 cur_part = part_2d_prefab;
             }
+
+            Log("cur_part -> "+cur_part.name+" & own_cam -> "+setup.own_cam.name);
         }
+
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer){
+        Log("OnPlayerLeftRoom : "+otherPlayer.ActorNumber);
         base.OnPlayerLeftRoom(otherPlayer);
         cur_part.GetComponent<PhotonView>().RPC("SomeoneLeft", RpcTarget.AllBuffered, otherPlayer.ActorNumber);
     }
 
     public void OperatorInitialized(){
         if(!PhotonNetwork.IsMasterClient){
+            Log("OperatorInitialized as part");
             cur_part.GetComponent<PhotonView>().RPC("OperatorStartedRPC", RpcTarget.AllBuffered);
+        } else {
+            Log("OperatorInitialized as master -> nothing");
         }
     }
 
     public void Connect(){
+        Log("Connect");
         PhotonNetwork.NickName = System.DateTime.Now.Ticks.ToString();
         PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public void Log(string str){
+        if(setup.is_vr){
+            //simple debugging as under editor for tests
+            Debug.Log(str);
+        } else {
+            //Error Log to make it visible from standalone
+            Debug.LogError(str);
+        }
     }
 }

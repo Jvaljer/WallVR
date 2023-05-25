@@ -7,8 +7,17 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class InputHandler : MonoBehaviourPun {
-    private bool up_run = true;
-    private bool up_init = true;
+
+    public void Log(string str){
+        if(setup.is_vr){
+            //simple debugging as under editor for tests
+            Debug.Log(str);
+        } else {
+            //Error Log to make it visible from standalone
+            Debug.LogError(str);
+        }
+    }
+
     //Referenced setup & wall
     private Setup setup;
     public bool initialized { get; set; } = false;
@@ -46,19 +55,26 @@ public class InputHandler : MonoBehaviourPun {
         
         //supposing we don't have any right/left camera, only the main one (WILDER wall)
         if(photonView.IsMine){
+            Log("InitizlizeIH for myself (master)");
             Cursor.visible = true; 
             RegisterDevice("Mouse", this);
             CreateMCursor(this, 0, 0.5f, 0.5f, Color.red);
         } else {
-            Cursor.visible = false;
-            cursor_HW = 16*4;
+            if(setup.is_vr){
+                //we wanna Register the controller !
+                Log("InitializeIH for others (part VR)");
+            } else {
+                Cursor.visible = false;
+                cursor_HW = 16*4;
+                //nothing more ?
+                Log("InitializeIH for others (part 2D)");
+            }
         }
         GameObject.Find("Circle(Clone)").GetComponent<Shape>().AddOwner(0);
     }
 
     public void Update(){
         if(photonView.IsMine && initialized){
-            //Debug.Log("we do be running");
             float mouse_x = Input.mousePosition.x/Screen.width;
             float mouse_y = (Screen.height - Input.mousePosition.y)/Screen.height;
 

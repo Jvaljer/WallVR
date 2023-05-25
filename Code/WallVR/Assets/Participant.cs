@@ -13,7 +13,10 @@ public class Participant : MonoBehaviourPun {
         setup = stp;
         camera = setup.own_cam; //!is_vr -> Camera.main still referring to the wanted cam
         if(photonView.IsMine){
+            Log("Network Start for Participant "+PhotonNetwork.LocalPlayer.ActorNumber+" (myself)");
             InitMyAttributes();
+        } else {
+            Log("Network Start for Participant "+PhotonNetwork.LocalPlayer.ActorNumber+" (other)");
         }
     }
 
@@ -28,8 +31,10 @@ public class Participant : MonoBehaviourPun {
         }
         
         if(setup.is_vr){
+            Log("I'm VR");
             //must implement
         } else {
+            Log("I'm 2D");
             //setting the camera
             Vector3 old_pos = Camera.main.transform.position;
             Vector3 scale = Camera.main.transform.localScale;
@@ -44,8 +49,12 @@ public class Participant : MonoBehaviourPun {
 
     [PunRPC]
     public void OperatorStartedRPC(){
-        if(photonView.IsMine || PhotonNetwork.IsMasterClient){
+        if(photonView.IsMine){
+            Log("OperatorStartedRPC for "+PhotonNetwork.LocalPlayer.ActorNumber+" (myself)");
             GameObject.Find("Operator(Clone)").GetComponent<InputHandler>().ParticipantReady();
+        }
+        if(PhotonNetwork.IsMasterClient){
+            Log("OperatorStartedRPC for master");
         }
     }
 
@@ -53,6 +62,16 @@ public class Participant : MonoBehaviourPun {
     public void SomeoneLeft(int pv){
         if(pv==1){ //in this program logic, 1 is the master client (operator)
             Application.Quit();
+        }
+    }
+
+    public void Log(string str){
+        if(setup.is_vr){
+            //simple debugging as under editor for tests
+            Debug.Log(str);
+        } else {
+            //Error Log to make it visible from standalone
+            Debug.LogError(str);
         }
     }
 }

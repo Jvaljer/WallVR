@@ -37,6 +37,16 @@ public class Setup : MonoBehaviourPun {
         is_vr = false;
         part_cnt = 11; //not counting ope in these
 
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+        Debug.Log("Windows -> VR");
+        //VR parameters for editor
+        is_vr = true;
+        wall_str = "DESKTOP"; //for testing -> DESKTOP
+        screen_width = 1024;
+        screen_height = 768;
+        //nothing more to do I guess
+#else
+        Debug.Log("Linux -> 2D");
         string[] args = System.Environment.GetCommandLineArgs();
         for(int i=0; i<args.Length; i++){
             switch (args[i]){
@@ -94,7 +104,8 @@ public class Setup : MonoBehaviourPun {
                     break;
             }
         }
-
+#endif
+        Debug.Log("used wall -> "+wall_str);
         //setting used wall
         switch (wall_str){
             case "WILDER":
@@ -116,6 +127,7 @@ public class Setup : MonoBehaviourPun {
     }
 
     public void ConnectToServer(){
+        Debug.Log("(Setup):: ConnectToServer");
         GameObject.Find("ScriptManager").GetComponent<NetworkHandler>().Connect();
     }
 }

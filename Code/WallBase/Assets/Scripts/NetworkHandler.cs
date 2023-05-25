@@ -41,7 +41,6 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
             //if master then instantiate operator
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
-            //put all this stuff in ope::InitializeRPC ??
             shape1_prefab = PhotonNetwork.InstantiateRoomObject("Circle", Vector3.zero, Quaternion.identity);
             Shape sh1_ctrl = shape1_prefab.GetComponent<Shape>();
             sh1_ctrl.Categorize("circle");
