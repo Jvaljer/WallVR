@@ -1,0 +1,87 @@
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Gateway:Awake () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Gateway.cs:25)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Gateway.cs Line: 25)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.561400 ms
+System memory in use before: 38.0 MB.
+System memory in use after: 38.1 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1089.
+Total: 1.398700 ms (FindLiveObjects: 0.107600 ms CreateObjectMapping: 0.051500 ms MarkObjects: 0.919500 ms  DeleteObjects: 0.319400 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.203200 ms
+System memory in use before: 37.9 MB.
+System memory in use after: 37.9 MB.
+
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1066.
+Total: 0.751700 ms (FindLiveObjects: 0.056700 ms CreateObjectMapping: 0.017300 ms MarkObjects: 0.542700 ms  DeleteObjects: 0.133800 ms)
+
+args from Gateway : System.String[] of len 20
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:39)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 39)
+
+args from cmd line : System.String[] of len 20
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+OnConnectedToMaster : -1
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+NetworkHandler:OnConnectedToMaster () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/NetworkHandler.cs:26)
+Photon.Realtime.ConnectionCallbacksContainer:OnConnectedToMaster () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:4123)
+Photon.Realtime.LoadBalancingClient:OnOperationResponse (ExitGames.Client.Photon.OperationResponse) (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:2737)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer) (at D:/Dev/Work/photon-dotnet-sdk/PhotonDotNet/PeerBase.cs:877)
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands () (at D:/Dev/Work/photon-dotnet-sdk/PhotonDotNet/EnetPeer.cs:577)
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands () (at D:/Dev/Work/photon-dotnet-sdk/PhotonDotNet/PhotonPeer.cs:1771)
+Photon.Pun.PhotonHandler:Dispatch () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:232)
+Photon.Pun.PhotonHandler:FixedUpdate () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:152)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/NetworkHandler.cs Line: 26)
+
+OnJoinedRoom as Operator : 1
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+NetworkHandler:OnJoinedRoom () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/NetworkHandler.cs:39)
+Photon.Realtime.MatchMakingCallbacksContainer:OnJoinedRoom () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:4200)
+Photon.Realtime.LoadBalancingClient:OnEvent (ExitGames.Client.Photon.EventData) (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonRealtime/Code/LoadBalancingClient.cs:3236)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback (ExitGames.Client.Photon.StreamBuffer) (at D:/Dev/Work/photon-dotnet-sdk/PhotonDotNet/PeerBase.cs:904)
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands () (at D:/Dev/Work/photon-dotnet-sdk/PhotonDotNet/EnetPeer.cs:577)
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands () (at D:/Dev/Work/photon-dotnet-sdk/PhotonDotNet/PhotonPeer.cs:1771)
+Photon.Pun.PhotonHandler:Dispatch () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:232)
+Photon.Pun.PhotonHandler:FixedUpdate () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Photon/PhotonUnityNetworking/Code/PhotonHandler.cs:152)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/NetworkHandler.cs Line: 39)
+
+Setting up 10 worker threads for Enlighten.
+  Thread -> id: 3d08 -> priority: 1 
+  Thread -> id: 7424 -> priority: 1 
+  Thread -> id: 70ac -> priority: 1 
+  Thread -> id: 51bc -> priority: 1 
+  Thread -> id: 6310 -> priority: 1 
+  Thread -> id: 747c -> priority: 1 
+  Thread -> id: 746c -> priority: 1 
+  Thread -> id: 464c -> priority: 1 
+  Thread -> id: 681c -> priority: 1 
+  Thread -> id: bf0 -> priority: 1 
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1685459216308,"processId":29784,"allocatedMemory":218667,"memoryLabels":[{"Permanent":40},{"NewDelete":432},{"Thread":72},{"Manager":2128},{"Geometry":-112},{"GfxDevice":210584},{"Serialization":568},{"WebCam":32},{"String":771},{"HashMap":1536},{"PoolAlloc":56},{"GI":296},{"CloudService":336},{"VR":1728},{"NativeArray":272},{"Subsystems":-72}]}
+
