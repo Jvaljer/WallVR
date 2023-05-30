@@ -6,7 +6,7 @@ using Photon.Realtime;
 
 public class Setup : MonoBehaviourPun {
     //Gateway collected arguments
-    public static string[] args;
+    public string[] args;
     //user's condition 
     public bool is_master { get; private set; } = false;
     public bool is_vr { get; private set; } = false;
@@ -35,7 +35,10 @@ public class Setup : MonoBehaviourPun {
     public float zoom_ratio { get; private set; } = 1f;
 
     public void Start(){
-        args = ArgsTemp.arguments;
+        args = Gateway.arguments;
+        Debug.LogError("args from Gateway : "+args+" of len "+args.Length);
+        string[] cmd_args = System.Environment.GetCommandLineArgs();
+        Debug.LogError("args from cmd line : "+cmd_args+" of len "+cmd_args.Length);
         for(int i=0; i<args.Length; i++){
             switch (args[i]){
                 case "-wall":

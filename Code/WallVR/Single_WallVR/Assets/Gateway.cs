@@ -4,29 +4,28 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Gateway : MonoBehaviour {
+    public static string[] arguments;
+
     public void Awake(){
 #if UNITY_EDITOR
   #if UNITY_EDITOR_WIN
         Debug.Log("Windows Editor -> VR Part by default");
-        ArgsTemp.arguments = new string[1];
         //must initialize all args
         SceneManager.LoadScene("VR");
 
   #elif UNITY_EDITOR_LIN
         Debug.Log("Linux Editor -> Operator by default");
-        ArgsTemp.args = new string[1];
         //must initialize all args
         SceneManager.LoadScene("VR");
 
   #endif
 #elif UNITY_STANDALONE
-        string[] args = System.Environment.GetCommandLineArgs();
-        ArgsTemp.arguments = args;
+        arguments = System.Environment.GetCommandLineArgs();
   #if UNITY_STANDALONE_WIN 
         Debug.Log("Windows Standalone -> must parse arguments, VR authorized");
-        for(int i=0; i<args.length; i++){
-            if(args[i]=="-vr"){
-                if(int.Parse(args[i+1])==1){
+        for(int i=0; i<arguments.Length; i++){
+            if(arguments[i]=="-vr"){
+                if(int.Parse(arguments[i+1])==1){
                     SceneManager.LoadScene("VR");
                 } else {
                     SceneManager.LoadScene("Wall");

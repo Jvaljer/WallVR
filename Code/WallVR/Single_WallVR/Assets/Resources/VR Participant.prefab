@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5364124025637422680}
   - component: {fileID: 804457454514411301}
+  - component: {fileID: -3740079052893352828}
   m_Layer: 0
   m_Name: VR Participant
   m_TagString: Untagged
@@ -53,3 +54,15 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-3740079052893352828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626536291248260801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c6e00f93cff564f8e283d7dfb5d95e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
