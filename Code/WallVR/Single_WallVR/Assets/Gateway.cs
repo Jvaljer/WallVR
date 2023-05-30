@@ -9,12 +9,12 @@ public class Gateway : MonoBehaviour {
     public void Awake(){
 #if UNITY_EDITOR
   #if UNITY_EDITOR_WIN
-        Debug.Log("Windows Editor -> VR Part by default");
+        Debug.LogError("Windows Editor -> VR Part by default");
         //must initialize all args
         SceneManager.LoadScene("VR");
 
   #elif UNITY_EDITOR_LIN
-        Debug.Log("Linux Editor -> Operator by default");
+        Debug.LogError("Linux Editor -> Operator by default");
         //must initialize all args
         SceneManager.LoadScene("VR");
 
@@ -22,19 +22,21 @@ public class Gateway : MonoBehaviour {
 #elif UNITY_STANDALONE
         arguments = System.Environment.GetCommandLineArgs();
   #if UNITY_STANDALONE_WIN 
-        Debug.Log("Windows Standalone -> must parse arguments, VR authorized");
+        Debug.LogError("Windows Standalone -> must parse arguments, VR authorized");
         for(int i=0; i<arguments.Length; i++){
             if(arguments[i]=="-vr"){
                 if(int.Parse(arguments[i+1])==1){
+                    Debug.LogError("Loading VR Scene");
                     SceneManager.LoadScene("VR");
                 } else {
+                    Debug.LogError("Loading Wall Scene");
                     SceneManager.LoadScene("Wall");
                 }
             }
         }
         SceneManager.LoadScene("Wall");
   #elif UNITY_STANDALONE_LIN
-        Debug.Log("Linux Standalone -> must parse argument, VR prohibited");
+        Debug.LogError("Linux Standalone -> must parse argument, VR prohibited");
         SceneManager.LoadScene("Wall"):
   #endif
 #else

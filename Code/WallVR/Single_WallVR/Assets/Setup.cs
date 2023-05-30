@@ -37,9 +37,8 @@ public class Setup : MonoBehaviourPun {
     public void Start(){
         args = Gateway.arguments;
         Debug.LogError("args from Gateway : "+args+" of len "+args.Length);
-        string[] cmd_args = System.Environment.GetCommandLineArgs();
-        Debug.LogError("args from cmd line : "+cmd_args+" of len "+cmd_args.Length);
         for(int i=0; i<args.Length; i++){
+            Debug.LogError(args[i]);
             switch (args[i]){
                 case "-wall":
                     wall_str = args[i+1];

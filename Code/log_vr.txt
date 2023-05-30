@@ -1,26 +1,94 @@
+Mono path[0] = 'C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR_Data/Managed'
+Mono config path = 'C:/cygwin64/home/abel/WallVR/Code/WallVR/MonoBleedingEdge/etc'
+PlayerConnection initialized from C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55445
+Multi-casting "[IP] 129.175.4.58 [Port] 55445 [Flags] 2 [Guid] 2178782642 [EditorId] 3449945240 [Version] 1048832 [Id] WindowsPlayer(DESKTOP-P5N6CF0) [Debug] 0 [PackageName] WindowsPlayer [ProjectName] Single_WallVR" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55445]
+PlayerConnection already initialized - listening to [0.0.0.0:55445]
+Initialize engine version: 2020.3.7f1 (dd97f2c94397)
+[Subsystems] Discovering subsystems at path C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR_Data/UnitySubsystems
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+GfxDevice: creating device client; threaded=1
+[XR] [24980] [17:50:22.884][Info   ] Available Layers: (3)
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 (ID=0x2206)
+    Vendor:   
+    VRAM:     10078 MB
+    Driver:   31.0.15.1694
+Begin MonoManager ReloadAssembly
+- Completed reload, in  1.775 seconds
+XRGeneral Settings awakening...
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
+UnityEngine.XR.Management.XRGeneralSettings:Awake () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Library/PackageCache/com.unity.xr.management@4.0.7/Runtime/XRGeneralSettings.cs:91)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Library/PackageCache/com.unity.xr.management@4.0.7/Runtime/XRGeneralSettings.cs Line: 91)
+
+D3D11 device created for Microsoft Media Foundation video decoding.
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Display
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Input
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Display
+[Subsystems] Loading plugin UnityOpenXR for subsystem OpenXR Display...
+[XR] [24980] [17:50:25.253][Info   ] Available Layers: (3)
+[Subsystems] Loading plugin UnityOpenXR for subsystem OpenXR Input...
+<RI> Initializing input.
+New input system (experimental) initialized
+<RI> Initialized touch support.
+[XR] [24980] [17:50:25.509][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_UNKNOWN->XR_SESSION_STATE_IDLE session=2316905198704 time=357819341543700
+[XR] [24980] [17:50:25.509][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_IDLE->XR_SESSION_STATE_READY session=2316905198704 time=357819341556000
+XRTextureManager::RequestCreateTexture
+XRTextureManager::SetupRenderTextureFromXRRequest (id: 1 col: 0000021B7283C330 d: 0000000000000000)
+RenderTexture::Create (id: 1)
+IVRDeviceCallback_CreateEyeTextureResources 0000021B7283C330
+XRTextureManager::RequestCreateTexture
+XRTextureManager::SetupRenderTextureFromXRRequest (id: 2 col: 0000021B72838B70 d: 0000000000000000)
+RenderTexture::Create (id: 2)
+IVRDeviceCallback_CreateEyeTextureResources 0000021B72838B70
+[XR] [24980] [17:50:25.587][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_READY->XR_SESSION_STATE_SYNCHRONIZED session=2316905198704 time=357819531795600
+XRTextureManager::RequestCreateTexture
+XRTextureManager::SetupRenderTextureFromXRRequest (id: 3 col: 0000021B72838870 d: 0000000000000000)
+RenderTexture::Create (id: 3)
+IVRDeviceCallback_CreateEyeTextureResources 0000021B72838870
+UnloadTime: 6.834300 ms
+Windows Standalone -> must parse arguments, VR authorized
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
 Gateway:Awake () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Gateway.cs:25)
 
 (Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Gateway.cs Line: 25)
 
+Loading VR Scene
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Gateway:Awake () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Gateway.cs:29)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Gateway.cs Line: 29)
+
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.561400 ms
-System memory in use before: 38.0 MB.
-System memory in use after: 38.1 MB.
+UnloadTime: 0.426400 ms
+System memory in use before: 38.9 MB.
+System memory in use after: 38.9 MB.
 
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1089.
-Total: 1.398700 ms (FindLiveObjects: 0.107600 ms CreateObjectMapping: 0.051500 ms MarkObjects: 0.919500 ms  DeleteObjects: 0.319400 ms)
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 1116.
+Total: 1.702300 ms (FindLiveObjects: 0.060000 ms CreateObjectMapping: 0.017700 ms MarkObjects: 1.570000 ms  DeleteObjects: 0.053600 ms)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.203200 ms
-System memory in use before: 37.9 MB.
-System memory in use after: 37.9 MB.
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.259700 ms
+System memory in use before: 38.7 MB.
+System memory in use after: 38.7 MB.
 
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1066.
-Total: 0.751700 ms (FindLiveObjects: 0.056700 ms CreateObjectMapping: 0.017300 ms MarkObjects: 0.542700 ms  DeleteObjects: 0.133800 ms)
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 1093.
+Total: 1.024000 ms (FindLiveObjects: 0.105400 ms CreateObjectMapping: 0.052300 ms MarkObjects: 0.718100 ms  DeleteObjects: 0.147100 ms)
 
 args from Gateway : System.String[] of len 20
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
@@ -31,7 +99,178 @@ Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets
 
 (Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 39)
 
-args from cmd line : System.String[] of len 20
+WallVR/Single_WallVR.exe
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-vr
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+1
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-popuwindow
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-screen-fullscreen
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+0
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-screen-width
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+1980
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-screen-height
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+780
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-wall
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+DESKTOP
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-sw
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+1980
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-sh
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+780
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-r
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+p
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+-logfile
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+Setup:Start () (at C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs:41)
+
+(Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/Setup.cs Line: 41)
+
+log_vr.txt
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
@@ -72,16 +311,174 @@ Photon.Pun.PhotonHandler:FixedUpdate () (at C:/cygwin64/home/abel/WallVR/Code/Wa
 
 (Filename: C:/cygwin64/home/abel/WallVR/Code/WallVR/Single_WallVR/Assets/NetworkHandler.cs Line: 39)
 
+XRTextureManager::RequestDestroyTexture
+XRTextureManager::RequestDestroyTexture
+XRTextureManager::RequestDestroyTexture
+[XR] [24980] [17:50:40.655][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_SYNCHRONIZED->XR_SESSION_STATE_STOPPING session=2316905198704 time=357834602614500
+[XR] [24980] [17:50:40.656][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_STOPPING->XR_SESSION_STATE_IDLE session=2316905198704 time=357834603377800
+[XR] [24980] [17:50:40.656][Info   ] OpenXRSession::HandleSessionStateChangedEvent: state XR_SESSION_STATE_IDLE->XR_SESSION_STATE_EXITING session=2316905198704 time=357834603387700
+[XR] [24980] [17:50:40.657][Info   ] 
+
+==== Start Unity OpenXR Diagnostic Report ====
+
+
+[XR] [24980] [17:50:40.657][Info   ] ==== Report Reason: System Shutdown ====
+
+
+[XR] [24980] [17:50:40.657][Info   ] ==== OpenXR Support Details ====
+[XR] [24980] [17:50:40.657][Info   ] OpenXR Runtime:
+[XR] [24980] [17:50:40.657][Info   ]     Valve, which is not a Unity supported partner
+[XR] [24980] [17:50:40.657][Info   ] Unity OpenXR Features:
+[XR] [24980] [17:50:40.657][Info   ]     HTCViveControllerProfile Standalone: Unity
+[XR] [24980] [17:50:40.657][Info   ] Unity Support:
+[XR] [24980] [17:50:40.657][Info   ]     Unity doesn't support some aspects of the runtime and Unity OpenXR Features above. Please attempt to reproduce the issue with only Unity supported aspects before submitting an issue to Unity.
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] ==== OpenXR Init Info ====
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] Stage 1 Missing Entry Points: (1)
+[XR] [24980] [17:50:40.657][Info   ]   xrInitializeLoaderKHR
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] Stage 2 Missing Entry Points: (9)
+[XR] [24980] [17:50:40.657][Info   ]   xrGetD3D12GraphicsRequirementsKHR
+[XR] [24980] [17:50:40.657][Info   ]   xrGetVulkanInstanceExtensionsKHR
+[XR] [24980] [17:50:40.657][Info   ]   xrGetVulkanDeviceExtensionsKHR
+[XR] [24980] [17:50:40.657][Info   ]   xrGetVulkanGraphicsDeviceKHR
+[XR] [24980] [17:50:40.657][Info   ]   xrGetVulkanGraphicsRequirementsKHR
+[XR] [24980] [17:50:40.657][Info   ]   xrCreateVulkanInstanceKHR
+[XR] [24980] [17:50:40.657][Info   ]   xrCreateVulkanDeviceKHR
+[XR] [24980] [17:50:40.657][Info   ]   xrGetVulkanGraphicsDevice2KHR
+[XR] [24980] [17:50:40.657][Info   ]   xrGetVulkanGraphicsRequirements2KHR
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] ==== OpenXR Provider Info ====
+[XR] [24980] [17:50:40.657][Info   ] Spec Version: 1.0.12
+[XR] [24980] [17:50:40.657][Info   ] Provider Version: 1.1.1
+[XR] [24980] [17:50:40.657][Info   ] App: Single_WallVR 0.1 #3159629941
+[XR] [24980] [17:50:40.657][Info   ] Engine: 2020.3.7f1 #1270476011
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] ==== OpenXR Runtime Info ====
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] Features requested to be enabled: 1
+[XR] [24980] [17:50:40.657][Info   ]     Name=HTC Vive Controller Profile Extension=NA Version=0.0.1
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] Features with extensions that failed to be enabled: 0
+[XR] [24980] [17:50:40.657][Info   ] 
+[XR] [24980] [17:50:40.657][Info   ] Available Extensions: (27)
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_EXT_hand_tracking SpecVersion=4
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_EXT_eye_gaze_interaction SpecVersion=1
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_HTC_vive_srworks_pass_through SpecVersion=1
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_MSFT_scene_understanding SpecVersion=1
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_vulkan_enable SpecVersion=8
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_vulkan_enable2 SpecVersion=2
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_D3D11_enable SpecVersion=9
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_D3D12_enable SpecVersion=9
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_opengl_enable SpecVersion=10
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_win32_convert_performance_counter_time SpecVersion=1
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_EXT_win32_appcontainer_compatible SpecVersion=1
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_binding_modification SpecVersion=1
+[XR] [24980] [17:50:40.657][Info   ]   Name=XR_KHR_composition_layer_depth SpecVersion=6
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_KHR_visibility_mask SpecVersion=2
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_active_action_set_priority SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_dpad_binding SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_frame_composition_report SpecVersion=4
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_hand_joints_motion_range SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_hp_mixed_reality_controller SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_palm_pose SpecVersion=2
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_FB_display_refresh_rate SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_HTC_vive_cosmos_controller_interaction SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_HTC_vive_focus3_controller_interaction SpecVersion=2
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_MND_headless SpecVersion=2
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_VALVE_analog_threshold SpecVersion=2
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_HTCX_vive_tracker_interaction SpecVersion=2
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_debug_utils SpecVersion=3
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Available Layers: (3)
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_APILAYER_VIVE_hand_tracking SpecVersion=0 LayerVersion=0.0.2 Description=ViveVR OpenXR Hand Tracking
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_APILAYER_VIVE_facial_tracking SpecVersion=0 LayerVersion=0.0.2 Description=VIVE OpenXR Facial tracking
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_APILAYER_VIVE_srworks SpecVersion=0 LayerVersion=0.0.2 Description=ViveVR OpenXR SRWorks
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Available Extensions for layer XR_APILAYER_VIVE_hand_tracking: (1)
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_hand_tracking SpecVersion=2
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Available Extensions for layer XR_APILAYER_VIVE_facial_tracking: (1)
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_EXT_eye_gaze_interaction SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Available Extensions for layer XR_APILAYER_VIVE_srworks: (2)
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_HTC_vive_srworks_pass_through SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_MSFT_scene_understanding SpecVersion=1
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Runtime Name: SteamVR/OpenXR
+[XR] [24980] [17:50:40.658][Info   ] Runtime Version: 0.1.0
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Form factor: XR_FORM_FACTOR_HEAD_MOUNTED_DISPLAY
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Spec extensions enabled: (4)
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_KHR_D3D11_enable Version=9
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_KHR_composition_layer_depth Version=6
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_KHR_visibility_mask Version=2
+[XR] [24980] [17:50:40.658][Info   ]   Name=XR_KHR_win32_convert_performance_counter_time Version=1
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Available Reference Spaces: (3)
+[XR] [24980] [17:50:40.658][Info   ]   Name: XR_REFERENCE_SPACE_TYPE_VIEW
+[XR] [24980] [17:50:40.658][Info   ]   Name: XR_REFERENCE_SPACE_TYPE_LOCAL
+[XR] [24980] [17:50:40.658][Info   ]   Name: XR_REFERENCE_SPACE_TYPE_STAGE
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Instance Id  : 0x293d1030
+[XR] [24980] [17:50:40.658][Info   ] System Id    : 0xcc
+[XR] [24980] [17:50:40.658][Info   ] Session Id   : 0x724fb470
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Available View Configuration Types: (1)
+[XR] [24980] [17:50:40.658][Info   ]   View Configuration Type: XR_VIEW_CONFIGURATION_TYPE_PRIMARY_STEREO (Selected)  View configuration FovMutable=True
+[XR] [24980] [17:50:40.658][Info   ]   View [0]: Recommended Width=2468 Height=2740 SampleCount=1
+[XR] [24980] [17:50:40.658][Info   ]   View [0]:     Maximum Width=8192 Height=8192 SampleCount=1
+[XR] [24980] [17:50:40.658][Info   ]   View [1]: Recommended Width=2468 Height=2740 SampleCount=1
+[XR] [24980] [17:50:40.658][Info   ]   View [1]:     Maximum Width=8192 Height=8192 SampleCount=1
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Available Environment Blend Mode: (1)
+[XR] [24980] [17:50:40.658][Info   ]   Environment Blend Mode (XR_ENVIRONMENT_BLEND_MODE_OPAQUE) : (Selected)
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] System Properties: Name=Vive OpenXR: Vive SRanipal VendorId=2996
+[XR] [24980] [17:50:40.658][Info   ] System Graphics Properties: MaxWidth=0 MaxHeight=0 MaxLayers=0
+[XR] [24980] [17:50:40.658][Info   ] System Tracking Properties: OrientationTracking=False PositionTracking=False
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] ==== OpenXR Input ====
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Action Set Data: 
+[XR] [24980] [17:50:40.658][Info   ] Name:     htcvivecontroller                        Desired Profile: /interaction_profiles/htc/vive_controller
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] ==== OpenXR Swapchain Details ====
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Render Mode: Single Pass Instanced
+[XR] [24980] [17:50:40.658][Info   ] Depth Submission Mode: None
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] Swapchain Formats:  [c:29] 91 2 10 24 40 55 45 20
+[XR] [24980] [17:50:40.658][Info   ] Creating swapchain for view 0 with dimensions Width=2468 Height=2740 SampleCount=1
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] ==== Last 20 non-XR_SUCCESS returns ====
+[XR] [24980] [17:50:40.658][Info   ] [SUCCESS] xrGetReferenceSpaceBoundsRect: XR_SPACE_BOUNDS_UNAVAILABLE (2x)
+[XR] [24980] [17:50:40.658][Info   ] [SUCCESS] xrPollEvent: XR_EVENT_UNAVAILABLE (1323x)
+[XR] [24980] [17:50:40.658][Info   ] 
+[XR] [24980] [17:50:40.658][Info   ] ==== Last 20 Events ====
+[XR] [24980] [17:50:40.658][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_UNKNOWN->XR_SESSION_STATE_IDLE
+[XR] [24980] [17:50:40.658][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_IDLE->XR_SESSION_STATE_READY
+[XR] [24980] [17:50:40.658][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_READY->XR_SESSION_STATE_SYNCHRONIZED
+[XR] [24980] [17:50:40.658][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_SYNCHRONIZED->XR_SESSION_STATE_STOPPING
+[XR] [24980] [17:50:40.658][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_STOPPING->XR_SESSION_STATE_IDLE
+[XR] [24980] [17:50:40.658][Info   ] OpenXRSession::HandleSessionStateChangedEvent: XR_SESSION_STATE_IDLE->XR_SESSION_STATE_EXITING
+[XR] [24980] [17:50:40.658][Info   ] 
+
+==== End Unity OpenXR Diagnostic Report ====
+
+
 Setting up 10 worker threads for Enlighten.
-  Thread -> id: 3d08 -> priority: 1 
-  Thread -> id: 7424 -> priority: 1 
-  Thread -> id: 70ac -> priority: 1 
-  Thread -> id: 51bc -> priority: 1 
-  Thread -> id: 6310 -> priority: 1 
-  Thread -> id: 747c -> priority: 1 
-  Thread -> id: 746c -> priority: 1 
-  Thread -> id: 464c -> priority: 1 
-  Thread -> id: 681c -> priority: 1 
-  Thread -> id: bf0 -> priority: 1 
-##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1685459216308,"processId":29784,"allocatedMemory":218667,"memoryLabels":[{"Permanent":40},{"NewDelete":432},{"Thread":72},{"Manager":2128},{"Geometry":-112},{"GfxDevice":210584},{"Serialization":568},{"WebCam":32},{"String":771},{"HashMap":1536},{"PoolAlloc":56},{"GI":296},{"CloudService":336},{"VR":1728},{"NativeArray":272},{"Subsystems":-72}]}
+  Thread -> id: 8260 -> priority: 1 
+  Thread -> id: 28d4 -> priority: 1 
+  Thread -> id: 4ac8 -> priority: 1 
+  Thread -> id: 3dbc -> priority: 1 
+  Thread -> id: 8138 -> priority: 1 
+  Thread -> id: 7b90 -> priority: 1 
+  Thread -> id: 319c -> priority: 1 
+  Thread -> id: 552c -> priority: 1 
+  Thread -> id: b8c -> priority: 1 
+  Thread -> id: 80ec -> priority: 1 
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1685461840775,"processId":29528,"allocatedMemory":220809,"memoryLabels":[{"Permanent":40},{"NewDelete":432},{"Thread":128},{"Manager":2128},{"Geometry":-224},{"GfxDevice":210584},{"Serialization":624},{"WebCam":32},{"String":1353},{"HashMap":1536},{"PoolAlloc":56},{"GI":296},{"CloudService":1008},{"VR":6640},{"NativeArray":1152},{"Subsystems":-4976}]}
 
