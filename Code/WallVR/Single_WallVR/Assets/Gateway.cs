@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Gateway : MonoBehaviour {
     public static string[] arguments;
-    public StreamWriter writer;
+    //public StreamWriter writer;
 
     public void Awake(){
-        string path = "WallVR/Single_WallVR/Assets/Resources/PersonalLogs/my_log.txt";
-        writer = new StreamWriter(path, true);
+        //string path = "WallVR/Single_WallVR/Assets/Resources/PersonalLogs/my_log.txt";
+        //writer = new StreamWriter(path, true);
 
 #if UNITY_EDITOR
   #if UNITY_EDITOR_WIN
@@ -28,16 +28,16 @@ public class Gateway : MonoBehaviour {
         arguments = System.Environment.GetCommandLineArgs();
   #if UNITY_STANDALONE_WIN 
         Debug.LogError("Windows Standalone -> must parse arguments, VR authorized");
-        WriteLog("Windows Standalone -> must parse arguments, VR authorized");
+        //WriteLog("Windows Standalone -> must parse arguments, VR authorized");
         for(int i=0; i<arguments.Length; i++){
             if(arguments[i]=="-vr"){
                 if(int.Parse(arguments[i+1])==1){
                     Debug.LogError("Loading VR Scene");
-                    WriteLog("Loading VR Scene");
+                    //WriteLog("Loading VR Scene");
                     SceneManager.LoadScene("VR");
                 } else {
                     Debug.LogError("Loading Wall Scene");
-                    WriteLog("Loading Wall Scene");
+                    //WriteLog("Loading Wall Scene");
                     SceneManager.LoadScene("Wall");
                 }
             }
