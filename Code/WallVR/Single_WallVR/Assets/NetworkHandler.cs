@@ -23,7 +23,7 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     public GameObject cur_participant;
 
     public override void OnConnectedToMaster(){
-        Debug.Log("OnConnectedToMaster : "+PhotonNetwork.LocalPlayer.ActorNumber);
+        Debug.LogError("OnConnectedToMaster : "+PhotonNetwork.LocalPlayer.ActorNumber);
         base.OnConnectedToMaster();
         current_in_room = 0;
         //creating the room
@@ -36,17 +36,17 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
         base.OnJoinedRoom();
         setup = GameObject.Find("ScriptManager").GetComponent<Setup>();
         if(PhotonNetwork.IsMasterClient){
-            Debug.Log("OnJoinedRoom as Operator : "+PhotonNetwork.LocalPlayer.ActorNumber);
+            Debug.LogError("OnJoinedRoom as Operator : "+PhotonNetwork.LocalPlayer.ActorNumber);
             ope_prefab = PhotonNetwork.Instantiate("Operator", transform.position, transform.rotation);
             PhotonNetwork.SetMasterClient(PhotonNetwork.LocalPlayer);
         } else {
             if(setup.is_vr){
-                Debug.Log("OnJoinedRoom as VR Participant : "+PhotonNetwork.LocalPlayer.ActorNumber);
+                Debug.LogError("OnJoinedRoom as VR Participant : "+PhotonNetwork.LocalPlayer.ActorNumber);
                 vr_prefab = PhotonNetwork.Instantiate("VR Participant", transform.position, transform.rotation);
                 //vr_prefab.GetComponent<Participant>().NetworkStart(setup);
                 cur_participant = vr_prefab;
             } else {
-                Debug.Log("OnJoinedRoom as Wall Participant : "+PhotonNetwork.LocalPlayer.ActorNumber);
+                Debug.LogError("OnJoinedRoom as Wall Participant : "+PhotonNetwork.LocalPlayer.ActorNumber);
                 part_prefab = PhotonNetwork.Instantiate("Wall Participant", transform.position, transform.rotation);
                 //part_prefab.GetComponent<Participant>().NetworkStart(setup);
                 cur_participant = part_prefab;
@@ -58,13 +58,13 @@ public class NetworkHandler : MonoBehaviourPunCallbacks {
     public override void OnPlayerEnteredRoom(Player newPlayer){
         base.OnPlayerEnteredRoom(newPlayer);
         if(PhotonNetwork.IsMasterClient){
-            Debug.Log("OnPlayerEnteredRoom as operator : "+PhotonNetwork.LocalPlayer.ActorNumber);
+            Debug.LogError("OnPlayerEnteredRoom as operator : "+PhotonNetwork.LocalPlayer.ActorNumber);
             //if i'm master then test some stuff
             if(PhotonNetwork.CurrentRoom.PlayerCount==(setup.part_cnt +1)){ //all parts + master
                 ope_prefab.GetComponent<PhotonView>().RPC("InitializeRPC", RpcTarget.AllBuffered);
             }
         } else {
-            Debug.Log("OnPlayerEnteredRoom as participant : "+PhotonNetwork.LocalPlayer.ActorNumber);
+            Debug.LogError("OnPlayerEnteredRoom as participant : "+PhotonNetwork.LocalPlayer.ActorNumber);
         }
         //else I don't give a fuck
     }

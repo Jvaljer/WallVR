@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -35,6 +36,8 @@ public class Setup : MonoBehaviourPun {
     public float zoom_ratio { get; private set; } = 1f;
 
     public void Start(){
+        Debug.LogError("Setup Starting");
+        Debug.LogError("actual scene -> "+SceneManager.GetActiveScene().name);
         args = Gateway.arguments;
         Debug.LogError("args from Gateway : "+args+" of len "+args.Length);
         for(int i=0; i<args.Length; i++){
@@ -83,6 +86,7 @@ public class Setup : MonoBehaviourPun {
                     break;
             }
         }
+        Debug.LogError("actual scene -> "+SceneManager.GetActiveScene().name);
 
         switch (wall_str){
             case "WILDER":
@@ -97,6 +101,7 @@ public class Setup : MonoBehaviourPun {
         wall_height = wall.Height();
         wall_width = wall.Width();
         
+        Debug.LogError("actual scene -> "+SceneManager.GetActiveScene().name);
         //now connecting to the server
         ConnectToServer();
     }
