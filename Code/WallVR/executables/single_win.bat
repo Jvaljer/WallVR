@@ -9,6 +9,8 @@ set SH=1080
 set LOG=0
 
 if %LOG%==0
+	echo LOG = 0
 	(start "" "%EXEC%" -vr 1 -popupwindow -screen-fullscreen 0 -screen-width %SW% -screen-height %SH% -sw %SW% -sh %SH% -r %PID%)
 else 
+	echo LOG = 1
 	(start "" "%EXEC%" -vr 1 -popupwindow -screen-fullscreen 0 -screen-width %SW% -screen-height %SH% -sw %SW% -sh %SH% -r %PID% -logfile log_vr.txt)

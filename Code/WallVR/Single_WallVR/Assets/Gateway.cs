@@ -53,9 +53,9 @@ public class Gateway : MonoBehaviour {
 #endif
     }
 
-    public void WriteLog(string str){
+    /*public void WriteLog(string str){
         //writing some text
         writer.WriteLine(str);
         writer.Flush();
-    }
+    }*/
 }
