@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonUnityNetworking.Utilities", "PhotonUnityNetworking.Utilities.csproj", "{294D2317-18BA-488B-1BBC-F3826C22D1A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{F648BF15-656C-B154-3580-375757301946}"
@@ -12,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonChat", "PhotonChat.csproj", "{171E1C2D-02B7-C852-21EE-FEC66861E300}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonRealtime", "PhotonRealtime.csproj", "{B14F94B6-C35A-BE27-0159-C787BA2AD1D6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.XR.Interaction.Toolkit.Samples.StarterAssets", "Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj", "{91F69A11-D48B-BF92-BA9D-07B1EC19ED37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonUnityNetworking.Editor", "PhotonUnityNetworking.Editor.csproj", "{F2DBC0BE-2C10-9486-B141-AE92A421263A}"
 EndProject
@@ -55,10 +53,6 @@ Global
 		{B14F94B6-C35A-BE27-0159-C787BA2AD1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B14F94B6-C35A-BE27-0159-C787BA2AD1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B14F94B6-C35A-BE27-0159-C787BA2AD1D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91F69A11-D48B-BF92-BA9D-07B1EC19ED37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91F69A11-D48B-BF92-BA9D-07B1EC19ED37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91F69A11-D48B-BF92-BA9D-07B1EC19ED37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91F69A11-D48B-BF92-BA9D-07B1EC19ED37}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2DBC0BE-2C10-9486-B141-AE92A421263A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F2DBC0BE-2C10-9486-B141-AE92A421263A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2DBC0BE-2C10-9486-B141-AE92A421263A}.Release|Any CPU.ActiveCfg = Release|Any CPU
