@@ -18,7 +18,7 @@ public class Gateway : MonoBehaviour {
         //must initialize all args
         SceneManager.LoadScene("VR");
 
-  #elif UNITY_EDITOR_LIN
+  #elif UNITY_EDITOR_LINUX
         Debug.LogError("Linux Editor -> Operator by default");
         //must initialize all args
         SceneManager.LoadScene("Wall");
@@ -28,22 +28,27 @@ public class Gateway : MonoBehaviour {
         arguments = System.Environment.GetCommandLineArgs();
   #if UNITY_STANDALONE_WIN 
         Debug.LogError("Windows Standalone -> must parse arguments, VR authorized");
+        bool vr_scene = false;
         //WriteLog("Windows Standalone -> must parse arguments, VR authorized");
         for(int i=0; i<arguments.Length; i++){
             if(arguments[i]=="-vr"){
                 if(int.Parse(arguments[i+1])==1){
-                    Debug.LogError("Loading VR Scene");
-                    //WriteLog("Loading VR Scene");
-                    SceneManager.LoadScene("VR");
+                    vr_scene = true;
                 } else {
-                    Debug.LogError("Loading Wall Scene");
-                    //WriteLog("Loading Wall Scene");
-                    SceneManager.LoadScene("Wall");
+                    vr_scene = false;
                 }
             }
         }
-        SceneManager.LoadScene("Wall");
-  #elif UNITY_STANDALONE_LIN
+        if(vr_scene){
+            Debug.LogError("Loading VR Scene");
+            //WriteLog("Loading VR Scene");
+            SceneManager.Load("VR");
+        } else {
+            Debug.LogError("Loading Wall Scene");
+            //WriteLog("Loading Wall Scene");
+            SceneManager.Load("Wall");
+        }
+  #else 
         Debug.LogError("Linux Standalone -> must parse argument, VR prohibited");
         SceneManager.LoadScene("Wall"):
   #endif
